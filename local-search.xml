@@ -4,6 +4,103 @@
   
   
   <entry>
+    <title>LINUX系统电脑上迁移博客系统</title>
+    <link href="/code.github.io/2022/11/01/Linux%E7%B3%BB%E7%BB%9F%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/"/>
+    <url>/code.github.io/2022/11/01/Linux%E7%B3%BB%E7%BB%9F%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/</url>
+    
+    <content type="html"><![CDATA[<p>适用于重新安装系统或者迁移到另外一台电脑，需要重新配置环境。搭建环境：linux-ubuntu，20.04.01,。win环境下还未尝试。</p><span id="more"></span><h2 id="一、linux系统上迁移"><a href="#一、linux系统上迁移" class="headerlink" title="一、linux系统上迁移"></a>一、linux系统上迁移</h2><h3 id="（一）备份文件复制到文件夹"><a href="#（一）备份文件复制到文件夹" class="headerlink" title="（一）备份文件复制到文件夹"></a>（一）备份文件复制到文件夹</h3><p>需要实时更新备份文件</p><h3 id="（二）安装升级必要的软件"><a href="#（二）安装升级必要的软件" class="headerlink" title="（二）安装升级必要的软件"></a>（二）安装升级必要的软件</h3><p>软件包括：npm\git\nodejs</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux-ThinkCentre-E75:~/文档/blogs$ sudo apt install npm <span class="hljs-comment"># 有时候因为版本不对报错，需要把nodejs升级到最新版本</span><br></code></pre></td></tr></table></figure><ol><li><p>产看node版本，没安装的请先安装；</p><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby">linux<span class="hljs-variable">@linux</span>-ThinkCentre-<span class="hljs-variable constant_">E75</span><span class="hljs-symbol">:~/</span>文档/blogs<span class="hljs-variable">$ </span>node -v<br></code></pre></td></tr></table></figure></li><li><p>清楚node缓存；</p><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby">linux<span class="hljs-variable">@linux</span>-ThinkCentre-<span class="hljs-variable constant_">E75</span><span class="hljs-symbol">:~/</span>文档/blogs<span class="hljs-variable">$ </span>sudo npm cache clean -f  <br></code></pre></td></tr></table></figure></li><li><p>安装node版本管理工具’n’;</p><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby">linux<span class="hljs-variable">@linux</span>-ThinkCentre-<span class="hljs-variable constant_">E75</span><span class="hljs-symbol">:~/</span>文档/blogs<span class="hljs-variable">$ </span>sudo npm install n -g<br></code></pre></td></tr></table></figure></li><li><p>使用版本管理工具安装指定node或者升级到最新node版本；</p><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby">linux<span class="hljs-variable">@linux</span>-ThinkCentre-<span class="hljs-variable constant_">E75</span><span class="hljs-symbol">:~/</span>文档/blogs<span class="hljs-variable">$ </span>sudo n stable  （安装node最新版本）<br></code></pre></td></tr></table></figure></li><li><p>安装hexo</p></li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux-ThinkCentre-E75:~/文档/blogs$ sudo npm install -g hexo<br><br></code></pre></td></tr></table></figure><h3 id="（三）通过ssh-keys绑定gitee"><a href="#（三）通过ssh-keys绑定gitee" class="headerlink" title="（三）通过ssh keys绑定gitee"></a>（三）通过ssh keys绑定gitee</h3><ol><li>生成密钥（回车三次）</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux-ThinkCentre-E75:~/文档/blogs$ ssh-keygen -t ed25519 -C <span class="hljs-string">&quot;bs0716@126.com&quot;</span>  <br>Generating public/private ed25519 key pair.<br>Enter file <span class="hljs-keyword">in</span> <span class="hljs-built_in">which</span> to save the key (/home/linux/.ssh/id_ed25519): <br>Created directory <span class="hljs-string">&#x27;/home/linux/.ssh&#x27;</span>.<br>Enter passphrase (empty <span class="hljs-keyword">for</span> no passphrase): <br>Enter same passphrase again: <br>Your identification has been saved <span class="hljs-keyword">in</span> /home/linux/.ssh/id_ed25519<br>Your public key has been saved <span class="hljs-keyword">in</span> /home/linux/.ssh/id_ed25519.pub<br>The key fingerprint is:<br>SHA256:w1pBqIn8XtBaNIQIEo/pTOjqJxssGiQH7REkRB4zNyA bs0716@126.com<br>The key<span class="hljs-string">&#x27;s randomart image is:</span><br><span class="hljs-string">+--[ED25519 256]--+</span><br><span class="hljs-string">|E@++ o...        |</span><br><span class="hljs-string">|=**.o +.         |</span><br><span class="hljs-string">|=++. = ..        |</span><br><span class="hljs-string">|=oo.+ o. .       |</span><br><span class="hljs-string">|.=o. +  S        |</span><br><span class="hljs-string">|=.  o .o .       |</span><br><span class="hljs-string">|+o . ..          |</span><br><span class="hljs-string">|+o...            |</span><br><span class="hljs-string">|.o+              |</span><br><span class="hljs-string">+----[SHA256]-----+</span><br><span class="hljs-string">linux@linux-ThinkCentre-E75:~/文档/blogs$</span><br></code></pre></td></tr></table></figure><ol start="2"><li>通过查看 <code>~/.ssh/id_ed25519.pub</code> 公钥，和<code>~/.ssh/id_ed25519</code>获取对私钥文件内容，获取到你的 public key</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux-ThinkCentre-E75:~/文档/blogs$ <span class="hljs-built_in">cat</span> ~/.ssh/id_ed25519.pub<br>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK/QJbu+k40c8i7ZioAdLRVwgOeNsO+Ea7aad1LdG9z7 bs0716@126.com<br><br>linux@linux-ThinkCentre-E75:~/文档/blogs$ <span class="hljs-built_in">cat</span> ~/.ssh/id_ed25519<br>-----BEGIN OPENSSH PRIVATE KEY-----<br>b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW<br>QyNTUxOQAAACCv0CW7vpONHPIu2YqAHS0VcIDnjbDvhGu2mndS3Rvc+wAAAJiJxTPFicUz<br>xQAAAAtzc2gtZWQyNTUxOQAAACCv0CW7vpONHPIu2YqAHS0VcIDnjbDvhGu2mndS3Rvc+w<br>AAAECrAEvFII+Wco2D/c3kSQaAymNCLIo5FvlbG3axBB3H7q/QJbu+k40c8i7ZioAdLRVw<br>gOeNsO+Ea7aad1LdG9z7AAAADmJzMDcxNkAxMjYuY29tAQIDBAUGBw==<br>-----END OPENSSH PRIVATE KEY-----<br>linux@linux-ThinkCentre-E75:~/文档/blogs$<br></code></pre></td></tr></table></figure><ol start="3"><li>首次确认，需要确认并添加主机到本机SSH可信列表</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux-ThinkCentre-E75:~/文档/blogs$ ssh -T git@gitee.com<br>The authenticity of host <span class="hljs-string">&#x27;gitee.com (212.64.63.190)&#x27;</span> can<span class="hljs-string">&#x27;t be established.</span><br><span class="hljs-string">ECDSA key fingerprint is SHA256:FQGC9Kn/eye1W8icdBgrQp+KkGYoFgbVr17bmjey0Wc.</span><br><span class="hljs-string">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span><br><span class="hljs-string">Warning: Permanently added &#x27;</span>gitee.com,212.64.63.190<span class="hljs-string">&#x27; (ECDSA) to the list of known hosts.</span><br><span class="hljs-string">Hi 望月砂! You&#x27;</span>ve successfully authenticated, but GITEE.COM does not provide shell access.<br>linux@linux-ThinkCentre-E75:~/文档/blogs$<br></code></pre></td></tr></table></figure><h3 id="（四）配置部署用户信息"><a href="#（四）配置部署用户信息" class="headerlink" title="（四）配置部署用户信息"></a>（四）配置部署用户信息</h3><p>按照官方文档确认身份标识。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">*** 请告诉我您是谁。<br><br>运行<br><br>  git config --global user.email <span class="hljs-string">&quot;you@example.com&quot;</span><br>  git config --global user.name <span class="hljs-string">&quot;Your Name&quot;</span><br><br>来设置您账号的缺省身份标识。<br>如果仅在本仓库设置身份标识，则省略 --global 参数。<br><br>fatal: 无法自动探测邮件地址（得到 <span class="hljs-string">&#x27;linux@linux-ThinkCentre-E75.(none)&#x27;</span>）<br>Username <span class="hljs-keyword">for</span> <span class="hljs-string">&#x27;https://gitee.com&#x27;</span>: linuxdeepin007<br>Password <span class="hljs-keyword">for</span> <span class="hljs-string">&#x27;https://linuxdeepin007@gitee.com&#x27;</span>: <br>分支 <span class="hljs-string">&#x27;master&#x27;</span> 设置为跟踪来自 <span class="hljs-string">&#x27;https://gitee.com/linuxdeepin007/blogs.git&#x27;</span> 的远程分支 <span class="hljs-string">&#x27;master&#x27;</span>。<br>Everything up-to-date<br>INFO  Deploy <span class="hljs-keyword">done</span>: git<br>linux@linux-ThinkCentre-E75:~/文档/blogs$ git config^C<br>linux@linux-ThinkCentre-E75:~/文档/blogs$  git config --global user.email <span class="hljs-string">&quot;you@example.com&quot;</span><br>linux@linux-ThinkCentre-E75:~/文档/blogs$ git config --global user.email <span class="hljs-string">&quot;bs0716@126.com&quot;</span><br>linux@linux-ThinkCentre-E75:~/文档/blogs$ git config --global user.name <span class="hljs-string">&quot;linuxdeepin007&quot;</span><br>linux@linux-ThinkCentre-E75:~/文档/blogs$ hexo clean<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程电脑</category>
+      
+      <category>LINUX</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>博客</tag>
+      
+      <tag>迁移</tag>
+      
+      <tag>环境</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>PPT排版技巧——拆字与墨迹</title>
+    <link href="/code.github.io/2022/10/23/PPT%E6%8E%92%E7%89%88%E6%8A%80%E5%B7%A7%E2%80%94%E2%80%94%E6%8B%86%E5%AD%97%E5%A2%A8%E8%BF%B9/"/>
+    <url>/code.github.io/2022/10/23/PPT%E6%8E%92%E7%89%88%E6%8A%80%E5%B7%A7%E2%80%94%E2%80%94%E6%8B%86%E5%AD%97%E5%A2%A8%E8%BF%B9/</url>
+    
+    <content type="html"><![CDATA[<p>PPT排版可以参考拆字和墨迹，应用在中国风的PPT 中，更加大气。</p><span id="more"></span><h1 id="使用拆分字作为背景"><a href="#使用拆分字作为背景" class="headerlink" title="使用拆分字作为背景"></a>使用拆分字作为背景</h1><p>通过拆分，可以作为文字背景、虚化笔画和</p><h2 id="一、文字笔画拆分"><a href="#一、文字笔画拆分" class="headerlink" title="一、文字笔画拆分"></a>一、文字笔画拆分</h2><p>第一步：在 PPT 中插入「文本框」</p><p>第二步：点击「形状」插入一个「矩形」</p><p>第三步 ：全选文字和矩形，选择「形状格式」下方的「拆分」</p><h2 id="二、放大或者整齐摆放作为背景"><a href="#二、放大或者整齐摆放作为背景" class="headerlink" title="二、放大或者整齐摆放作为背景"></a>二、放大或者整齐摆放作为背景</h2><h2 id="三、通过改变颜色，作为文字的修饰"><a href="#三、通过改变颜色，作为文字的修饰" class="headerlink" title="三、通过改变颜色，作为文字的修饰"></a>三、通过改变颜色，作为文字的修饰</h2><h1 id="使用墨迹，制作大气PPT"><a href="#使用墨迹，制作大气PPT" class="headerlink" title="使用墨迹，制作大气PPT"></a>使用墨迹，制作大气PPT</h1><h2 id="墨迹文件"><a href="#墨迹文件" class="headerlink" title="墨迹文件"></a>墨迹文件</h2><p>在网盘里获得。链接如下：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">链接: https:<span class="hljs-regexp">//</span>pan.baidu.com<span class="hljs-regexp">/s/</span><span class="hljs-number">1</span>UjQnWtXBHRTJIJ0v_FrdRA?pwd=kqpb 提取码: kqpb 复制这段内容后打开百度网盘手机App，操作更方便哦<br></code></pre></td></tr></table></figure><p>设置突出人物背景。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>电脑编程</category>
+      
+      <category>办公软件</category>
+      
+      <category>PPT</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>拆字</tag>
+      
+      <tag>墨迹</tag>
+      
+      <tag>排版</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>EXCEL 合并表格填充编号</title>
+    <link href="/code.github.io/2022/09/03/EXCEL%20%E5%90%88%E5%B9%B6%E5%8D%95%E5%85%83%E6%A0%BC%E5%A1%AB%E5%85%85%E7%BC%96%E5%8F%B7/"/>
+    <url>/code.github.io/2022/09/03/EXCEL%20%E5%90%88%E5%B9%B6%E5%8D%95%E5%85%83%E6%A0%BC%E5%A1%AB%E5%85%85%E7%BC%96%E5%8F%B7/</url>
+    
+    <content type="html"><![CDATA[<p>我们可以通过下拉填充单元格编号，但是对于有合并单元格的表格，无法通过下拉来填充编号，通过使用公式，可以完成操作。且删除任意单元格，标号顺序自动更新。</p><span id="more"></span><h1 id="一、软件版本"><a href="#一、软件版本" class="headerlink" title="一、软件版本"></a>一、软件版本</h1><p>office2010+、WPS</p><h1 id="二、操作步骤"><a href="#二、操作步骤" class="headerlink" title="二、操作步骤"></a>二、操作步骤</h1><ol><li>选中需要填充序号的单元格；</li><li>按住Ctrl，点击第一个单元格</li><li>输入<code>=MAX($A$1:A1)+1</code>或者<code>=ROW()-1</code></li><li>Ctrl+Enter</li></ol><h1 id="三、效果图"><a href="#三、效果图" class="headerlink" title="三、效果图"></a>三、效果图</h1><p>操作视频详见</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">链接: https:<span class="hljs-regexp">//</span>pan.baidu.com<span class="hljs-regexp">/s/</span><span class="hljs-number">1</span>Az64LvoQtyMMoOXhp970Ag?pwd=ybik 提取码: ybik 复制这段内容后打开百度网盘手机App，操作更方便哦<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程电脑</category>
+      
+      <category>办公软件</category>
+      
+      <category>EXCEL</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>合并单元格</tag>
+      
+      <tag>EXCEL</tag>
+      
+      <tag>编号</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>如何在公文写作中使用 &quot;范文&quot;</title>
     <link href="/code.github.io/2022/06/01/%E5%85%AC%E6%96%87%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8%E8%8C%83%E6%96%87/"/>
     <url>/code.github.io/2022/06/01/%E5%85%AC%E6%96%87%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8%E8%8C%83%E6%96%87/</url>
@@ -13,7 +110,9 @@
     
     <categories>
       
-      <category>公文写作</category>
+      <category>工作政治</category>
+      
+      <category>格式标准</category>
       
     </categories>
     
@@ -42,9 +141,9 @@
     
     <categories>
       
-      <category>常见公文写作</category>
+      <category>工作政治</category>
       
-      <category>决定</category>
+      <category>格式标准</category>
       
     </categories>
     
@@ -73,9 +172,9 @@
     
     <categories>
       
-      <category>常见公文写作</category>
+      <category>工作政治</category>
       
-      <category>决议</category>
+      <category>格式标准</category>
       
     </categories>
     
@@ -104,7 +203,9 @@
     
     <categories>
       
-      <category>英语学习</category>
+      <category>语言学习</category>
+      
+      <category>英语语法</category>
       
     </categories>
     
@@ -133,7 +234,9 @@
     
     <categories>
       
-      <category>阅读</category>
+      <category>工作政治</category>
+      
+      <category>阅读技巧</category>
       
     </categories>
     
@@ -162,14 +265,14 @@
     
     <categories>
       
-      <category>生活</category>
+      <category>医学生活</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>方法</tag>
+      <tag>方式</tag>
       
       <tag>生活</tag>
       
@@ -191,9 +294,9 @@
     
     <categories>
       
-      <category>阅读</category>
+      <category>工作政治</category>
       
-      <category>年度读书计划</category>
+      <category>工作方法</category>
       
     </categories>
     
@@ -222,7 +325,7 @@
     
     <categories>
       
-      <category>健康</category>
+      <category>医学生活</category>
       
     </categories>
     
@@ -251,7 +354,9 @@
     
     <categories>
       
-      <category>阅读</category>
+      <category>工作政治</category>
+      
+      <category>阅读技巧</category>
       
     </categories>
     
@@ -271,37 +376,6 @@
   
   
   <entry>
-    <title>年度读书计划001——《谢谢你迟到》</title>
-    <link href="/code.github.io/2022/04/22/%E5%B9%B4%E5%BA%A6%E8%AF%BB%E4%B9%A6%E8%AE%A1%E5%88%92%E2%80%94%E2%80%94%E3%80%8A%E8%B0%A2%E8%B0%A2%E4%BD%A0%E8%BF%9F%E5%88%B0%E3%80%8B/"/>
-    <url>/code.github.io/2022/04/22/%E5%B9%B4%E5%BA%A6%E8%AF%BB%E4%B9%A6%E8%AE%A1%E5%88%92%E2%80%94%E2%80%94%E3%80%8A%E8%B0%A2%E8%B0%A2%E4%BD%A0%E8%BF%9F%E5%88%B0%E3%80%8B/</url>
-    
-    <content type="html"><![CDATA[<p>在当今世界最重要的三大力量正在经历前所未有的加速过程：市场、大自然和摩尔定律，我们需要了解这场加速变革，并趋利避害。</p><span id="more"></span><h1 id="年度读书计划——《谢谢你迟到》"><a href="#年度读书计划——《谢谢你迟到》" class="headerlink" title="年度读书计划——《谢谢你迟到》"></a>年度读书计划——《谢谢你迟到》</h1><h2 id="一-基本信息"><a href="#一-基本信息" class="headerlink" title="一 基本信息"></a>一 基本信息</h2><p>作者: <a href="https://book.douban.com/author/747039">【美】托马斯·弗里德曼</a><br>出版社: <a href="https://book.douban.com/press/2382">湖南科学技术出版社</a><br>原作名: Thank You for Being Late<br>译者: <a href="https://book.douban.com/search/%E7%AC%A6%E8%8D%86%E6%8D%B7">符荆捷</a> &#x2F; <a href="https://book.douban.com/search/%E6%9C%B1%E6%98%A0%E8%87%BB">朱映臻</a> &#x2F; <a href="https://book.douban.com/search/%E5%B4%94%E8%89%BA">崔艺</a><br>出版年: 2018-1<br>页数: 415</p><h2 id="二、主要内容"><a href="#二、主要内容" class="headerlink" title="二、主要内容"></a>二、主要内容</h2><p>当今世界最重要的三大力量正在经历前所未有的加速过程：一是市场，尤其是数字全球化，脸书、阿里巴巴、推特、亚马逊、云计划等是今天市场的主导力量；其次是自然生态，尤其是气候变化、生物多样性的丧失、发展中国家的人口增加；第三大力量是摩尔定律，具体来说，就是科技产品每24个月就会迎来更新换代。</p><p>从昨日世界反思，2007年发生的科技变革具有根本性的意义，深刻地改变了人类社会：这一年，苹果手机出来了，脸书出来了，推特出来了，安卓系统出来了。但却没有人深刻意识到如此集中的技术变革。其后果就是一年后的2008年，我们迎来了全球经济衰退，也就是说当实体科技已经大步跃进时，与之相适应的社会、政治调整却落在了后面。</p><p>为今日世界把脉，我们当如何趋其利而避其害？三大力量重塑了世界的五个方面：工作岗位、国家政治、地缘政治、社会伦理和社区生活。我们看到一个耳目一新的世界：新闻的深意，工作的内涵，孩子所需的教育，雇主应当进行的投资，以及一个国家必须作出的社会道德和地缘政治抉择等等。我们如何应对这样的加速，规避最糟糕的后果。</p><h2 id="三、摘抄"><a href="#三、摘抄" class="headerlink" title="三、摘抄"></a>三、摘抄</h2><h3 id="关于恐惧"><a href="#关于恐惧" class="headerlink" title="关于恐惧"></a>关于恐惧</h3><p>生活中没有什么是值得恐惧的，你需要做的只是了解它。我们了解得越多，恐惧就会越少。</p><h3 id="关于知识"><a href="#关于知识" class="headerlink" title="关于知识"></a>关于知识</h3><p>今天，我们创造了比过去多得多的信息和知识，但是，只有在你能够对其进行反思的情况下，知识才是有益的。</p><h3 id="关于开源"><a href="#关于开源" class="headerlink" title="关于开源"></a>关于开源</h3><p>开源并不是让人们随心所欲地做事情。</p><h3 id="关于问题"><a href="#关于问题" class="headerlink" title="关于问题"></a>关于问题</h3><p>很多时候，一个问题之所以很复杂、解决方案非常昂贵，是因为你需要的信息无法获得，或无法将其变为可以应用的知识。</p><h3 id="关于边境线与成功"><a href="#关于边境线与成功" class="headerlink" title="关于边境线与成功"></a>关于边境线与成功</h3><p>许多失败的国家，尽管不是全部，它们的边境线都是笔直的。这些笔直的边界线是当年的帝国主义和殖民主义列强划出来的，是为了划分它们的势力范围，但并不符合真正的民族、宗教、种族、部落甚至是地理逻辑，更不是人们通过社会契约自愿结合而形成的国家。</p><h3 id="关于投资"><a href="#关于投资" class="headerlink" title="关于投资"></a>关于投资</h3><p>由于当地出现政局不稳，这些制造商撤回了投资，并迁移至越南等其他地方。这些制造商有各种选择机会，一旦遇到惊吓就会离开。</p><h3 id="关于自然法则"><a href="#关于自然法则" class="headerlink" title="关于自然法则"></a>关于自然法则</h3><p>根据达尔文的《物种起源》，能够生存下来的物种，既不是最聪明的，也不是最强壮的，而是在自己所处的不断变化的环境中能够最好地调节并适应改变的。将这个概念应用在我们自己身上，可以得出这样的结论：得以存活的文明，是那些能够随着所处的环境发生物理性、社会性、政治性、道德性及精神性改变，不断地自我调节和适应的。</p><h3 id="关于多样性"><a href="#关于多样性" class="headerlink" title="关于多样性"></a>关于多样性</h3><p>大自然在各种各样的植物和动物中培养多样性，并奖励多样性。大自然明白，要进化出最好的想法，莫过于鼓励多种多样的想法，然后看看哪种方法既能适应特定的小环境，又能服务于整个系统。</p><h3 id="关于稳定"><a href="#关于稳定" class="headerlink" title="关于稳定"></a>关于稳定</h3><p>大自然不会把静态当作稳定，稳定是通过不断的动态行为而产生的。</p><h3 id="关于新能源"><a href="#关于新能源" class="headerlink" title="关于新能源"></a>关于新能源</h3><p>电动汽车的存在，让石油供给更安全，电是石油的朋友，不是敌人。</p><h3 id="关于失败"><a href="#关于失败" class="headerlink" title="关于失败"></a>关于失败</h3><p>失败只是一种尚未转化为优势的状况。</p><h3 id="关于联系"><a href="#关于联系" class="headerlink" title="关于联系"></a>关于联系</h3><p>今天最重要的联系，也是最缺乏的联系，就是人与人之间的联系</p><h2 id="四、其他"><a href="#四、其他" class="headerlink" title="四、其他"></a>四、其他</h2><h3 id="1-贫困地区如何发展"><a href="#1-贫困地区如何发展" class="headerlink" title="1. 贫困地区如何发展"></a>1. 贫困地区如何发展</h3><p>“脱贫攻坚”之后，全国所有贫困村完成脱贫，“两不愁，三保障”基本实现。作者也谈及了马达加斯加地区发展历程，最开始的全球化，给马达加斯加带去了各类资源，发达国家和地区都对马达加斯加的建设贡献过自己的力量，基础设施改善明显，也有了一批的轻工业制造企业，但是随后不稳定的政治局势，使得国外投资商接连撤离，就算是迁移到马达加斯加其他地区的企业，也因为遇到恐吓而离开，如今的马达加斯加，已经远远落后于世界平均水平，曾经的帮助和扶持都化作乌有。</p><p>马达加斯加作为一个主权国家尚且如此，更何况一些脱贫地区、脱贫村的情况，就更加不乐观。</p><p>首先，脱贫村基础设施建设项目建设问题。脱贫攻坚时期援建了大量产业项目和建设了大批基础设施，无论是通过分红收益还是以工代赈，给贫困村带来了真金白银，生活水平有了提高。但是，产业项目由于没有专业化运营，其持续经营能力出现问题。此外，基础设施建设完成后，需要维护和保养，其机制仍不健全。导致扶贫资金和项目如果没有前些年那么多，发展容易出现问题。</p><p>其次，脱贫村稳定问题。县域、乡镇贫困，大部分是因为一方水土养不好一方人，艰苦的自然条件，限制了其发展，这是需要由政府搬迁、扶持的，其后期发展多呈指数极增长。而自然条件不错，地理位置尚好的村镇，贫困的原因则多为村内宗族势力严重，矛盾纠纷错综复杂，村两委干部懒政怠政、推诿扯皮。这就好比政局不稳的马达加斯加，严重阻碍经济发展，对于外界帮扶力量也是力不从心。解决这一问题，关键在于党的领导要直插心脏。</p><p>第三，脱贫持续性问题。从持续性上来说，不重蹈覆辙，关键在于形成一个良好机制。 作者提到，稳定是通过不断的动态行为而产生的。村里的稳定也是同样的道理，多方力量达到动态地稳定。解决了村两委干部的问题，大部分问题就有解决的基础。通过乡镇、县各级的布局规划，发展自然不成问题。</p><h3 id="2-一则隐喻"><a href="#2-一则隐喻" class="headerlink" title="2. 一则隐喻"></a>2. 一则隐喻</h3><p>文章中提到一则故事，我们如何看待一件事情，反映的恰恰是我们内心的真实想法。故事的内容是“</p><p> 一位拉比曾经问他的学生：“我们怎样才能知道夜晚什么时候结束，白天什么时候开始呢？”</p><p>最聪明的学生最先回答：“拉比，当我朝田野望去，能够分辨出我家的田地与邻居家的田地，就是夜晚结束、白天开始的时候。”</p><p>第二名学生给出了他的回答：“拉比，当我从田间看到一间屋子，并且能够分辨出我家的房子和邻居家的房子，就是夜晚结束、白天开始的时候。”</p><p>第三名学生给出了另一个答案：“拉比，当我看见远处的一个动物，并能分辨它是什么动物，不管是牛、马或是羊，就是夜晚结束、白天开始的时候。”</p><p>第四名学生又给出了一个答案：“拉比，当我看到一朵花，并能分辨出它的颜色，无论是红色、黄色还是蓝色，那就是夜晚结束、白天开始的时候。” 孩子的回答让拉比越来越悲伤、严肃。</p><p>最终，拉比大喊：“不！你们都不明白！你们只会分隔！”。最后他回答到“当你看着你身边人的脸，看到的是你的兄弟或是姐妹时，夜晚才结束，白天才开始。</p><h3 id="3-联系和距离"><a href="#3-联系和距离" class="headerlink" title="3. 联系和距离"></a>3. 联系和距离</h3><p>文中说，我们是人类历史上通过技术联系得最紧密的一代人，但更多的人反而感到比以往更加与世隔绝。这再次验证了默西的观点，即今天最重要的联系，也是最缺乏的联系，就是人与人之间的联系。</p><p>我们被互联网联系地更加紧密，但同时我们对于亲情、对于感情又变得那么吝啬和陌生。</p><p>看到过一个笑话，现在人和狗之间的距离要小于人和人之间的距离，虽然好笑，但是真实反应了在互联网时代，在当前经济社会高速发展的年代里，人与人之间的误解与隔阂在成倍增加。</p><p>我们在逃离农村，来到更加广阔的城市打拼，远离了乡土人情也缺少了“鸡犬相闻”的惬意。</p><p>狗一定是狗，人不一定是人，何尝不是一种讽刺。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>阅读</category>
-      
-      <category>年度读书计划</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>加速时代</tag>
-      
-      <tag>选择</tag>
-      
-      <tag>变革</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>如何写作 &quot;汇报材料&quot;</title>
     <link href="/code.github.io/2022/04/21/%E5%85%AC%E6%96%87%E2%80%94%E2%80%94%E6%B1%87%E6%8A%A5%E6%9D%90%E6%96%99/"/>
     <url>/code.github.io/2022/04/21/%E5%85%AC%E6%96%87%E2%80%94%E2%80%94%E6%B1%87%E6%8A%A5%E6%9D%90%E6%96%99/</url>
@@ -311,7 +385,9 @@
     
     <categories>
       
-      <category>公文写作</category>
+      <category>工作政治</category>
+      
+      <category>格式标准</category>
       
     </categories>
     
@@ -340,7 +416,9 @@
     
     <categories>
       
-      <category>公文写作</category>
+      <category>工作政治</category>
+      
+      <category>格式标准</category>
       
     </categories>
     
@@ -360,7 +438,7 @@
   
   
   <entry>
-    <title>linux下增加交换分区（swap）大小</title>
+    <title>LINUX下增加交换分区（swap）大小</title>
     <link href="/code.github.io/2022/04/14/linux%20%E4%B8%8B%E5%A2%9E%E5%8A%A0%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA%EF%BC%88swap%EF%BC%89%E5%A4%A7%E5%B0%8F/"/>
     <url>/code.github.io/2022/04/14/linux%20%E4%B8%8B%E5%A2%9E%E5%8A%A0%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA%EF%BC%88swap%EF%BC%89%E5%A4%A7%E5%B0%8F/</url>
     
@@ -369,14 +447,16 @@
     
     <categories>
       
-      <category>系统</category>
+      <category>电脑编程</category>
+      
+      <category>LINUX</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>linux</tag>
+      <tag>LINUX</tag>
       
       <tag>swap</tag>
       
@@ -398,16 +478,18 @@
     
     <categories>
       
-      <category>网络</category>
+      <category>电脑编程</category>
+      
+      <category>HEXO</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>hexo</tag>
+      <tag>HEXO</tag>
       
-      <tag>bug</tag>
+      <tag>BUG</tag>
       
       <tag>网页</tag>
       
