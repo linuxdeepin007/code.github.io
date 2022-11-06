@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>LINUX 配置 V2Ray 客户端</title>
+    <link href="/code.github.io/2022/11/05/%20LINUX%20%E9%85%8D%E7%BD%AEV2Ray%20%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
+    <url>/code.github.io/2022/11/05/%20LINUX%20%E9%85%8D%E7%BD%AEV2Ray%20%E5%AE%A2%E6%88%B7%E7%AB%AF/</url>
+    
+    <content type="html"><![CDATA[<p>v2rayA 是一个易用而强大的，专注于 Linux 的 V2Ray 客户端。</p><span id="more"></span><h1 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h1><p>v2rayA 的功能依赖于 V2Ray 内核，因此需要安装内核。</p><h2 id="一、安装-V2Ray-内核-x2F-Xray-内核"><a href="#一、安装-V2Ray-内核-x2F-Xray-内核" class="headerlink" title="一、安装 V2Ray 内核 &#x2F; Xray 内核"></a>一、安装 V2Ray 内核 &#x2F; Xray 内核</h2><ol><li><p>V2Ray &#x2F; Xray 的官方脚本</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">V2Ray 安装参考：https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/v2fly/</span>fhs-install-v2ray<br>Xray 安装参考：https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/XTLS/</span>Xray-install<br></code></pre></td></tr></table></figure></li><li><p>v2rayA 提供的镜像脚本（推荐）</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -Ls https:<span class="hljs-regexp">//mi</span>rrors.v2raya.org/go.sh | sudo bash<br></code></pre></td></tr></table></figure></li></ol><p>安装后可以关掉服务，因为 v2rayA 不依赖于该 systemd 服务。</p><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clean">sudo systemctl disable v2ray --now ### Xray 需要替换服务为 xray<br></code></pre></td></tr></table></figure><h2 id="二、安装-v2rayA"><a href="#二、安装-v2rayA" class="headerlink" title="二、安装 v2rayA"></a>二、安装 v2rayA</h2><h3 id="通过软件源安装"><a href="#通过软件源安装" class="headerlink" title="通过软件源安装"></a>通过软件源安装</h3><ol><li><p>添加公钥</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">wget -qO - https://apt.v2raya.org/key/<span class="hljs-built_in">public</span>-key.<span class="hljs-keyword">asc</span> | sudo tee /etc/apt/<span class="hljs-keyword">trusted</span>.gpg.d/v2raya.<span class="hljs-keyword">asc</span><br></code></pre></td></tr></table></figure></li><li><p>添加 V2RayA 软件源</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">echo <span class="hljs-string">&quot;deb https://apt.v2raya.org/ v2raya main&quot;</span> | sudo tee <span class="hljs-regexp">/etc/</span>apt<span class="hljs-regexp">/sources.list.d/</span>v2raya.list<br>sudo apt update<br></code></pre></td></tr></table></figure></li><li><p>安装 V2RayA</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo apt <span class="hljs-keyword">install</span> v2raya<br></code></pre></td></tr></table></figure></li></ol><h3 id="手动安装-deb-包"><a href="#手动安装-deb-包" class="headerlink" title="手动安装 deb 包"></a>手动安装 deb 包</h3><ol><li>下载 deb 包<br>下载后可以使用 Gdebi、QApt 等图形化工具来安装，也可以使用命令行：<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo apt install <span class="hljs-regexp">/path/</span>download/installer_debian_xxx_vxxx.deb <span class="hljs-comment">### 自行替换 deb 包所在的实际路径</span><br></code></pre></td></tr></table></figure></li></ol><h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><h2 id="一、启动-v2rayA-x2F-设置-v2rayA-自动启动"><a href="#一、启动-v2rayA-x2F-设置-v2rayA-自动启动" class="headerlink" title="一、启动 v2rayA &#x2F; 设置 v2rayA 自动启动"></a>一、启动 v2rayA &#x2F; 设置 v2rayA 自动启动</h2><p>   从 1.5 版开始将不再默认为用户启动 v2rayA 及设置开机自动。</p><ol><li><p>启动 v2rayA</p><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs smali">sudo<span class="hljs-keyword"> system</span>ctl start v2raya.service<br></code></pre></td></tr></table></figure></li><li><p>设置开机自动启动</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">sudo systemctl <span class="hljs-built_in">enable</span> v2raya.service<br></code></pre></td></tr></table></figure></li><li><p>切换 iptables 为 iptables-nft<br>   对于 Debian11 用户来说，iptables 已被弃用。使用 nftables 作为 iptables 的后端以进行适配：</p><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gams">update-alternatives --<span class="hljs-keyword">set</span> iptables /usr/<span class="hljs-comment">sbin</span>/iptables-nft<br>update-alternatives --set ip6tables /<span class="hljs-comment">usr</span>/sbin/<span class="hljs-comment">ip6tables-nft</span><br>update-alternatives <span class="hljs-comment">--set arptables</span> /usr/<span class="hljs-comment">sbin</span>/arptables-nft<br>update-alternatives --set ebtables /<span class="hljs-comment">usr</span>/sbin/<span class="hljs-comment">ebtables-nft</span><br></code></pre></td></tr></table></figure></li></ol><p>如果你想切换回 legacy 版本：</p><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gams">update-alternatives --<span class="hljs-keyword">set</span> iptables /usr/<span class="hljs-comment">sbin</span>/iptables-legacy<br>update-alternatives --set ip6tables /<span class="hljs-comment">usr</span>/sbin/<span class="hljs-comment">ip6tables-legacy</span><br>update-alternatives <span class="hljs-comment">--set arptables</span> /usr/<span class="hljs-comment">sbin</span>/arptables-legacy<br>update-alternatives --set ebtables /<span class="hljs-comment">usr</span>/sbin/<span class="hljs-comment">ebtables-legacy</span><br></code></pre></td></tr></table></figure><p>切换后重启即可。</p><h3 id="二、创建帐号"><a href="#二、创建帐号" class="headerlink" title="二、创建帐号"></a>二、创建帐号</h3><p>如果你通过 2017 端口 如 <a href="http://localhost:2017/">http://localhost:2017</a> 无法访问 UI 界面，请检查你的服务是否已经启动。相关问题接下来进入 UI，本节将介绍 v2rayA 的基本操作流程。</p><p>在第一次进入页面时，你需要创建一个管理员账号，请妥善保管你的用户名密码，如果遗忘，使用sudo v2raya –reset-password命令重置</p><h3 id="三、导入节点"><a href="#三、导入节点" class="headerlink" title="三、导入节点"></a>三、导入节点</h3><p>可以导入节点，也可以导入订阅节点。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程电脑</category>
+      
+      <category>代理上网</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>v2raya</tag>
+      
+      <tag>代理</tag>
+      
+      <tag>LINUX</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>LINUX系统电脑上迁移博客系统</title>
     <link href="/code.github.io/2022/11/01/Linux%E7%B3%BB%E7%BB%9F%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/"/>
     <url>/code.github.io/2022/11/01/Linux%E7%B3%BB%E7%BB%9F%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/</url>
@@ -27,6 +58,41 @@
       <tag>迁移</tag>
       
       <tag>环境</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CPA-会计-01总论</title>
+    <link href="/code.github.io/2022/10/23/CPA-%E4%BC%9A%E8%AE%A1-01%E6%80%BB%E8%AE%BA/"/>
+    <url>/code.github.io/2022/10/23/CPA-%E4%BC%9A%E8%AE%A1-01%E6%80%BB%E8%AE%BA/</url>
+    
+    <content type="html"><![CDATA[<p>会计基础、假设、计量、会计质量要求。</p><span id="more"></span><h1 id="一、会计概述"><a href="#一、会计概述" class="headerlink" title="一、会计概述"></a>一、会计概述</h1><p>考点：无</p><h1 id="二、财务报告目标，会计基本假设和会计基础"><a href="#二、财务报告目标，会计基本假设和会计基础" class="headerlink" title="二、财务报告目标，会计基本假设和会计基础"></a>二、财务报告目标，会计基本假设和会计基础</h1><h2 id="（一）财务报告目标"><a href="#（一）财务报告目标" class="headerlink" title="（一）财务报告目标"></a>（一）财务报告目标</h2><ul><li>决策有用观、受托责任观</li></ul><h2 id="（二）会计基本假设"><a href="#（二）会计基本假设" class="headerlink" title="（二）会计基本假设"></a>（二）会计基本假设</h2><ol><li>会计主体<ul><li>空间范围</li><li>法律主体与会计主体</li></ul></li><li>会计分期</li><li>持续经营<ul><li>引申自持续经营</li></ul></li><li>货币计量</li></ol><h2 id="（三）会计基础"><a href="#（三）会计基础" class="headerlink" title="（三）会计基础"></a>（三）会计基础</h2><p>主要解决收入、费用归属期的问题&#x3D;【应该】</p><ul><li>权责发生制</li><li>收付实现制【预算会计】</li></ul><h1 id="三、会计信息质量要求"><a href="#三、会计信息质量要求" class="headerlink" title="三、会计信息质量要求"></a>三、会计信息质量要求</h1><h2 id="（一）可靠性【真实】"><a href="#（一）可靠性【真实】" class="headerlink" title="（一）可靠性【真实】"></a>（一）可靠性【真实】</h2><h2 id="（二）相关性【有用】"><a href="#（二）相关性【有用】" class="headerlink" title="（二）相关性【有用】"></a>（二）相关性【有用】</h2><h2 id="（三）可理解性【清晰】"><a href="#（三）可理解性【清晰】" class="headerlink" title="（三）可理解性【清晰】"></a>（三）可理解性【清晰】</h2><h2 id="（四）可比性"><a href="#（四）可比性" class="headerlink" title="（四）可比性"></a>（四）可比性</h2><ul><li>纵向可比：统一企业不同期间</li><li>横向可比：不同企业</li></ul><h2 id="（五）实质重用形式【重经济实质】"><a href="#（五）实质重用形式【重经济实质】" class="headerlink" title="（五）实质重用形式【重经济实质】"></a>（五）实质重用形式【重经济实质】</h2><h2 id="（六）重要性"><a href="#（六）重要性" class="headerlink" title="（六）重要性"></a>（六）重要性</h2><ul><li>金额【定量】</li><li>性质【定性】</li></ul><h2 id="（七）谨慎性"><a href="#（七）谨慎性" class="headerlink" title="（七）谨慎性"></a>（七）谨慎性</h2><p>例如：减值准备、预计负债、加速折旧、【双倍余额递减法、年数总和法】、或有事项、所得税【递延所得税资产、递延所得税负债】</p><ul><li>不高估收入</li><li>不低估费用</li></ul><h2 id="（八）及时性"><a href="#（八）及时性" class="headerlink" title="（八）及时性"></a>（八）及时性</h2><p>对相关性和可靠性起到制约作用</p><h1 id="四、会计要素及其确认计量原则"><a href="#四、会计要素及其确认计量原则" class="headerlink" title="四、会计要素及其确认计量原则"></a>四、会计要素及其确认计量原则</h1><p>反映企业经营状况：<code>资产=负债+所有者权益</code><br>反映企业经营成果：<code>收入-费用=利润</code></p><h2 id="（一）资产"><a href="#（一）资产" class="headerlink" title="（一）资产"></a>（一）资产</h2><ul><li>过去的交易或事项形成+为企业拥有控制+带来经济利益</li><li>很可能流入企业+能够可靠计量</li></ul><h2 id="（二）负债"><a href="#（二）负债" class="headerlink" title="（二）负债"></a>（二）负债</h2><ul><li>企业承担的现时义务【法定义务+推定义务（保修）】</li></ul><h2 id="（三）所有者权益"><a href="#（三）所有者权益" class="headerlink" title="（三）所有者权益"></a>（三）所有者权益</h2><p>又叫股东权益、净资产，来源：所有者投入、直接计入所有者权益的利得和损失（其他综合收益）、留存收益</p><h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><pre><code class="hljs">1. 实收资本/股本（实际支付的）2. 资本公积    1. 溢价（资本溢价/股本溢价）    2. 其他资本公积（有等待期的权益结算、长期股权投资的权益法）=会计核算形成的3. 其他综合收益  = 直接计入所有者权益的利得和损失4. 盈余公积 （净利润10%）5. 未分配利润（净利润-分红-盈余公积）    留存收益=盈余公积+未分配利润    </code></pre><h3 id="所有者权益不变情形"><a href="#所有者权益不变情形" class="headerlink" title="所有者权益不变情形"></a>所有者权益不变情形</h3><pre><code class="hljs">1. 转增资本【溢价（只有a部分转增1） /留存收益】2. 弥补亏损【盈余公积】3. 提取盈余公积4. 发放股票股利</code></pre><h2 id="（四）利得和损失"><a href="#（四）利得和损失" class="headerlink" title="（四）利得和损失"></a>（四）利得和损失</h2><p>非日常活动形成的，与投入资本无关&#x2F;与所有者分配利润无关</p><ol><li>直接计入所有者权益的利得或损失&#x3D;  其他综合收益&#x3D;所有者权益类科目</li><li>计入当期损益的利得和损失&#x3D;影响利润表（营业外支出、营业外收入）&#x3D;最终影响所有者权益</li></ol><h2 id="（五）收入、费用"><a href="#（五）收入、费用" class="headerlink" title="（五）收入、费用"></a>（五）收入、费用</h2><p>日常活动形成的。对应利得和损失</p><h2 id="（六）利润"><a href="#（六）利润" class="headerlink" title="（六）利润"></a>（六）利润</h2><p>包括日常活动和非日常活动</p><h1 id="五、计量属性"><a href="#五、计量属性" class="headerlink" title="五、计量属性"></a>五、计量属性</h1><ul><li>历史成本（强调当时、实际成本）&#x3D; <strong>绝大多数</strong></li><li>重置成本（强调现在、现行成本）适用于盘盈</li><li>可变现净值（倒推）</li><li>现值（强调未来、跨年度）</li><li>公允价值（脱手价格、所有金融资产初始计量都是公允价值）</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>经济金融</category>
+      
+      <category>注册会计师</category>
+      
+      <category>会计</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>总论</tag>
+      
+      <tag>会计基础</tag>
+      
+      <tag>计量属性</tag>
+      
+      <tag>信息质量要求</tag>
       
     </tags>
     
@@ -68,6 +134,39 @@
   
   
   <entry>
+    <title>CPA-会计-00前言</title>
+    <link href="/code.github.io/2022/09/19/CPA-%E4%BC%9A%E8%AE%A1-00%E5%89%8D%E8%A8%80/"/>
+    <url>/code.github.io/2022/09/19/CPA-%E4%BC%9A%E8%AE%A1-00%E5%89%8D%E8%A8%80/</url>
+    
+    <content type="html"><![CDATA[<p>全书备考的主要框架，及其重点内容。</p><span id="more"></span><h1 id="一、全书的框架及主要内容"><a href="#一、全书的框架及主要内容" class="headerlink" title="一、全书的框架及主要内容"></a>一、全书的框架及主要内容</h1><p>三十章内容，分为五个部分</p><h2 id="（一）会计基本理论（1）"><a href="#（一）会计基本理论（1）" class="headerlink" title="（一）会计基本理论（1）"></a>（一）会计基本理论（1）</h2><pre><code class="hljs">1. 包括第一章总论内容2. 客观题为主</code></pre><h2 id="（二）会计要素的核算（15）"><a href="#（二）会计要素的核算（15）" class="headerlink" title="（二）会计要素的核算（15）"></a>（二）会计要素的核算（15）</h2><pre><code class="hljs">1. 包括第二章到第十三章+第十六章到第十八章2. 注意自行建造无形资产+所得说3. 投资性房地产模式转换+所得说4. 长期股权投资、职工薪酬、股份支付、金融工具5. 收入（PPP项目）</code></pre><h2 id="（三）特殊事项的处理（9）"><a href="#（三）特殊事项的处理（9）" class="headerlink" title="（三）特殊事项的处理（9）"></a>（三）特殊事项的处理（9）</h2><pre><code class="hljs">1. 包括第十四章到第十五章+第十九章到第二十二章+第二十四章到第二十六章2. 租赁的差错更正3. 持有待售（主观题）4. 非货币性资产交换（客观题）5. 反向购买</code></pre><h2 id="（四）财务报告（3）"><a href="#（四）财务报告（3）" class="headerlink" title="（四）财务报告（3）"></a>（四）财务报告（3）</h2><pre><code class="hljs">1. 第二十三章+第二十七章到第二十八章2. 财务报告（客观题）3. 合并财务报表（主观题）</code></pre><h2 id="（五）其他内容（2）"><a href="#（五）其他内容（2）" class="headerlink" title="（五）其他内容（2）"></a>（五）其他内容（2）</h2><pre><code class="hljs">1. 第二十九章到第三十章2. 比较鸡肋</code></pre><h1 id="二、题型分数"><a href="#二、题型分数" class="headerlink" title="二、题型分数"></a>二、题型分数</h1><ul><li>分值主观50分+客观50分</li><li>单选、多选、计算分析、综合</li><li>注意新增知识点</li></ul><aside>💡 重点恒重，逢新必考</aside>]]></content>
+    
+    
+    <categories>
+      
+      <category>经济金融</category>
+      
+      <category>注册会计师</category>
+      
+      <category>会计</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前言</tag>
+      
+      <tag>框架</tag>
+      
+      <tag>分数</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>EXCEL 合并表格填充编号</title>
     <link href="/code.github.io/2022/09/03/EXCEL%20%E5%90%88%E5%B9%B6%E5%8D%95%E5%85%83%E6%A0%BC%E5%A1%AB%E5%85%85%E7%BC%96%E5%8F%B7/"/>
     <url>/code.github.io/2022/09/03/EXCEL%20%E5%90%88%E5%B9%B6%E5%8D%95%E5%85%83%E6%A0%BC%E5%A1%AB%E5%85%85%E7%BC%96%E5%8F%B7/</url>
@@ -93,6 +192,99 @@
       <tag>EXCEL</tag>
       
       <tag>编号</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>土地开发</title>
+    <link href="/code.github.io/2022/08/11/%E5%9C%9F%E5%9C%B0%E5%BC%80%E5%8F%91/"/>
+    <url>/code.github.io/2022/08/11/%E5%9C%9F%E5%9C%B0%E5%BC%80%E5%8F%91/</url>
+    
+    <content type="html"><![CDATA[<p>土地开发从广义上来讲指因人类生产建设和生活不断发展的需要，采用一定的现代科学技术的经济手段，扩大对土地的有效利用范围或提高对土地的利用深度所进行的活动。包括对尚未利用的土地进行开垦和利用，以扩大土地利用范围，也包括对已利用的土地进行整治，以提高土地利用率和集约经营程度。从狭义的角度理解，土地开发主要是对未利用土地的开发利用，要实现耕地总量动态平衡，未利用土地开发是补充耕地的一种有效途径。</p><span id="more"></span><h1 id="一、土地利用开发流程"><a href="#一、土地利用开发流程" class="headerlink" title="一、土地利用开发流程"></a>一、土地利用开发流程</h1><p>##（一）获取土地使用权</p><p>开发商获取土地使用权的主要方式</p><ol><li><p>通过行政划拨方式取得；</p></li><li><p>旧城改造取得中标地块国有土地使用权；</p></li><li><p>转让取得；</p></li><li><p>出让方式取得（招标、拍卖、协议出让三种方式）；</p></li><li><p>联合开发并报有关主管部门立项、审批后取得；</p></li><li><p>通过司法裁决取得；</p></li><li><p>通过兼并、收购等股权重组方式取得。</p></li></ol><h2 id="二-征地拆迁，申办并取得《房屋拆迁许可证》。"><a href="#二-征地拆迁，申办并取得《房屋拆迁许可证》。" class="headerlink" title="(二)征地拆迁，申办并取得《房屋拆迁许可证》。"></a>(二)征地拆迁，申办并取得《房屋拆迁许可证》。</h2><p>城市房屋拆迁是伴随着城市建设项目进行的，是城市建设的重要组成部分，尤其是旧城改造中的一个重要环节，处于建设项目的前期工作阶段。</p><p>拆迁的主要内容包括：<br>(1)房屋拆建，如危旧房改造；<br>(2)城市功能、用地布局和空间结构的调整，如居住区、商业区、车站、生活服务设施等公共建筑的建设和改造；<br>(3)环境治理，如扩展绿地、治理污染工程等。</p><h2 id="（三）申办拆迁许可证应提交以下申报资料："><a href="#（三）申办拆迁许可证应提交以下申报资料：" class="headerlink" title="（三）申办拆迁许可证应提交以下申报资料："></a>（三）申办拆迁许可证应提交以下申报资料：</h2><ol><li><p>填写《城市房屋拆迁申请表》一式五份；</p></li><li><p>建设项目批准文件；</p></li><li><p>建设用地规划许可证；</p></li><li><p>国有土地使用权批准文件（建设用地批准书或划拨决定书）</p></li><li><p>拆迁代办单位和评估机构资料。</p></li><li><p>拆迁安置计划和方案；（拆迁红线范围内房屋面积、户数、性质、用途等基本情况；拆迁方式；拆迁期限；还建方式及还建期限；产权清晰的安置用房证明；拆迁补偿资金来源及预算资金额度。）</p></li></ol><h1 id="二、土地利用开发阶段划分"><a href="#二、土地利用开发阶段划分" class="headerlink" title="二、土地利用开发阶段划分"></a>二、土地利用开发阶段划分</h1><aside>💡 土地开发全过程可以划分为三个阶段：一级、二级、三级。这三级开发连贯起来，就是一个从土地整理开始到产品运营的一个全过程。</aside><h2 id="（一）一级开发"><a href="#（一）一级开发" class="headerlink" title="（一）一级开发"></a>（一）一级开发</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h3><p>土地一级开发指由政府或其授权委托的企业，对一定区域范围内的城市国有土地、乡村集体土地进行统一的征地、拆迁、安置、补偿，并进行适当的市政配套设施建设，使该区域范围内的土地达到一定的建设条件（“三通一平”、“五通一平”或“七通一平”）使之成为“熟地”，再对熟地进行有偿出让或转让的过程。</p><ul><li>三通一平指在土地开发时进行的通水、通电、通路、土地平整。</li><li>五通一平就是建筑中为了合理有序施工进行的前期准备工作，一般包括：通水、通电、通路、通讯、通排水、平整土地。</li><li>七通一平指的是土地在通过一级开发后，使其达到具备给水、排水、通电、通路、通讯、通暖气、通天燃气或煤气、以及场地平整的条件，使二级开发商可以进场后迅速开发建设。<h3 id="2-开发模式及对比"><a href="#2-开发模式及对比" class="headerlink" title="2. 开发模式及对比"></a>2. 开发模式及对比</h3>一级开发项目模式具体可细分为八大类：旧城改造项目、城中村改造项目、旧厂房改造项目国有土地收购储备项目、土地一级开发项目、中心城区棚改项目、一次性招标棚改项目、土地开发棚改项目。虽然项目模式名称存在差异，但实际中有些模式只是由于历史原因导致项目模式发生变化，项目性质并未改变。</li></ul><h2 id="（二）二级开发"><a href="#（二）二级开发" class="headerlink" title="（二）二级开发"></a>（二）二级开发</h2><h3 id="1-定义-1"><a href="#1-定义-1" class="headerlink" title="1. 定义"></a>1. 定义</h3><p>土地二级开发的典型就是房地产开发，即土地使用者经过开发建设，将新建成的房地产进行出售和出租的市场。一般指商品房首次进入流通领域进行交易而形成的市场。下文主要以房地产开发为例来为大家讲解<strong>土地二级开发的流程</strong>，希望对大家有所帮助！</p><h3 id="2-阶段划分"><a href="#2-阶段划分" class="headerlink" title="2. 阶段划分"></a>2. 阶段划分</h3><p>从开发、建设、经营、管理的程序上讲，房地产开发一般可分为五个阶段，即可行性研究和项目决策阶段、建设前期准备阶段、建设阶段、销售阶段和交付使用阶段。</p><h3 id="3-各阶段解读"><a href="#3-各阶段解读" class="headerlink" title="3. 各阶段解读"></a>3. 各阶段解读</h3><h4 id="项目决策阶段"><a href="#项目决策阶段" class="headerlink" title="项目决策阶段"></a>项目决策阶段</h4><p>房地产项目可行性研究阶段，房地产开发项目经董事会批准初步立项后，转由企业战略发展研究室进行可行性研究。</p><ol><li>可行性研究的内容<br>可行性研究的主要内容有：(1)项目概况；(2)开发项目用地的现场调查及动迁安置；(3)市场分析和建设规模的确定；(4)规划设计影响和环境保护;(5)资源供给及资本运作方案；(6)环境影响和环境保护；(7)项目开发模式、组织机构、岗位需求、管理费用的研究；(8)开发建设节点计划；(9)项目经济及社会效益分析；(10)结论及建议。</li><li>可行性研究小组成员知识组成：经济师、市场分析专家、房地产专家、建筑工程专家、财会师及律师。</li><li>可行性研究步骤，可行性研究按5个步骤进行：(1)项目公司接受委托或集团公司董事会立项；(2)调查研究；(3)方案选择与优化；(4)财务评价和经济评价；(5)编制可行性研究报告。</li></ol><h4 id="前期准备阶段"><a href="#前期准备阶段" class="headerlink" title="前期准备阶段"></a>前期准备阶段</h4><ol><li>获取土地使用权。</li></ol><p>开发商获取土地使用权的主要方式：1）通过行政划拨方式取得；<br>2）旧城改造取得中标地块国有土地使用权；3）转让取得；4）出让方式取得（招标、拍卖、协议出让三种方式）；5）联合开发并报有关主管部门立项、审批后取得；6）通过司法裁决取得；7）通过兼并、收购等股权重组方式取得。</p><ol start="2"><li>征地拆迁，申办并取得《房屋拆迁许可证》。</li></ol><p>拆迁的主要内容包括：(1)房屋拆建，如危旧房改造；(2)城市功能、用地布局和空间结构的调整，如居住区、商业区、车站、生活服务设施等公共建筑的建设和改造；(3)环境治理，如扩展绿地、治理污染工程等。因此，城市房屋拆迁是伴随着城市建设项目进行的，是城市建设的重要组成部分，尤其是旧城改造中的一个重要环节，处于建设项目的前期工作阶段。</p><h4 id="规划设计阶段"><a href="#规划设计阶段" class="headerlink" title="规划设计阶段"></a>规划设计阶段</h4><ol><li><p>申办项目选址定点，取得《建设项目选址意见书》和《建设用地规划许可证》，取得《建设项目选址意见书》的附件：规划设计（土地使用）条件</p></li><li><p>持规划方案和建筑方案图纸到建管处申请建筑方案报建，取得建筑核位红线图和施工图。建筑方案报建分两阶段。</p><ol><li><p>规划方案审批阶段，取得《规划建筑方案批准意见书》。</p></li><li><p>施工图核准阶段，取得建筑核位红线图5份和施工图3份。</p></li></ol></li><li><p>申办建设工程红线定位与验线，取得建筑核位红线图。</p></li><li><p>申办《建设工程规划许可通知书》，办理完毕后凭此通知书到建管部门办理《施工许可证》。建设工程施工至正负零时，持通知书等相关资料申办《建设工程规划许可证》。持建筑红线图到市城管局固体废弃物管理处缴纳垃圾处理费。</p></li><li><p>建设项目报建登记，申请招标，办理招标投标手续，确定勘察、设计、监理、施工队伍。</p></li><li><p>申办《施工许可证》</p></li></ol><h4 id="项目销售阶段"><a href="#项目销售阶段" class="headerlink" title="项目销售阶段"></a>项目销售阶段</h4><ol><li><p>申办《销售许可证》<br>商品房预售实行许可证制度。商品房预售许可证一年一换。未取得《商品房预售许可证》的，不得进行商品房预售。开发企业进行商品房预售，应当向城市、县房地产管理部门办理预售登记，取得《商品房预售许可证》。</p></li><li><p>商品房销售及按揭办理</p><ol><li>销售前期准备工作（可委托销售代理公司进行）</li><li>销售合同的签订。</li><li>按揭办理。</li></ol></li></ol><h4 id="交付使用阶段"><a href="#交付使用阶段" class="headerlink" title="交付使用阶段"></a>交付使用阶段</h4><ol><li>申请竣工验收，取得《建筑工程竣工验收备案证》。属成片开发小区的，还应申请综合验收。</li><li>申办建设工程规划验收。建设工程竣工验收后3个月内，建设单位应向原批准的城市规划行政主管部门申报建设工程规划验收。</li><li>进行权属登记，取得《商品房权属证明书》。</li><li>物业移交。开发建设单位应当与物业管理企业订立前期物业管理服务合同,该合同至业主委员会与其选聘的物业管理企业订立物业管理服务合同生效时终止。<h2 id="（三）三级开发"><a href="#（三）三级开发" class="headerlink" title="（三）三级开发"></a>（三）三级开发</h2><h3 id="1-定义-2"><a href="#1-定义-2" class="headerlink" title="1. 定义"></a>1. 定义</h3>一般是指运营，比如产业运营、商业运营等。<h3 id="2-三级开发模式"><a href="#2-三级开发模式" class="headerlink" title="2. 三级开发模式"></a>2. 三级开发模式</h3><h4 id="以纯地产开发为主的模式：联东U谷"><a href="#以纯地产开发为主的模式：联东U谷" class="headerlink" title="以纯地产开发为主的模式：联东U谷"></a>以纯地产开发为主的模式：联东U谷</h4>联东集团创立于1991年，以“联东U谷”为核心品牌，专注园区产业运营、服务中小制造企业，已在全国 40 多个城市投资运营产业园区超过210个，引进制造业企业和科技型企业超过11000家。</li></ol><p>联东U谷以产业综合体和总部基地为主，涵盖独栋办公、研发中试、标准厂房等产品形态。这些物业产品小而精，更多为中小企业量身定制，具有较高的实用性。</p><p>主要盈利模式：物业租售(物业以独栋办公为主)+增值服务(设有专业化的服务平台以提供增值服务和配套服务)，其中以物业租售收益为主，如图3所示，物业租售收益可达65%。此外，物业租售模式，一般是”6+2+2”(60%出售、20%出租、20%合作经营)标准或”4+3+3”(40%出售、30%出租、30%合作经营)标准。</p><h4 id="以产业平台为特色的模式：华夏幸福"><a href="#以产业平台为特色的模式：华夏幸福" class="headerlink" title="以产业平台为特色的模式：华夏幸福"></a>以产业平台为特色的模式：华夏幸福</h4><p>华夏幸福，中国领先的产业新城运营商，成立于 1998 年，早期致力于河北省内的城市住宅开发，自2002 年开始运营固安产业园区，随后逐渐向产业地产开发商转型。目前该公司运营产业新城已布局于长三角、珠三角、中原城市群、成渝城市群及长江中游城市群等区域。2018年，华夏幸福销售收入1627.6亿元。资产规模已达4097亿元。</p><p>在产业新城开发与运营中，华夏幸福充分发挥产业平台的优势，整合各方产业资源，对接地方政府，除了一二级开发外，更为政府提供以产业规划、服务与导入方面的服务。通过一系列的操作，从前期开发及后续运营的方面受益均等获得，成功把短期的一次性房地产开发转变成长期且可持续的园区运营。</p><p>主要盈利模式：一是通过垫付园区前期开发、基础设施建设费，获得政府10%～15%的利息收入;二是园区招商引资返还收入，即园区新增固定资产投资额或新增财政收入的45%;三是园区配套地产开发收入;四是园区土地升值收益。</p><h4 id="3-以产业投资为特色的模式：张江高科"><a href="#3-以产业投资为特色的模式：张江高科" class="headerlink" title="3. 以产业投资为特色的模式：张江高科"></a>3. 以产业投资为特色的模式：张江高科</h4><p>张江高科技园区，被誉为中国硅谷，成立于1992年7月，位于上海浦东新区中南部，是国家级高新技术园区，与陆家嘴、金桥和外高桥开发区同为上海浦东新区四个重点开发区域。受限于土地情况，2014年张江高科实行对外轻资产输出，提出以“科技投行”作为战略发展方向，着力打造新型产业地产营运商、面向未来高科技产业整合商和科技金融集成服务商的“新三商”战略。2018年张江高科营业收入11.5亿元，其中投资收入贡献接近40%，利润贡献超过50%，强化了投资在营收和利润贡献中的重要地位。</p><p>张江高科大力推动产业投资，重点实现天使、VC、PE到产业并购的全投资链布局：针对不同企业在不同时期的融资需求，公司以直接投资、参股基金投资、管理基金投资等多种方式精准投资，并通过与武岳峰基金、金浦基金、经纬资本、源星资本等合作，实施从天使、VC、PE到产业并购的全投资链布局。通过“投资一批、股改一批、上市一批、退出一批、储备一批”，形成了产业投资的良性滚动循环。</p><h4 id="4-以专业服务为特色的模式：亿达中国"><a href="#4-以专业服务为特色的模式：亿达中国" class="headerlink" title="4. 以专业服务为特色的模式：亿达中国"></a>4. 以专业服务为特色的模式：亿达中国</h4><p>亿达中国自1998年开始，深耕大连、武汉，重点布局京津冀、长三角、大湾区、中西部及其他经济活跃区，先后开发和运营了大连软件园、大连生态科技创新城、武汉软件新城、北京中关村壹号等40余个商务园项目;2014年6月27日在香港联交所主板上市。</p><p>亿达中国已从初级阶段租售服务到行政服务的阶段，再从BOT模式的定制阶段到全产业链的整合服务，直至今天的”保姆模式”服务，其成功将园区开发和运营职能剥离，进而更专注以招商运营、物业管理、增值服务等轻资产运营的专业服务模式。如：亿达中国在大连软件园打造时更重点打造技术服务方面的功能。</p><h4 id="5-以金融退出机制为特色的模式：金地商置"><a href="#5-以金融退出机制为特色的模式：金地商置" class="headerlink" title="5. 以金融退出机制为特色的模式：金地商置"></a>5. 以金融退出机制为特色的模式：金地商置</h4><p>金地商置成立于2013年，香港上市公司(535.HK)，金地集团成员企业，是一家集地产综合开发和资产管理平台为一体，专业从事商业中心综合体、产业园镇、精品住宅、长租公寓、星级酒店等多元物业的开发销售、投资管理和服务运营的开发商。</p><p>值得一提的是，在产业地产领域，金地商置完成了我国第一单文创园区ABS——上海8号桥项目ABS，实现产业地产证券化，这也为国内其他产业地产运营商在盈利模式上提供另一条成功的道路。</p><p>上海8号桥项目由启客运营十余年，商区成熟且租金来源稳定，租金年均增长超过7%，在2016年10月被金地商置收购。金地商置运营一年多的时间后，联合嘉实资本和稳盛投资，以8号桥项目未来租金收入作为支持，于2017年11月在金融市场发行了ABS产品，发行量为4.2亿元，提前变现了未来3.5年的租金收入，成功通过金融手段等一系列操作实现资金的快速回笼。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>行业产业</category>
+      
+      <category>土地开发</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>房地产</tag>
+      
+      <tag>土地开发</tag>
+      
+      <tag>改造</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>PYTHON操作EXCEL读取与拆分</title>
+    <link href="/code.github.io/2022/07/23/PYTHON%E6%93%8D%E4%BD%9CEXCEL%E8%AF%BB%E5%8F%96%E4%B8%8E%E6%8B%86%E5%88%86/"/>
+    <url>/code.github.io/2022/07/23/PYTHON%E6%93%8D%E4%BD%9CEXCEL%E8%AF%BB%E5%8F%96%E4%B8%8E%E6%8B%86%E5%88%86/</url>
+    
+    <content type="html"><![CDATA[<p>PYTHON办公自动化内容，通过使用插件<code>.xlsx / .xlsm / .xltx / .xltm，</code>操作EXCEL，读取excel的插件为<code>openpyxl</code></p><span id="more"></span><h2 id="一、读取sheet名称"><a href="#一、读取sheet名称" class="headerlink" title="一、读取sheet名称"></a>一、读取sheet名称</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> openpyxl <span class="hljs-keyword">import</span> load_workbook<br><br>workbookname = load_workbook(filename=<span class="hljs-string">r&quot;C:\Users\pdsat\Desktop\test.xlsx&quot;</span>)<br>i = workbookname.sheetnames<br><span class="hljs-built_in">print</span>(i)<br><br>结果：<br>[<span class="hljs-string">&#x27;电视剧&#x27;</span>, <span class="hljs-string">&#x27;动漫&#x27;</span>, <span class="hljs-string">&#x27;综艺&#x27;</span>, <span class="hljs-string">&#x27;图书书籍漫画&#x27;</span>, <span class="hljs-string">&#x27;教育资源&#x27;</span>, <span class="hljs-string">&#x27;神站&#x27;</span>, <span class="hljs-string">&#x27;小初高教育&#x27;</span>, <span class="hljs-string">&#x27;电影&#x27;</span>, <span class="hljs-string">&#x27;盘搜1&#x27;</span>, <span class="hljs-string">&#x27;考研教育资源&#x27;</span>, <span class="hljs-string">&#x27;盘搜2&#x27;</span>, <span class="hljs-string">&#x27;游戏软件&#x27;</span>, <span class="hljs-string">&#x27;学而思精品内容&#x27;</span>]<br></code></pre></td></tr></table></figure><h2 id="二、向表格中插入行数据"><a href="#二、向表格中插入行数据" class="headerlink" title="二、向表格中插入行数据"></a>二、向表格中插入行数据</h2><p>使用<code>.append()</code>在数据后面增加行数据</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> openpyxl <span class="hljs-keyword">import</span> load_workbook<br><br>workbook_name = load_workbook(filename=<span class="hljs-string">r&quot;C:\Users\pdsat\Desktop\test.xlsx&quot;</span>)<br>sheet = workbook_name.active<br><span class="hljs-built_in">print</span>(sheet)<br>data = [<br>    [<span class="hljs-string">&quot;唐僧&quot;</span>, <span class="hljs-string">&quot;https://www.daohangpage.com/site/335.html&quot;</span>],<br>    [<span class="hljs-string">&quot;导航页面&quot;</span>, <span class="hljs-string">&quot;https://9kan.online/&quot;</span>],<br>    [<span class="hljs-string">&quot;hao123&quot;</span>, <span class="hljs-string">&quot;https://m.hao123.com&quot;</span>]<br>]<br><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> data:<br>    sheet.append(row)<br>workbook_name.save(filename=<span class="hljs-string">r&quot;C:\Users\pdsat\Desktop\test.xlsx&quot;</span>)<br></code></pre></td></tr></table></figure><h2 id="三、合并拆分sheet"><a href="#三、合并拆分sheet" class="headerlink" title="三、合并拆分sheet"></a>三、合并拆分sheet</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python">importopenpyxl<br><br>myBook=openpyxl.load_workbook(<span class="hljs-string">r&quot;c:\users\pdsat\Desktop\A305\录取表.xlsx&quot;</span>)<br>mySheet=myBook[<span class="hljs-string">&quot;录取表&quot;</span>]<span class="hljs-comment"># 获取sheet工作簿</span><br>myRange=<span class="hljs-built_in">list</span>(mySheet.values)<br><span class="hljs-comment"># mySheet.values 返回的是生成器，是将一行数据作为一个元组单元组成的，是由值组成的.</span><br><span class="hljs-comment"># Python 的元组与列表类似，不同之处在于元组的元素不能修改。</span><br><span class="hljs-comment"># 元组使用小括号，列表使用方括号。</span><br><span class="hljs-comment"># mySheet.values 获取的内容是从 “A1” 到 “最大行最大列”</span><br>myDisc=&#123;&#125;<span class="hljs-comment"># 新建一个字典</span><br><span class="hljs-comment"># 字典是另一种可变容器模型，且可存储任意类型对象。</span><br><span class="hljs-comment"># 字典的每个键值 key:value 对用冒号 : 分割，每个键值对之间用逗号 , 分割，</span><br><span class="hljs-comment"># 整个字典包括在花括号 &#123;&#125; 中 .</span><br>formyRowinmyRange[<span class="hljs-number">3</span>:]:<br>ifmyRow[<span class="hljs-number">0</span>]inmyDisc.keys():<br>myDisc[myRow[<span class="hljs-number">0</span>]] += [myRow]<br><span class="hljs-keyword">else</span>:<br>myDisc[myRow[<span class="hljs-number">0</span>]] = [myRow]<br>formyKey, myValueinmyDisc.items():<br>myNewSheet=myBook.create_sheet(myKey+<span class="hljs-string">&#x27;录取表&#x27;</span>)<br>myNewSheet.append(myRange[<span class="hljs-number">2</span>])<span class="hljs-comment"># 在新表中新建表头</span><br>formyRowinmyValue:<br>myNewSheet.append(myRow)<br>myBook.save(<span class="hljs-string">r&#x27;C:\Users\pdsat\Desktop\A305\新录取表.xlsx&#x27;</span>)<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程电脑</category>
+      
+      <category>PYTHON</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>EXCEL</tag>
+      
+      <tag>PYTHON</tag>
+      
+      <tag>办公自动化</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LINUX修改系统启动顺序</title>
+    <link href="/code.github.io/2022/06/23/LINUX%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F/"/>
+    <url>/code.github.io/2022/06/23/LINUX%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F/</url>
+    
+    <content type="html"><![CDATA[<p>多系统引导，修改grub启动顺序。</p><span id="more"></span><h1 id="修改grub文件"><a href="#修改grub文件" class="headerlink" title="修改grub文件"></a>修改grub文件</h1><p>直接修改grub文件，位置&#x2F;etc&#x2F;defauts&#x2F;grub</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux-Vostro-260:~$ sudo gedit /etc/default/grub<br>[sudo] password <span class="hljs-keyword">for</span> linux:<br><br>______________________________________________________________<br><span class="hljs-comment"># If you change this file, run &#x27;update-grub&#x27; afterwards to update</span><br><span class="hljs-comment"># /boot/grub/grub.cfg.</span><br><span class="hljs-comment"># For full documentation of the options in this file, see:</span><br><span class="hljs-comment">#   info -f grub -n &#x27;Simple configuration&#x27;</span><br><br>GRUB_DEFAULT=4<br>GRUB_TIMEOUT_STYLE=hidden<br>GRUB_TIMEOUT=8<br>GRUB_DISTRIBUTOR=`lsb_release -i -s 2&gt; /dev/null || <span class="hljs-built_in">echo</span> Debian`<br>GRUB_CMDLINE_LINUX_DEFAULT=<span class="hljs-string">&quot;quiet splash&quot;</span><br>GRUB_CMDLINE_LINUX=<span class="hljs-string">&quot;&quot;</span><br><br><span class="hljs-comment"># Uncomment to enable BadRAM filtering, modify to suit your needs</span><br><span class="hljs-comment"># This works with Linux (no patch required) and with any kernel that obtains</span><br><span class="hljs-comment"># the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)</span><br><span class="hljs-comment">#GRUB_BADRAM=&quot;0x01234567,0xfefefefe,0x89abcdef,0xefefefef&quot;</span><br></code></pre></td></tr></table></figure><p>GRUB_DEFAULT&#x3D;4，其中第一项是0，第二项是1,以此类推。以本机的启动选项来说，如果将最后一个作为启动默认选项，则数字为4</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程电脑</category>
+      
+      <category>LINUX</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LINUX</tag>
+      
+      <tag>启动顺序</tag>
+      
+      <tag>系统</tag>
       
     </tags>
     
@@ -248,6 +440,37 @@
       <tag>读书</tag>
       
       <tag>速读</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>光伏产业报告</title>
+    <link href="/code.github.io/2022/05/05/%E5%85%89%E4%BC%8F%E4%BA%A7%E4%B8%9A%E6%8A%A5%E5%91%8A/"/>
+    <url>/code.github.io/2022/05/05/%E5%85%89%E4%BC%8F%E4%BA%A7%E4%B8%9A%E6%8A%A5%E5%91%8A/</url>
+    
+    <content type="html"><![CDATA[<p>我国光伏产业发展迅速，占据全球需求市场的35%，装机量在2015年就是全球第一。</p><span id="more"></span><h1 id="一、我国光伏产业现状"><a href="#一、我国光伏产业现状" class="headerlink" title="一、我国光伏产业现状"></a>一、我国光伏产业现状</h1><ol><li>我国光伏产业发展迅速，占据全球需求市场的35%，装机量在2015年就是全球第一。</li><li>光伏产业吸纳了大量就业</li></ol><h1 id="二、通过政策看懂光伏产业"><a href="#二、通过政策看懂光伏产业" class="headerlink" title="二、通过政策看懂光伏产业"></a>二、通过政策看懂光伏产业</h1><p>由于光伏产业从一开始就是政策扶持的产物，所以“政策”是看懂光伏产业的切入点。</p><p>对于光伏产业来说，成本决定了是否能够大量普及。2021年，光伏发电成本0.35元。成本的快速降低也是光伏产业的特点。</p><p>（一）政策的延续性。我国从2009年出台光伏补贴政策，十年间，光伏发电量增长了1300多倍。</p><p>（二）政策的拐点。2021年整县推进分布式光伏政策出台，同时取消了补贴政策。</p><h1 id="三、整县推进“分布式光伏”——政策推动分布式光伏推广"><a href="#三、整县推进“分布式光伏”——政策推动分布式光伏推广" class="headerlink" title="三、整县推进“分布式光伏”——政策推动分布式光伏推广"></a>三、整县推进“分布式光伏”——政策推动分布式光伏推广</h1><ol><li>我国光伏发展迅速，其中大部分都是集中式光伏，随着可利用的土地资源变得稀缺，其成本变高，分布式光伏是未来光伏发展的突破点。</li><li>但是分布式光伏分布广，规模小，整县推进政策，将原本的“散单”变成了“整单”，解决了这个问题。</li></ol><h1 id="四、光伏-储能——政策帮助光伏稳定上网"><a href="#四、光伏-储能——政策帮助光伏稳定上网" class="headerlink" title="四、光伏+储能——政策帮助光伏稳定上网"></a>四、光伏+储能——政策帮助光伏稳定上网</h1><ol><li>光伏发电季节性强，受时间和天气影响大，导致发电不稳定。</li><li>新型储能技术——电池储能（化学储能）,传统储能技术：抽水蓄能。</li><li>光伏电站储能政策出台，目前是政府补贴储能引起电价上涨部分。</li><li>光伏+储能 &#x3D; 虚拟电厂。虚拟电厂就是利用互联网技术，将分布式光伏电站、储能设备、工业园区等用电单元连接成一个系统，随时调控用电，实现电力精细化管理</li></ol><h1 id="五、光伏产业如何降低成本——硅料"><a href="#五、光伏产业如何降低成本——硅料" class="headerlink" title="五、光伏产业如何降低成本——硅料"></a>五、光伏产业如何降低成本——硅料</h1><aside>💡 新技术会催生出新的效率，但是老技术有时候也有新的应用场所，技术也并非越新越好，符合产业发展阶段才是技术的关键。</aside><ol><li>硅料最高能占到电池成本的4成，也是发电效率的关键。</li><li>从块状硅到颗粒硅，光伏产业不断压低成本的关键是颗粒硅的使用</li><li>颗粒硅生产能耗更低，意味着更低碳，其成本还会再低。颗粒硅也会使得下游硅棒的效率提升。</li><li>在追求效率的道路上，小企业没有包袱，可以一步到位，使用最先进的技术，大企业作为行业的引领者，会倾向于稳步推进。</li></ol><h1 id="六、三家光伏相关龙头企业"><a href="#六、三家光伏相关龙头企业" class="headerlink" title="六、三家光伏相关龙头企业"></a>六、三家光伏相关龙头企业</h1><h2 id="（一）通威股份——硅料——上游"><a href="#（一）通威股份——硅料——上游" class="headerlink" title="（一）通威股份——硅料——上游"></a>（一）通威股份——硅料——上游</h2><ol><li>硅料是周期性体现最充分的环节。</li><li>如何判断周期：<ol><li>需求端，判断市场有多大，要考虑到国家的政策方针</li><li>供给端，看产能有多少，比如合格率、开工率、其他行业的跨界选手</li><li>结合时间进行估算</li></ol></li></ol><h2 id="（二）隆基股份——硅片——中游"><a href="#（二）隆基股份——硅片——中游" class="headerlink" title="（二）隆基股份——硅片——中游"></a>（二）隆基股份——硅片——中游</h2><ol><li>引领了光伏领域的重大变革，单晶硅片市场占有率从18%到90%</li><li>行业集中度不高，中游企业目前没有多少话语权。上游涨价无法直接转移到下游。原因在于，中游的组件占到光伏项目的4成，一般都会签订一年的协议，如果中途涨价，低于其8%收益率，项目就会延期或者取消。</li></ol><h2 id="（三）华为公司——技术——下游代表"><a href="#（三）华为公司——技术——下游代表" class="headerlink" title="（三）华为公司——技术——下游代表"></a>（三）华为公司——技术——下游代表</h2><ol><li>华为2012进入逆变器行业，四年间做到了全球第一。</li><li>降本增效同样是华为进入该行业的努力方向，从集中式逆变器到组串式逆变器，华为利用自身通讯技术优势，降低了组串式逆变器的成本和故障率，运用数字化技术降低光伏电站的运营维护成本。<h1 id="七、思维导图及其开发流程"><a href="#七、思维导图及其开发流程" class="headerlink" title="七、思维导图及其开发流程"></a>七、思维导图及其开发流程</h1>详见百度网盘<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">链接: https://pan.baidu.com/s/14TqR7-zLle_41VH2CR5e7w?<span class="hljs-built_in">pwd</span>=ccwr 提取码: ccwr 复制这段内容后打开百度网盘手机App，操作更方便哦<br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>行业产业</category>
+      
+      <category>光伏产业</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>光伏</tag>
+      
+      <tag>产业报告</tag>
+      
+      <tag>硅片</tag>
       
     </tags>
     
