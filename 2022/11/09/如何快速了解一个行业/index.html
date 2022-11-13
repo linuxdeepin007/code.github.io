@@ -262,14 +262,6 @@
 
     
     
-      
-        <span id="busuanzi_container_page_pv" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> 次
-        </span>
-        
-      
-    
   </div>
 
 
@@ -604,6 +596,30 @@
     <div class="footer-inner">
   
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
   
     <!-- 备案信息 ICP for China -->
     <div class="beian">
@@ -663,7 +679,7 @@
           if(String(snum).length ==1 ){
                     snum = "0" + snum;
           }
-          document.getElementById("timeDate").innerHTML = "🚀  "+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("timeDate").innerHTML = "🚀"+dnum+"&nbsp天";  //此次自定义显示内容
           document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
       }
       setInterval("createtime()",250);
