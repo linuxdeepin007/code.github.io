@@ -25,13 +25,15 @@
 <meta property="og:site_name" content="望月砂&#39;s BLOG">
 <meta property="og:description" content="PYTHON办公自动化内容，通过使用插件.xlsx &#x2F; .xlsm &#x2F; .xltx &#x2F; .xltm，操作EXCEL，读取excel的插件为openpyxl">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linuxdeepin007.github.io/code.github.io/img/web8.jpg">
 <meta property="article:published_time" content="2022-07-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-06T07:07:06.280Z">
+<meta property="article:modified_time" content="2022-11-15T14:29:57.127Z">
 <meta property="article:author" content="望月砂">
 <meta property="article:tag" content="EXCEL">
 <meta property="article:tag" content="PYTHON">
 <meta property="article:tag" content="办公自动化">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://linuxdeepin007.github.io/code.github.io/img/web8.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -306,7 +308,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年11月6日 下午
+                    本文最后更新于：2022年11月15日 晚上
                   
                 
               </p>
@@ -322,6 +324,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> openpyxl <span class="hljs-keyword">import</span> load_workbook<br><br>workbook_name = load_workbook(filename=<span class="hljs-string">r&quot;C:\Users\pdsat\Desktop\test.xlsx&quot;</span>)<br>sheet = workbook_name.active<br><span class="hljs-built_in">print</span>(sheet)<br>data = [<br>    [<span class="hljs-string">&quot;唐僧&quot;</span>, <span class="hljs-string">&quot;https://www.daohangpage.com/site/335.html&quot;</span>],<br>    [<span class="hljs-string">&quot;导航页面&quot;</span>, <span class="hljs-string">&quot;https://9kan.online/&quot;</span>],<br>    [<span class="hljs-string">&quot;hao123&quot;</span>, <span class="hljs-string">&quot;https://m.hao123.com&quot;</span>]<br>]<br><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> data:<br>    sheet.append(row)<br>workbook_name.save(filename=<span class="hljs-string">r&quot;C:\Users\pdsat\Desktop\test.xlsx&quot;</span>)<br></code></pre></td></tr></table></figure>
 
 <h2 id="三、合并拆分sheet"><a href="#三、合并拆分sheet" class="headerlink" title="三、合并拆分sheet"></a>三、合并拆分sheet</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python">importopenpyxl<br><br>myBook=openpyxl.load_workbook(<span class="hljs-string">r&quot;c:\users\pdsat\Desktop\A305\录取表.xlsx&quot;</span>)<br>mySheet=myBook[<span class="hljs-string">&quot;录取表&quot;</span>]<span class="hljs-comment"># 获取sheet工作簿</span><br>myRange=<span class="hljs-built_in">list</span>(mySheet.values)<br><span class="hljs-comment"># mySheet.values 返回的是生成器，是将一行数据作为一个元组单元组成的，是由值组成的.</span><br><span class="hljs-comment"># Python 的元组与列表类似，不同之处在于元组的元素不能修改。</span><br><span class="hljs-comment"># 元组使用小括号，列表使用方括号。</span><br><span class="hljs-comment"># mySheet.values 获取的内容是从 “A1” 到 “最大行最大列”</span><br>myDisc=&#123;&#125;<span class="hljs-comment"># 新建一个字典</span><br><span class="hljs-comment"># 字典是另一种可变容器模型，且可存储任意类型对象。</span><br><span class="hljs-comment"># 字典的每个键值 key:value 对用冒号 : 分割，每个键值对之间用逗号 , 分割，</span><br><span class="hljs-comment"># 整个字典包括在花括号 &#123;&#125; 中 .</span><br>formyRowinmyRange[<span class="hljs-number">3</span>:]:<br>ifmyRow[<span class="hljs-number">0</span>]inmyDisc.keys():<br>myDisc[myRow[<span class="hljs-number">0</span>]] += [myRow]<br><span class="hljs-keyword">else</span>:<br>myDisc[myRow[<span class="hljs-number">0</span>]] = [myRow]<br>formyKey, myValueinmyDisc.items():<br>myNewSheet=myBook.create_sheet(myKey+<span class="hljs-string">&#x27;录取表&#x27;</span>)<br>myNewSheet.append(myRange[<span class="hljs-number">2</span>])<span class="hljs-comment"># 在新表中新建表头</span><br>formyRowinmyValue:<br>myNewSheet.append(myRow)<br>myBook.save(<span class="hljs-string">r&#x27;C:\Users\pdsat\Desktop\A305\新录取表.xlsx&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
+
               
             </div>
             <hr/>
@@ -395,7 +398,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年11月6日</div>
+          <div>2022年11月15日</div>
         </div>
       
       <div class="license-meta-item">
