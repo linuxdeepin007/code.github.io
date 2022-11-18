@@ -18,26 +18,26 @@
   <meta name="author" content="望月砂">
   <meta name="keywords" content="">
   
-    <meta name="description" content="swap分区，即交换区。当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。但是linux在安装过程中，默认的swap分区一般都很小，所以需要手动分区或者在系统安装好之后，再调整其大小。">
+    <meta name="description" content="如果你有睡眠问题，那不妨参考以下这12条由权威医学研究机构美国国立卫生研究院发布的助眠建议「6」。这些建议从“失眠症的认知行为疗法”中衍生，有大量临床数据背书，可以说是目前科学家可以给出的最靠谱的助眠建议。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LINUX下增加交换分区（swap）大小">
-<meta property="og:url" content="https://linuxdeepin007.github.io/code.github.io/2022/04/14/linux%20%E4%B8%8B%E5%A2%9E%E5%8A%A0%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA%EF%BC%88swap%EF%BC%89%E5%A4%A7%E5%B0%8F/index.html">
+<meta property="og:title" content="NIH 助眠十二法">
+<meta property="og:url" content="https://linuxdeepin007.github.io/code.github.io/2022/09/30/NIH%20%E5%8A%A9%E7%9C%A0%E5%8D%81%E4%BA%8C%E6%B3%95/index.html">
 <meta property="og:site_name" content="望月砂&#39;s BLOG">
-<meta property="og:description" content="swap分区，即交换区。当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。但是linux在安装过程中，默认的swap分区一般都很小，所以需要手动分区或者在系统安装好之后，再调整其大小。">
+<meta property="og:description" content="如果你有睡眠问题，那不妨参考以下这12条由权威医学研究机构美国国立卫生研究院发布的助眠建议「6」。这些建议从“失眠症的认知行为疗法”中衍生，有大量临床数据背书，可以说是目前科学家可以给出的最靠谱的助眠建议。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-05T23:06:36.580Z">
+<meta property="article:published_time" content="2022-09-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-18T11:42:49.610Z">
 <meta property="article:author" content="望月砂">
-<meta property="article:tag" content="LINUX">
-<meta property="article:tag" content="swap">
-<meta property="article:tag" content="分区">
+<meta property="article:tag" content="睡眠">
+<meta property="article:tag" content="失眠">
+<meta property="article:tag" content="健康">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>LINUX下增加交换分区（swap）大小 - 望月砂&#39;s BLOG</title>
+  <title>NIH 助眠十二法 - 望月砂&#39;s BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LINUX下增加交换分区（swap）大小"></span>
+            <span id="subtitle" data-typed-text="NIH 助眠十二法"></span>
           
         </div>
 
@@ -232,8 +232,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-14 00:00" pubdate>
-          2022年4月14日 凌晨
+        <time datetime="2022-09-30 00:00" pubdate>
+          2022年9月30日 凌晨
         </time>
       </span>
     
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.2k 字
         
       </span>
     
@@ -255,7 +255,7 @@
         
         
         
-          15 分钟
+          13 分钟
         
       </span>
     
@@ -301,49 +301,53 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">LINUX下增加交换分区（swap）大小</h1>
+            <h1 style="display: none">NIH 助眠十二法</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年11月6日 早上
+                    本文最后更新于：2022年11月18日 晚上
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <p>swap分区，即交换区。当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。但是linux在安装过程中，默认的swap分区一般都很小，所以需要手动分区或者在系统安装好之后，再调整其大小。</p>
+              <p>如果你有睡眠问题，那不妨参考以下这12条由权威医学研究机构美国国立卫生研究院发布的助眠建议「6」。这些建议从“失眠症的认知行为疗法”中衍生，有大量临床数据背书，可以说是目前科学家可以给出的最靠谱的助眠建议。</p>
 <span id="more"></span>
-<h1 id="linux-下增加交换分区（swap）大小"><a href="#linux-下增加交换分区（swap）大小" class="headerlink" title="linux 下增加交换分区（swap）大小"></a>linux 下增加交换分区（swap）大小</h1><h2 id="一、当前系统配置"><a href="#一、当前系统配置" class="headerlink" title="一、当前系统配置"></a>一、当前系统配置</h2><ul>
-<li><p>linux（ubuntu）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux:~$ <span class="hljs-built_in">cat</span> /proc/version<br>Linux version 4.15.0-175-generic (buildd@lcy02-amd64-034) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) <span class="hljs-comment">#184-Ubuntu SMP Thu Mar 24 17:48:36 UTC 2022</span><br><br></code></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>当前系统配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux:~$ free -mh<br>              总计         已用        空闲      共享    缓冲/缓存    可用<br>内存：        1.8G        806M        132M        130M        900M        691M<br>交换：        974M        6.8M        968M<br><br></code></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="二、交换分区（swap）"><a href="#二、交换分区（swap）" class="headerlink" title="二、交换分区（swap）"></a>二、交换分区（swap）</h2><h3 id="（一）交换分区作用"><a href="#（一）交换分区作用" class="headerlink" title="（一）交换分区作用"></a>（一）交换分区作用</h3><p>swap分区，即交换区，swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。</p>
-<h3 id="（二）交换分区大小"><a href="#（二）交换分区大小" class="headerlink" title="（二）交换分区大小"></a>（二）交换分区大小</h3><p>在linux中，我们对swap分区的划分有一定的规则，当物理内存小于2G时，swap分区大小为物理内存的2倍；超过2G的部分，swap分区大小跟物理内存相等。</p>
-<h2 id="三、增加交换分区"><a href="#三、增加交换分区" class="headerlink" title="三、增加交换分区"></a>三、增加交换分区</h2><h3 id="（一）新建一个swap文件"><a href="#（一）新建一个swap文件" class="headerlink" title="（一）新建一个swap文件"></a>（一）新建一个swap文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux:~$ <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/tmp/swap2 bs=1M count=4000 <span class="hljs-comment"># 新建一个4G的文件，命名为swap2</span><br>记录了4000+0 的读入<br>记录了4000+0 的写出<br>4194304000 bytes (4.2 GB, 3.9 GiB) copied, 48.3163 s, 86.8 MB/s<br><br></code></pre></td></tr></table></figure>
-
-<h3 id="（二）设置并启用swap分区"><a href="#（二）设置并启用swap分区" class="headerlink" title="（二）设置并启用swap分区"></a>（二）设置并启用swap分区</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux:~$ mkswap /tmp/swap2 <span class="hljs-comment"># 设置为swap</span><br>mkswap: /tmp/swap2：不安全的权限 0664，建议使用 0600。<br>正在设置交换空间版本 1，大小 = 3.9 GiB (4194299904  个字节)<br>无标签， UUID=b3213bf5-7d34-448b-b16d-2ad5f14b7608<br>linux@linux:~$ sudo swapon /tmp/swap2 <span class="hljs-comment"># 启用swap</span><br>[sudo] linux 的密码： <br>swapon: /tmp/swap2：不安全的权限 0664，建议使用 0600。<br>swapon: /tmp/swap2：不安全的文件拥有者 1000，建议使用 0(root)。<br></code></pre></td></tr></table></figure>
-
-<h3 id="（三）查看当前swap分区大小"><a href="#（三）查看当前swap分区大小" class="headerlink" title="（三）查看当前swap分区大小"></a>（三）查看当前swap分区大小</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">inux@linux:~$ free -hm<br>              总计         已用        空闲      共享    缓冲/缓存    可用<br>内存：        1.8G        888M        147M        204M        803M        533M<br>交换：        4.9G        212M        4.7G<br></code></pre></td></tr></table></figure>
-
-<h2 id="三、永久设置及取消设置"><a href="#三、永久设置及取消设置" class="headerlink" title="三、永久设置及取消设置"></a>三、永久设置及取消设置</h2><h3 id="（一）永久设置swap分区"><a href="#（一）永久设置swap分区" class="headerlink" title="（一）永久设置swap分区"></a>（一）永久设置swap分区</h3><p>在配置文件末尾增加<code>linux@linux:~$ sudo gedit /etc/fstab</code> </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux:~$ sudo gedit /etc/fstab <span class="hljs-comment"># 打开配置文件</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="（二）取消swap分区"><a href="#（二）取消swap分区" class="headerlink" title="（二）取消swap分区"></a>（二）取消swap分区</h3><ul>
-<li>关闭swap2文件并删除</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">swapoff /tmp/swap2<br><span class="hljs-built_in">rm</span> -rf /tmp/swap2<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>修改配置文件</li>
-</ul>
-<p>将 &#x2F;etc&#x2F;fstab中添加的末行删除</p>
+<p><strong>NIH助眠十二法</strong></p>
+<p><strong>NIH助眠建议1：坚持规律的睡眠时间表</strong></p>
+<p>每天在同一时间上床睡觉，包括周末。</p>
+<p>很多人会设置起床闹铃，却从来不设就寝闹铃。<strong>建议你设置就寝闹铃，每天按时睡觉。</strong></p>
+<p><strong>如果记不住12条建议，那么请务必记住这一条。</strong></p>
+<p><strong>NIH助眠建议2：锻炼有助于睡眠，不过别太晚锻炼</strong></p>
+<p>尽量在大多数日子里至少锻炼30分钟，但<strong>最好不要在睡前2～3小时内锻炼。</strong></p>
+<p><strong>NIH助眠建议3：避免摄入咖啡因和尼古丁</strong></p>
+<p>咖啡、可乐、茶和巧克力含有影响睡眠的咖啡因，其作用需要8小时才能完全消退，因此在下午晚些时候摄入咖啡因会让你在晚上很难入睡。</p>
+<p>尼古丁也是一种兴奋剂，会导致吸烟者睡眠深度变浅。另外，由于睡觉时得不到尼古丁补充，吸烟者常常在清晨过早醒来。</p>
+<p><strong>NIH助眠建议4：避免睡前饮酒</strong></p>
+<p>睡前小酌一杯可以帮你放松，但大量饮酒会使你失去快速眼动睡眠（每种睡眠阶段都很重要），同时，酒精也会让睡眠深度变浅。大量摄入酒精也可能导致夜间呼吸障碍（很危险！）。</p>
+<p><strong>NIH助眠建议5：晚上不要大吃大喝</strong></p>
+<p>临睡觉前吃点小零食无妨，但<strong>一顿大餐会导致消化不良，影响睡眠。</strong></p>
+<p><strong>也不要喝太多水</strong>，否则夜里经常起床上厕所会打乱睡眠节律。（再见，啤酒炸鸡。再见，小龙虾。）</p>
+<p><strong>NIH助眠建议6：如有可能，避免服用扰乱睡眠的药物</strong></p>
+<p>一些常见的心脏病、高血压、哮喘药物以及一些用于咳嗽、感冒或过敏的非处方药和草药都会扰乱睡眠模式。</p>
+<p>如果你有睡眠问题，请向医生咨询，询问你服用的药物是否影响睡眠，是否可以在傍晚或夜间服用。</p>
+<p><strong>NIH助眠建议7：下午3点后不要小睡</strong></p>
+<p>午睡有很多好处，但时间太晚的午睡会让你晚上难以入睡。</p>
+<p><strong>NIH助眠建议8：睡前放松</strong></p>
+<p>不要把工作安排得太晚，睡前应该有一定的休息时间。一项放松精神的活动（比如阅读或听音乐）应该成为你睡前仪式的一部分。</p>
+<p><strong>NIH助眠建议9：睡前洗个热水澡</strong></p>
+<p>洗热水澡后的体温下降会让你感到困倦，帮你更好地入睡。</p>
+<p><strong>NIH助眠建议10：黑暗的卧室、凉爽的卧室、清爽的卧室</strong></p>
+<p>处理掉卧室里任何可能分散你睡眠注意力的东西，比如噪音、明亮的灯光、不舒服的床以及太高的温度。</p>
+<p>适度凉爽有助于提升睡眠质量，不要让卧室太闷热。舒适的床垫和枕头能促进睡眠（它们可能是最能改善生活质量的两件家具）。</p>
+<p>失眠时爱看时间，所以<strong>睡觉前应该把卧室里的时钟从视线中移开，</strong>这样你就不会在睡觉时担心时间了。</p>
+<p><strong>NIH助眠建议11：适当的阳光照射</strong></p>
+<p>日光是调节日常睡眠模式的关键。每天在自然光下活动至少30分钟。早上最好在阳光或者强光照射下醒来（窗帘别太厚）。</p>
+<p><strong>NIH助眠建议12：不要醒着躺在床上</strong></p>
+<p>如果你发现自己在床上躺了20多分钟后仍然醒着，或者如果开始对睡不着觉这件事感到焦虑，那就起床做一些放松的活动，直到感到困倦。</p>
+<p>不要躺在床上瞎着急，因为无法入睡的焦虑会让你更加难以入睡。</p>
 
               
             </div>
@@ -361,15 +365,8 @@
     
       <span class="category-chain">
         
-  <a href="/code.github.io/categories/%E7%94%B5%E8%84%91%E7%BC%96%E7%A8%8B/" class="category-chain-item">电脑编程</a>
+  <a href="/code.github.io/categories/%E5%8C%BB%E5%AD%A6%E7%94%9F%E6%B4%BB/" class="category-chain-item">医学生活</a>
   
-  
-    <span>></span>
-    
-  <a href="/code.github.io/categories/%E7%94%B5%E8%84%91%E7%BC%96%E7%A8%8B/LINUX/" class="category-chain-item">LINUX</a>
-  
-  
-
   
 
       </span>
@@ -383,11 +380,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/code.github.io/tags/LINUX/">#LINUX</a>
+        <a href="/code.github.io/tags/%E7%9D%A1%E7%9C%A0/">#睡眠</a>
       
-        <a href="/code.github.io/tags/swap/">#swap</a>
+        <a href="/code.github.io/tags/%E5%A4%B1%E7%9C%A0/">#失眠</a>
       
-        <a href="/code.github.io/tags/%E5%88%86%E5%8C%BA/">#分区</a>
+        <a href="/code.github.io/tags/%E5%81%A5%E5%BA%B7/">#健康</a>
       
     </div>
   
@@ -399,8 +396,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LINUX下增加交换分区（swap）大小</div>
-      <div>https://linuxdeepin007.github.io/code.github.io/2022/04/14/linux 下增加交换分区（swap）大小/</div>
+      <div>NIH 助眠十二法</div>
+      <div>https://linuxdeepin007.github.io/code.github.io/2022/09/30/NIH 助眠十二法/</div>
     </div>
     <div class="license-meta">
       
@@ -412,13 +409,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月14日</div>
+          <div>2022年9月30日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年11月6日</div>
+          <div>2022年11月18日</div>
         </div>
       
       <div class="license-meta-item">
@@ -459,9 +456,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/code.github.io/2022/04/19/%E5%85%AC%E6%96%87%E2%80%94%E2%80%94%E8%A1%A8%E6%80%81%E5%8F%91%E8%A8%80%E7%A8%BF/" title="如何写作 &#34;表态发言&#34;">
+                      <a href="/code.github.io/2022/10/23/PPT%E6%8E%92%E7%89%88%E6%8A%80%E5%B7%A7%E2%80%94%E2%80%94%E6%8B%86%E5%AD%97%E5%A2%A8%E8%BF%B9/" title="PPT排版技巧——拆字与墨迹">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">如何写作 &#34;表态发言&#34;</span>
+                        <span class="hidden-mobile">PPT排版技巧——拆字与墨迹</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -469,8 +466,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/code.github.io/2022/04/10/%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88hexo+gitee%EF%BC%89/" title="在linux系统上搭建个人博客（hexo+gitee）">
-                        <span class="hidden-mobile">在linux系统上搭建个人博客（hexo+gitee）</span>
+                      <a href="/code.github.io/2022/09/19/CPA-%E4%BC%9A%E8%AE%A1-00%E5%89%8D%E8%A8%80/" title="CPA-会计-00前言">
+                        <span class="hidden-mobile">CPA-会计-00前言</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -601,7 +598,7 @@
   
 </div>
 
-<footer class="text-center mt-1 py-3">
+<footer class="text-center mt0 py-3">
   <div class="footer-content">
     <div>
       <span id="timeDate">载入天数...</span>
@@ -609,7 +606,7 @@
       <script>
         var now = new Date(); 
         function createtime() { 
-            var grt= new Date("04/04/2022 17:38:00");//在此处修改你的建站时间
+            var grt= new Date("04/03/2022 00:00:00");//在此处修改你的建站时间
             now.setTime(now.getTime()+250); 
             days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
