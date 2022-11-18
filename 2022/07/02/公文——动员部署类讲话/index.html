@@ -18,26 +18,26 @@
   <meta name="author" content="望月砂">
   <meta name="keywords" content="">
   
-    <meta name="description" content="GRUB (Grand Unified Bootloader)，是引导系统的工具，当安装双系统（linux+windows）时，win启动会覆盖grub，导致无法启动系统。本文介绍了两种方法修复启动失败的问题。">
+    <meta name="description" content="动员部署类的文章格式比较固定，一般的写作思路：是什么、为什么、怎么做。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Grub Rescue 修复linux启动失败">
-<meta property="og:url" content="https://linuxdeepin007.github.io/code.github.io/2022/07/07/%E4%BD%BF%E7%94%A8grub%20rescue%E4%BF%AE%E5%A4%8D%E5%90%AF%E5%8A%A8/index.html">
+<meta property="og:title" content="公文——动员部署类讲话">
+<meta property="og:url" content="https://linuxdeepin007.github.io/code.github.io/2022/07/02/%E5%85%AC%E6%96%87%E2%80%94%E2%80%94%E5%8A%A8%E5%91%98%E9%83%A8%E7%BD%B2%E7%B1%BB%E8%AE%B2%E8%AF%9D/index.html">
 <meta property="og:site_name" content="望月砂&#39;s BLOG">
-<meta property="og:description" content="GRUB (Grand Unified Bootloader)，是引导系统的工具，当安装双系统（linux+windows）时，win启动会覆盖grub，导致无法启动系统。本文介绍了两种方法修复启动失败的问题。">
+<meta property="og:description" content="动员部署类的文章格式比较固定，一般的写作思路：是什么、为什么、怎么做。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-12T13:17:04.301Z">
+<meta property="article:published_time" content="2022-07-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-17T14:25:04.000Z">
 <meta property="article:author" content="望月砂">
-<meta property="article:tag" content="GRUB">
-<meta property="article:tag" content="boot failure">
-<meta property="article:tag" content="双系统">
+<meta property="article:tag" content="公文">
+<meta property="article:tag" content="部署动员">
+<meta property="article:tag" content="工作政治">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>使用Grub Rescue 修复linux启动失败 - 望月砂&#39;s BLOG</title>
+  <title>公文——动员部署类讲话 - 望月砂&#39;s BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="使用Grub Rescue 修复linux启动失败"></span>
+            <span id="subtitle" data-typed-text="公文——动员部署类讲话"></span>
           
         </div>
 
@@ -232,8 +232,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-07 00:00" pubdate>
-          2022年7月7日 凌晨
+        <time datetime="2022-07-02 00:00" pubdate>
+          2022年7月2日 凌晨
         </time>
       </span>
     
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          617 字
         
       </span>
     
@@ -255,7 +255,7 @@
         
         
         
-          18 分钟
+          7 分钟
         
       </span>
     
@@ -301,115 +301,32 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">使用Grub Rescue 修复linux启动失败</h1>
+            <h1 style="display: none">公文——动员部署类讲话</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年11月12日 晚上
+                    本文最后更新于：2022年11月17日 晚上
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <p> GRUB (Grand Unified Bootloader)，是引导系统的工具，当安装双系统（linux+windows）时，win启动会覆盖grub，导致无法启动系统。本文介绍了两种方法修复启动失败的问题。</p>
+              <p>动员部署类的文章格式比较固定，一般的写作思路：是什么、为什么、怎么做。</p>
 <span id="more"></span>
-<h1 id="一、系统启动失败"><a href="#一、系统启动失败" class="headerlink" title="一、系统启动失败"></a>一、系统启动失败</h1><h2 id="（一）系统启动失败情况"><a href="#（一）系统启动失败情况" class="headerlink" title="（一）系统启动失败情况"></a>（一）系统启动失败情况</h2><p>linux系统启动失败出现grub rescue的情况是由于多系统启动，启动文件丢失或者被覆盖导致的。当启动失败时，通常会出现如下界面：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">error : no such partition.<br>Entering rescue mode...<br>grub rescue&gt; _<br></code></pre></td></tr></table></figure>
+<p>动员部署类的文章格式比较固定，一般的写作思路：是什么、为什么、怎么做。如果是两位领导作动员部署，可能其中一位作部署，主要讲这项工作做什么，具体的安排。另一位领导从宏观上、大局上来把握。</p>
+<h1 id="一、一般思路"><a href="#一、一般思路" class="headerlink" title="一、一般思路"></a>一、一般思路</h1><h2 id="（一）为什么"><a href="#（一）为什么" class="headerlink" title="（一）为什么"></a>（一）为什么</h2><p>总结来看，总共有十二个方面需要考虑，其中根据具体问题、具体情况取舍和分类合并。其中有一些方面是必须写的，总体归纳起来就是重要性、必要性、紧迫性。</p>
+<ol>
+<li>形势和和背景<br>包括上级的精神和要求，比如“什么时候中央开了某个会议” 省、市面临的情况等</li>
+<li>地位和作用<br>这项工作与本单位改革发展的关系，做好此项工作能过给单位带来的作用</li>
+<li>矛盾和问题<br>本单位存在的一些问题，导致这项工作必须去实施，可以引用一些问题</li>
+</ol>
+<h2 id="（二）是什么"><a href="#（二）是什么" class="headerlink" title="（二）是什么"></a>（二）是什么</h2><p>也就是做哪些工作、哪些内容，需要把上级的部署要求、规定动作和自选动作、时间节点等清晰地表达出来。</p>
+<p>上级的文件框架是什么样的，本部分大体上就是什么样的。把落实上级要求和结合本单位实际相结合。切记照搬照抄。</p>
+<h2 id="（三）怎么做"><a href="#（三）怎么做" class="headerlink" title="（三）怎么做"></a>（三）怎么做</h2><p>本部分可以有一些自己的发挥余地，具体要求怎么去提，可以发挥主观能动性。根据单位领导风格去写作，比如领导抓工作比较实，内容就需要具体。有一些善于抓主体。</p>
+<h1 id="二、其他思路"><a href="#二、其他思路" class="headerlink" title="二、其他思路"></a>二、其他思路</h1><p>如果由两位领导来部署工作，一般首先由市长、县长等做部署，内容要具体；书记做部署要更宏观。行文脉络上要更加有特色。可以抓住某一个点进行强调、作为一个主线。比如“抓落实”方面等，或者突出问题导向等等。</p>
 
-<p>或者是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">error : unknown filesystem.<br>Entering rescue mode...<br>grub rescue&gt; _<br></code></pre></td></tr></table></figure>
-
-<p>亦或者：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub rescue&gt; _<br></code></pre></td></tr></table></figure>
-
-<h2 id="（二）相关命令"><a href="#（二）相关命令" class="headerlink" title="（二）相关命令"></a>（二）相关命令</h2><table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">解释</th>
-<th align="left">示例 &#x2F; 选项</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">boot</td>
-<td align="left">启动</td>
-<td align="left">直接启动系统</td>
-</tr>
-<tr>
-<td align="left">cat</td>
-<td align="left">标准输出</td>
-<td align="left">cat (hd0,1)&#x2F;boot&#x2F;grub&#x2F;grub.cfg</td>
-</tr>
-<tr>
-<td align="left">configfile</td>
-<td align="left">载入配置文件</td>
-<td align="left">configfile (hd0,1)&#x2F;boot&#x2F;grub&#x2F;grub.cfg</td>
-</tr>
-<tr>
-<td align="left">initrd</td>
-<td align="left">载入initrd.img 文件</td>
-<td align="left">initrd (hd0,1)&#x2F;initrd.img</td>
-</tr>
-<tr>
-<td align="left">insmod</td>
-<td align="left">载入模式</td>
-<td align="left">insmod (hd0,1)&#x2F;boot&#x2F;grub&#x2F;normal.mod</td>
-</tr>
-<tr>
-<td align="left">loopback</td>
-<td align="left">挂在镜像为设备</td>
-<td align="left">loopback loop0 (hd0,1)&#x2F;iso&#x2F;image.iso</td>
-</tr>
-<tr>
-<td align="left">ls</td>
-<td align="left">列举文件及目录</td>
-<td align="left">ls (hd0,1)</td>
-</tr>
-<tr>
-<td align="left">lsmod</td>
-<td align="left">列举所有模式</td>
-<td align="left">-</td>
-</tr>
-<tr>
-<td align="left">normal</td>
-<td align="left">激活普通模式</td>
-<td align="left">+</td>
-</tr>
-<tr>
-<td align="left">search</td>
-<td align="left">查找设备：–file 查找文件； –label 查找标签, –fs-uuid 查找系统文件 UUID.</td>
-<td align="left">search -file [filename]</td>
-</tr>
-<tr>
-<td align="left">set</td>
-<td align="left">设置环境变量如果没有选项，则输出所有环境变量和值。</td>
-<td align="left">set [variable-name]&#x3D;[value]</td>
-</tr>
-</tbody></table>
-<h1 id="二、修复方法"><a href="#二、修复方法" class="headerlink" title="二、修复方法"></a>二、修复方法</h1><p>教程中提供两种修复grub的方法命令行操作和启动盘操作</p>
-<h2 id="（一）通过命令行修复"><a href="#（一）通过命令行修复" class="headerlink" title="（一）通过命令行修复"></a>（一）通过命令行修复</h2><h3 id="1-使用set命令，查看环境变量"><a href="#1-使用set命令，查看环境变量" class="headerlink" title="1. 使用set命令，查看环境变量"></a>1. 使用<code>set</code>命令，查看环境变量</h3><p>如下，该系统启动自<code>（hd0,msdos3）</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub&gt; <span class="hljs-built_in">set</span><br>?=0<br>color_highlight=black/white<br>color_normal=white/black<br>default=0<br>gfxmode=800x600<br>lang=en_US<br>locale_dir=(hd0,msdos3)/boot/grub/local<br>pager=<br>prefix=(hd0,msdos3)/boot/grub<br>root=hd0,msdos3<br>grub&gt; _<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-使用ls命令，查看分区表"><a href="#2-使用ls命令，查看分区表" class="headerlink" title="2. 使用ls命令，查看分区表"></a>2. 使用<code>ls</code>命令，查看分区表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub&gt; <span class="hljs-built_in">ls</span><br>(hd0) (hd0,msdos3) (hd0,msdos2) (hd0,msdos1)<br>grub&gt; _<br></code></pre></td></tr></table></figure>
-
-<h3 id="3-查找包含boot目录的分区"><a href="#3-查找包含boot目录的分区" class="headerlink" title="3. 查找包含boot目录的分区"></a>3. 查找包含<code>boot</code>目录的分区</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub&gt; <span class="hljs-built_in">ls</span> （hd0,msdos3）<br>lost+found var/ dev/ run/ etc/ tmp/ sys/ proc/ usr/ bin boot/ lib lib64 mnt/ opt/ root/ sbin srv/<br>grub&gt; _<br></code></pre></td></tr></table></figure>
-
-<h3 id="4-设置启动分区作为root变量所在卷"><a href="#4-设置启动分区作为root变量所在卷" class="headerlink" title="4. 设置启动分区作为root变量所在卷"></a>4. 设置启动分区作为<code>root</code>变量所在卷</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> root=(hd0,msdos1)<br></code></pre></td></tr></table></figure>
-
-<h3 id="5-载入normal启动模式"><a href="#5-载入normal启动模式" class="headerlink" title="5. 载入normal启动模式"></a>5. 载入<code>normal</code>启动模式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">insmod normal<br></code></pre></td></tr></table></figure>
-
-<h3 id="6-启动normal-启动模式"><a href="#6-启动normal-启动模式" class="headerlink" title="6. 启动normal 启动模式"></a>6. 启动normal 启动模式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">normal<br></code></pre></td></tr></table></figure>
-
-<h3 id="7-使用linux载入linux内核"><a href="#7-使用linux载入linux内核" class="headerlink" title="7. 使用linux载入linux内核"></a>7. 使用<code>linux</code>载入linux内核</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux /boot/vmlinuz-4.2.0-16-generic root=/dev/sda1 ro<br></code></pre></td></tr></table></figure>
-
-<h3 id="8-启动"><a href="#8-启动" class="headerlink" title="8. 启动"></a>8. 启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">boot<br></code></pre></td></tr></table></figure>
-
-<h2 id="（二）通过启动盘修复"><a href="#（二）通过启动盘修复" class="headerlink" title="（二）通过启动盘修复"></a>（二）通过启动盘修复</h2><h3 id="1-制作linux启动安装盘并启动试用模式"><a href="#1-制作linux启动安装盘并启动试用模式" class="headerlink" title="1. 制作linux启动安装盘并启动试用模式"></a>1. 制作linux启动安装盘并启动试用模式</h3><h3 id="2-打开终端输入命令"><a href="#2-打开终端输入命令" class="headerlink" title="2. 打开终端输入命令"></a>2. 打开终端输入命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo add-apt-repository ppa:yannubuntu/boot-repair<br></code></pre></td></tr></table></figure>
-<h3 id="3-在终端中安装并启动软件"><a href="#3-在终端中安装并启动软件" class="headerlink" title="3. 在终端中安装并启动软件"></a>3. 在终端中安装并启动软件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt update<br>sudo apt install boot-repair<br>boot-repair<br></code></pre></td></tr></table></figure>
-<h3 id="4-等待修复完成重启电脑"><a href="#4-等待修复完成重启电脑" class="headerlink" title="4. 等待修复完成重启电脑"></a>4. 等待修复完成重启电脑</h3><h1 id="三、更新GRUB-启动文件"><a href="#三、更新GRUB-启动文件" class="headerlink" title="三、更新GRUB 启动文件"></a>三、更新GRUB 启动文件</h1><p>在系统重新启动之后，要重新配置grub，以确保安装成功</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo update-grub<br></code></pre></td></tr></table></figure>
               
             </div>
             <hr/>
@@ -426,12 +343,12 @@
     
       <span class="category-chain">
         
-  <a href="/code.github.io/categories/%E7%BC%96%E7%A8%8B%E7%94%B5%E8%84%91/" class="category-chain-item">编程电脑</a>
+  <a href="/code.github.io/categories/%E5%B7%A5%E4%BD%9C%E6%94%BF%E6%B2%BB/" class="category-chain-item">工作政治</a>
   
   
     <span>></span>
     
-  <a href="/code.github.io/categories/%E7%BC%96%E7%A8%8B%E7%94%B5%E8%84%91/LINUX/" class="category-chain-item">LINUX</a>
+  <a href="/code.github.io/categories/%E5%B7%A5%E4%BD%9C%E6%94%BF%E6%B2%BB/%E6%A0%BC%E5%BC%8F%E6%A0%87%E5%87%86/" class="category-chain-item">格式标准</a>
   
   
 
@@ -448,11 +365,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/code.github.io/tags/GRUB/">#GRUB</a>
+        <a href="/code.github.io/tags/%E5%85%AC%E6%96%87/">#公文</a>
       
-        <a href="/code.github.io/tags/boot-failure/">#boot failure</a>
+        <a href="/code.github.io/tags/%E9%83%A8%E7%BD%B2%E5%8A%A8%E5%91%98/">#部署动员</a>
       
-        <a href="/code.github.io/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/">#双系统</a>
+        <a href="/code.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%94%BF%E6%B2%BB/">#工作政治</a>
       
     </div>
   
@@ -464,8 +381,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>使用Grub Rescue 修复linux启动失败</div>
-      <div>https://linuxdeepin007.github.io/code.github.io/2022/07/07/使用grub rescue修复启动/</div>
+      <div>公文——动员部署类讲话</div>
+      <div>https://linuxdeepin007.github.io/code.github.io/2022/07/02/公文——动员部署类讲话/</div>
     </div>
     <div class="license-meta">
       
@@ -477,13 +394,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月7日</div>
+          <div>2022年7月2日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年11月12日</div>
+          <div>2022年11月17日</div>
         </div>
       
       <div class="license-meta-item">
@@ -524,9 +441,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/code.github.io/2022/07/23/PYTHON%E6%93%8D%E4%BD%9CEXCEL%E8%AF%BB%E5%8F%96%E4%B8%8E%E6%8B%86%E5%88%86/" title="PYTHON操作EXCEL读取与拆分">
+                      <a href="/code.github.io/2022/07/07/%E4%BD%BF%E7%94%A8grub%20rescue%E4%BF%AE%E5%A4%8D%E5%90%AF%E5%8A%A8/" title="使用Grub Rescue 修复linux启动失败">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">PYTHON操作EXCEL读取与拆分</span>
+                        <span class="hidden-mobile">使用Grub Rescue 修复linux启动失败</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -534,8 +451,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/code.github.io/2022/07/02/%E5%85%AC%E6%96%87%E2%80%94%E2%80%94%E5%8A%A8%E5%91%98%E9%83%A8%E7%BD%B2%E7%B1%BB%E8%AE%B2%E8%AF%9D/" title="公文——动员部署类讲话">
-                        <span class="hidden-mobile">公文——动员部署类讲话</span>
+                      <a href="/code.github.io/2022/06/23/LINUX%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F/" title="LINUX修改系统启动顺序">
+                        <span class="hidden-mobile">LINUX修改系统启动顺序</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
