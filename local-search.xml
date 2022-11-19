@@ -99,6 +99,37 @@
   
   
   <entry>
+    <title>配置 V2Ray 客户端</title>
+    <link href="/code.github.io/2022/11/05/LINUX%20%E9%85%8D%E7%BD%AEV2Ray%20%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
+    <url>/code.github.io/2022/11/05/LINUX%20%E9%85%8D%E7%BD%AEV2Ray%20%E5%AE%A2%E6%88%B7%E7%AB%AF/</url>
+    
+    <content type="html"><![CDATA[<p>v2rayA 是一个易用而强大的，专注于 Linux 的 V2Ray 客户端。</p><span id="more"></span><h1 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h1><p>v2rayA 的功能依赖于 V2Ray 内核，因此需要安装内核。</p><h2 id="一、安装-V2Ray-内核-x2F-Xray-内核"><a href="#一、安装-V2Ray-内核-x2F-Xray-内核" class="headerlink" title="一、安装 V2Ray 内核 &#x2F; Xray 内核"></a>一、安装 V2Ray 内核 &#x2F; Xray 内核</h2><ol><li><p>V2Ray &#x2F; Xray 的官方脚本</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">V2Ray 安装参考：https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/v2fly/</span>fhs-install-v2ray<br>Xray 安装参考：https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/XTLS/</span>Xray-install<br></code></pre></td></tr></table></figure></li><li><p>v2rayA 提供的镜像脚本（推荐）</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -Ls https:<span class="hljs-regexp">//mi</span>rrors.v2raya.org/go.sh | sudo bash<br></code></pre></td></tr></table></figure></li></ol><p>安装后可以关掉服务，因为 v2rayA 不依赖于该 systemd 服务。</p><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clean">sudo systemctl disable v2ray --now ### Xray 需要替换服务为 xray<br></code></pre></td></tr></table></figure><h2 id="二、安装-v2rayA"><a href="#二、安装-v2rayA" class="headerlink" title="二、安装 v2rayA"></a>二、安装 v2rayA</h2><h3 id="通过软件源安装"><a href="#通过软件源安装" class="headerlink" title="通过软件源安装"></a>通过软件源安装</h3><ol><li><p>添加公钥</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">wget -qO - https://apt.v2raya.org/key/<span class="hljs-built_in">public</span>-key.<span class="hljs-keyword">asc</span> | sudo tee /etc/apt/<span class="hljs-keyword">trusted</span>.gpg.d/v2raya.<span class="hljs-keyword">asc</span><br></code></pre></td></tr></table></figure></li><li><p>添加 V2RayA 软件源</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">echo <span class="hljs-string">&quot;deb https://apt.v2raya.org/ v2raya main&quot;</span> | sudo tee <span class="hljs-regexp">/etc/</span>apt<span class="hljs-regexp">/sources.list.d/</span>v2raya.list<br>sudo apt update<br></code></pre></td></tr></table></figure></li><li><p>安装 V2RayA</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo apt <span class="hljs-keyword">install</span> v2raya<br></code></pre></td></tr></table></figure></li></ol><h3 id="手动安装-deb-包"><a href="#手动安装-deb-包" class="headerlink" title="手动安装 deb 包"></a>手动安装 deb 包</h3><ol><li>下载 deb 包<br>下载后可以使用 Gdebi、QApt 等图形化工具来安装，也可以使用命令行：<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo apt install <span class="hljs-regexp">/path/</span>download/installer_debian_xxx_vxxx.deb <span class="hljs-comment">### 自行替换 deb 包所在的实际路径</span><br></code></pre></td></tr></table></figure></li></ol><h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><h2 id="一、启动-v2rayA-x2F-设置-v2rayA-自动启动"><a href="#一、启动-v2rayA-x2F-设置-v2rayA-自动启动" class="headerlink" title="一、启动 v2rayA &#x2F; 设置 v2rayA 自动启动"></a>一、启动 v2rayA &#x2F; 设置 v2rayA 自动启动</h2><p>   从 1.5 版开始将不再默认为用户启动 v2rayA 及设置开机自动。</p><ol><li><p>启动 v2rayA</p><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs smali">sudo<span class="hljs-keyword"> system</span>ctl start v2raya.service<br></code></pre></td></tr></table></figure></li><li><p>设置开机自动启动</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">sudo systemctl <span class="hljs-built_in">enable</span> v2raya.service<br></code></pre></td></tr></table></figure></li><li><p>切换 iptables 为 iptables-nft<br>   对于 Debian11 用户来说，iptables 已被弃用。使用 nftables 作为 iptables 的后端以进行适配：</p><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gams">update-alternatives --<span class="hljs-keyword">set</span> iptables /usr/<span class="hljs-comment">sbin</span>/iptables-nft<br>update-alternatives --set ip6tables /<span class="hljs-comment">usr</span>/sbin/<span class="hljs-comment">ip6tables-nft</span><br>update-alternatives <span class="hljs-comment">--set arptables</span> /usr/<span class="hljs-comment">sbin</span>/arptables-nft<br>update-alternatives --set ebtables /<span class="hljs-comment">usr</span>/sbin/<span class="hljs-comment">ebtables-nft</span><br></code></pre></td></tr></table></figure></li></ol><p>如果你想切换回 legacy 版本：</p><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gams">update-alternatives --<span class="hljs-keyword">set</span> iptables /usr/<span class="hljs-comment">sbin</span>/iptables-legacy<br>update-alternatives --set ip6tables /<span class="hljs-comment">usr</span>/sbin/<span class="hljs-comment">ip6tables-legacy</span><br>update-alternatives <span class="hljs-comment">--set arptables</span> /usr/<span class="hljs-comment">sbin</span>/arptables-legacy<br>update-alternatives --set ebtables /<span class="hljs-comment">usr</span>/sbin/<span class="hljs-comment">ebtables-legacy</span><br></code></pre></td></tr></table></figure><p>切换后重启即可。</p><h3 id="二、创建帐号"><a href="#二、创建帐号" class="headerlink" title="二、创建帐号"></a>二、创建帐号</h3><p>如果你通过 2017 端口 如 <a href="http://localhost:2017/">http://localhost:2017</a> 无法访问 UI 界面，请检查你的服务是否已经启动。相关问题接下来进入 UI，本节将介绍 v2rayA 的基本操作流程。</p><p>在第一次进入页面时，你需要创建一个管理员账号，请妥善保管你的用户名密码，如果遗忘，使用sudo v2raya –reset-password命令重置</p><h3 id="三、导入节点"><a href="#三、导入节点" class="headerlink" title="三、导入节点"></a>三、导入节点</h3><p>可以导入节点，也可以导入订阅节点。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程电脑</category>
+      
+      <category>代理上网</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>v2raya</tag>
+      
+      <tag>代理</tag>
+      
+      <tag>LINUX</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>LINUX系统电脑上迁移博客系统</title>
     <link href="/code.github.io/2022/11/01/Linux%E7%B3%BB%E7%BB%9F%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/"/>
     <url>/code.github.io/2022/11/01/Linux%E7%B3%BB%E7%BB%9F%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/</url>
@@ -324,6 +355,39 @@
   
   
   <entry>
+    <title>Python入门--变量、数据类型</title>
+    <link href="/code.github.io/2022/08/17/Python%E5%85%A5%E9%97%A8--%E5%8F%98%E9%87%8F%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    <url>/code.github.io/2022/08/17/Python%E5%85%A5%E9%97%A8--%E5%8F%98%E9%87%8F%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    
+    <content type="html"><![CDATA[<p>Python程序中使用的各种数据,以及在程序中使用变量来表示这些数据。</p><span id="more"></span><h1 id="一、变量"><a href="#一、变量" class="headerlink" title="一、变量"></a>一、变量</h1><h2 id="（一）变量的命名和使用"><a href="#（一）变量的命名和使用" class="headerlink" title="（一）变量的命名和使用"></a>（一）变量的命名和使用</h2><p>在Python中使用变量时,需要遵守一些规则和指南。违反这些规则将引发错误,而指南旨在让你编写的代码更容易阅读和理解。请务必牢记下述有关变量的规则。</p><ul><li>变量名只能包含字母、数字和下划线。变量名能以字母或下划线打头,但不能以数字打头。例如,可将变量命名为message_1 ,但不能将其命名为1_message 。</li><li>变量名不能包含空格,但能使用下划线来分隔其中的单词。例如,变量名greeting_message 可行,但变量名greeting message 会引发错误。</li><li>不要将Python关键字和函数名用作变量名,即不要使用Python保留用于特殊用途的单词,如print (请参见附录A.4)。</li><li>变量名应既简短又具有描述性。例如,name 比n好,student_name 比s_n 好,name_length 比length_of_persons_name 好。</li><li>慎用小写字母l 和大写字母O ,因为它们可能被人错看成数字1 和0</li></ul><h1 id="二、简单数据类型"><a href="#二、简单数据类型" class="headerlink" title="二、简单数据类型"></a>二、简单数据类型</h1><h2 id="（一）字符串"><a href="#（一）字符串" class="headerlink" title="（一）字符串"></a>（一）字符串</h2><p>在Python中， 用引号括起的都是字符串。单引号和双引号都可以，如果嵌套则需要间隔使用。</p><ol><li>添加空白<br>在字符串中添加制表符， 可使用字符组合<code>\t</code><br>在字符串中添加换行符， 可使用字符组合<code>\n</code><br>字符串<code>\n\t</code>让Python换到下一行， 并在下一行开头添加一个制表符。</li><li>去除字符串里面的空白:lstrip() 、 rstrip() 和strip()</li></ol><h2 id="（二）数"><a href="#（二）数" class="headerlink" title="（二）数"></a>（二）数</h2><ol><li>整数和浮点数<br>需要注意的是，浮点数的加减可能是不正确的。所有语言都存在这种问题， 没有什么可担心的。<br>将任意两个数相除时， 结果总是浮点数</li></ol><h2 id="三-注释"><a href="#三-注释" class="headerlink" title="(三)注释"></a>(三)注释</h2><p><code>#</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程电脑</category>
+      
+      <category>PYTHON</category>
+      
+      <category>入门课程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>PYTHON</tag>
+      
+      <tag>变量</tag>
+      
+      <tag>数据类型</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>LINUX下增加交换分区（swap）大小</title>
     <link href="/code.github.io/2022/08/14/linux%20%E4%B8%8B%E5%A2%9E%E5%8A%A0%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA%EF%BC%88swap%EF%BC%89%E5%A4%A7%E5%B0%8F/"/>
     <url>/code.github.io/2022/08/14/linux%20%E4%B8%8B%E5%A2%9E%E5%8A%A0%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA%EF%BC%88swap%EF%BC%89%E5%A4%A7%E5%B0%8F/</url>
@@ -502,6 +566,37 @@
       <tag>启动顺序</tag>
       
       <tag>系统</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LINUX文件目录管理</title>
+    <link href="/code.github.io/2022/06/16/linux%20%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/"/>
+    <url>/code.github.io/2022/06/16/linux%20%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<p>linux首先建立一系列空目录，然后将文件挂载到目录中。主要介绍了目录内容和几个重要的文件管理命令。</p><span id="more"></span><h1 id="一、linux-主要目录及其内容"><a href="#一、linux-主要目录及其内容" class="headerlink" title="一、linux 主要目录及其内容"></a>一、linux 主要目录及其内容</h1><table><thead><tr><th align="center">目录</th><th align="center">内容</th></tr></thead><tbody><tr><td align="center">&#x2F;bin</td><td align="center">常用命令</td></tr><tr><td align="center">&#x2F;boot</td><td align="center">内核与启动文件</td></tr><tr><td align="center">&#x2F;dev</td><td align="center">各种设备文件</td></tr><tr><td align="center">&#x2F;etc</td><td align="center">系统软件的启动和配置</td></tr><tr><td align="center">&#x2F;home</td><td align="center">用户目录</td></tr><tr><td align="center">&#x2F;lib</td><td align="center">C编译器的库</td></tr><tr><td align="center">&#x2F;media</td><td align="center">可移动介质安装点</td></tr><tr><td align="center">&#x2F;opt</td><td align="center">可选的软件安装包</td></tr><tr><td align="center">&#x2F;proc</td><td align="center">进程的镜像</td></tr><tr><td align="center">&#x2F;root</td><td align="center">超级用户的主目录</td></tr><tr><td align="center">&#x2F;sbin</td><td align="center">和系统操作有关的命令</td></tr><tr><td align="center">&#x2F;tmp</td><td align="center">临时文件存放点</td></tr><tr><td align="center">&#x2F;usr</td><td align="center">非系统的程序和命令</td></tr><tr><td align="center">&#x2F;var</td><td align="center">系统专用的数据和配置文件</td></tr></tbody></table><h1 id="二、共享文件实例"><a href="#二、共享文件实例" class="headerlink" title="二、共享文件实例"></a>二、共享文件实例</h1><p>需求：新建一个名称是happygroup的用户组，添加user1、 user2和user3三个用户，设置工作目录为sharehappy。设置user1为管理者，并且除了本用户组外，其他人无法修改文件。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 新建一个名称为happygroup的用户组，并创建用户</span><br>linux@linux-ThinkCentre-E75:/home$ sudo groupadd happygroup<br><span class="hljs-comment"># 新建三个用户归入happygroup用户组，并设置密码为123</span><br>inux@linux-ThinkCentre-E75:/home$ sudo useradd -G happygroup user1<br>linux@linux-ThinkCentre-E75:/home$ sudo passwd user1<br>新的 密码： <br>重新输入新的 密码： <br>passwd：已成功更新密码<br>linux@linux-ThinkCentre-E75:/home$ sudo useradd -G happygroup user2<br>linux@linux-ThinkCentre-E75:/home$ sudo useradd -G happygroup user3<br>linux@linux-ThinkCentre-E75:/home$ sudo passwd user2<br>新的 密码： <br>重新输入新的 密码： <br>passwd：已成功更新密码<br>linux@linux-ThinkCentre-E75:/home$ sudo passwd user3<br>新的 密码： <br>重新输入新的 密码： <br>passwd：已成功更新密码<br><span class="hljs-comment"># 在home目录下新建名为sharehappy的文件夹</span><br>linux@linux-ThinkCentre-E75:/home$ sudo <span class="hljs-built_in">mkdir</span> sharehappy<br><span class="hljs-comment"># 将sharehappy文件夹的权限交给happygroup</span><br>linux@linux-ThinkCentre-E75:/home$ sudo <span class="hljs-built_in">chgrp</span> happygroup  sharehappy/<br><span class="hljs-comment"># 增加happygroup组对sharehappy文件目录的读写执行权限</span><br>linux@linux-ThinkCentre-E75:/home$ sudo <span class="hljs-built_in">chmod</span> g+rwx sharehappy/<br><span class="hljs-comment"># 撤销其他用户对该目录的读写执行权限</span><br>linux@linux-ThinkCentre-E75:/home$ sudo <span class="hljs-built_in">chmod</span> o-rwx sharehappy/<br><span class="hljs-comment"># 把sharehappy目录的所有者更改为user1</span><br>linux@linux-ThinkCentre-E75:/home$ sudo <span class="hljs-built_in">chown</span> user1 sharehappy/<br><br></code></pre></td></tr></table></figure><h1 id="三、创建文件命令"><a href="#三、创建文件命令" class="headerlink" title="三、创建文件命令"></a>三、创建文件命令</h1><p>touch命令可以新建一个空文件，当某个程序需要一个文件无法启动，而这个文件实际上并不重要，可以通过新建一个空文件来骗过程序。<br>touch的另一个用途是可以更新文件的时间等信息，而对内容不做更改。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>电脑编程</category>
+      
+      <category>LINUX</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LINUX</tag>
+      
+      <tag>文件目录管理</tag>
+      
+      <tag>命令行</tag>
       
     </tags>
     
