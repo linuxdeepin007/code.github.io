@@ -26,7 +26,7 @@
 <meta property="og:description" content="linux首先建立一系列空目录，然后将文件挂载到目录中。主要介绍了目录内容和几个重要的文件管理命令。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-25T00:00:36.410Z">
+<meta property="article:modified_time" content="2022-11-25T05:49:22.000Z">
 <meta property="article:author" content="望月砂">
 <meta property="article:tag" content="LINUX">
 <meta property="article:tag" content="文件目录管理">
@@ -306,7 +306,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年11月25日 早上
+                    本文最后更新于：2022年11月25日 下午
                   
                 
               </p>
@@ -316,7 +316,7 @@
               <p>linux首先建立一系列空目录，然后将文件挂载到目录中。主要介绍了目录内容和几个重要的文件管理命令。</p>
 <span id="more"></span>
 
-<h1 id="一、linux-主要目录及其内容"><a href="#一、linux-主要目录及其内容" class="headerlink" title="一、linux 主要目录及其内容"></a>一、linux 主要目录及其内容</h1><table>
+<h2 id="一、linux-主要目录及其内容"><a href="#一、linux-主要目录及其内容" class="headerlink" title="一、linux 主要目录及其内容"></a>一、linux 主要目录及其内容</h2><table>
 <thead>
 <tr>
 <th align="center">目录</th>
@@ -380,9 +380,9 @@
 <td align="center">系统专用的数据和配置文件</td>
 </tr>
 </tbody></table>
-<h1 id="二、共享文件实例"><a href="#二、共享文件实例" class="headerlink" title="二、共享文件实例"></a>二、共享文件实例</h1><p>需求：新建一个名称是happygroup的用户组，添加user1、 user2和user3三个用户，设置工作目录为sharehappy。设置user1为管理者，并且除了本用户组外，其他人无法修改文件。</p>
+<h2 id="二、共享文件实例"><a href="#二、共享文件实例" class="headerlink" title="二、共享文件实例"></a>二、共享文件实例</h2><p>需求：新建一个名称是happygroup的用户组，添加user1、 user2和user3三个用户，设置工作目录为sharehappy。设置user1为管理者，并且除了本用户组外，其他人无法修改文件。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 新建一个名称为happygroup的用户组，并创建用户</span><br>linux@linux-ThinkCentre-E75:/home$ sudo groupadd happygroup<br><span class="hljs-comment"># 新建三个用户归入happygroup用户组，并设置密码为123</span><br>inux@linux-ThinkCentre-E75:/home$ sudo useradd -G happygroup user1<br>linux@linux-ThinkCentre-E75:/home$ sudo passwd user1<br>新的 密码： <br>重新输入新的 密码： <br>passwd：已成功更新密码<br>linux@linux-ThinkCentre-E75:/home$ sudo useradd -G happygroup user2<br>linux@linux-ThinkCentre-E75:/home$ sudo useradd -G happygroup user3<br>linux@linux-ThinkCentre-E75:/home$ sudo passwd user2<br>新的 密码： <br>重新输入新的 密码： <br>passwd：已成功更新密码<br>linux@linux-ThinkCentre-E75:/home$ sudo passwd user3<br>新的 密码： <br>重新输入新的 密码： <br>passwd：已成功更新密码<br><span class="hljs-comment"># 在home目录下新建名为sharehappy的文件夹</span><br>linux@linux-ThinkCentre-E75:/home$ sudo <span class="hljs-built_in">mkdir</span> sharehappy<br><span class="hljs-comment"># 将sharehappy文件夹的权限交给happygroup</span><br>linux@linux-ThinkCentre-E75:/home$ sudo <span class="hljs-built_in">chgrp</span> happygroup  sharehappy/<br><span class="hljs-comment"># 增加happygroup组对sharehappy文件目录的读写执行权限</span><br>linux@linux-ThinkCentre-E75:/home$ sudo <span class="hljs-built_in">chmod</span> g+rwx sharehappy/<br><span class="hljs-comment"># 撤销其他用户对该目录的读写执行权限</span><br>linux@linux-ThinkCentre-E75:/home$ sudo <span class="hljs-built_in">chmod</span> o-rwx sharehappy/<br><span class="hljs-comment"># 把sharehappy目录的所有者更改为user1</span><br>linux@linux-ThinkCentre-E75:/home$ sudo <span class="hljs-built_in">chown</span> user1 sharehappy/<br><br></code></pre></td></tr></table></figure>
-<h1 id="三、创建文件命令"><a href="#三、创建文件命令" class="headerlink" title="三、创建文件命令"></a>三、创建文件命令</h1><p>touch命令可以新建一个空文件，当某个程序需要一个文件无法启动，而这个文件实际上并不重要，可以通过新建一个空文件来骗过程序。<br>touch的另一个用途是可以更新文件的时间等信息，而对内容不做更改。</p>
+<h2 id="三、创建文件命令"><a href="#三、创建文件命令" class="headerlink" title="三、创建文件命令"></a>三、创建文件命令</h2><p>touch命令可以新建一个空文件，当某个程序需要一个文件无法启动，而这个文件实际上并不重要，可以通过新建一个空文件来骗过程序。<br>touch的另一个用途是可以更新文件的时间等信息，而对内容不做更改。</p>
 
               
             </div>

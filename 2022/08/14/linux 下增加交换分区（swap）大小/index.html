@@ -18,15 +18,15 @@
   <meta name="author" content="望月砂">
   <meta name="keywords" content="">
   
-    <meta name="description" content="swap分区，即交换区。当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。但是linux在安装过程中，默认的swap分区一般都很小，所以需要手动分区或者在系统安装好之后，再调整其大小。">
+    <meta name="description" content="swap分区，即交换区。当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LINUX下增加交换分区（swap）大小">
 <meta property="og:url" content="https://linuxdeepin007.github.io/code.github.io/2022/08/14/linux%20%E4%B8%8B%E5%A2%9E%E5%8A%A0%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA%EF%BC%88swap%EF%BC%89%E5%A4%A7%E5%B0%8F/index.html">
 <meta property="og:site_name" content="望月砂&#39;s BLOG">
-<meta property="og:description" content="swap分区，即交换区。当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。但是linux在安装过程中，默认的swap分区一般都很小，所以需要手动分区或者在系统安装好之后，再调整其大小。">
+<meta property="og:description" content="swap分区，即交换区。当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-25T00:00:45.040Z">
+<meta property="article:modified_time" content="2022-11-25T05:51:18.000Z">
 <meta property="article:author" content="望月砂">
 <meta property="article:tag" content="LINUX">
 <meta property="article:tag" content="swap">
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.4k 字
         
       </span>
     
@@ -306,25 +306,28 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年11月25日 早上
+                    本文最后更新于：2022年11月25日 下午
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <p>swap分区，即交换区。当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。但是linux在安装过程中，默认的swap分区一般都很小，所以需要手动分区或者在系统安装好之后，再调整其大小。</p>
+              <p>swap分区，即交换区。当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。</p>
 <span id="more"></span>
-<h1 id="linux-下增加交换分区（swap）大小"><a href="#linux-下增加交换分区（swap）大小" class="headerlink" title="linux 下增加交换分区（swap）大小"></a>linux 下增加交换分区（swap）大小</h1><h2 id="一、当前系统配置"><a href="#一、当前系统配置" class="headerlink" title="一、当前系统配置"></a>一、当前系统配置</h2><ul>
-<li><p>linux（ubuntu）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux:~$ <span class="hljs-built_in">cat</span> /proc/version<br>Linux version 4.15.0-175-generic (buildd@lcy02-amd64-034) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) <span class="hljs-comment">#184-Ubuntu SMP Thu Mar 24 17:48:36 UTC 2022</span><br><br></code></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>当前系统配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux:~$ free -mh<br>              总计         已用        空闲      共享    缓冲/缓存    可用<br>内存：        1.8G        806M        132M        130M        900M        691M<br>交换：        974M        6.8M        968M<br><br></code></pre></td></tr></table></figure></li>
+<p>但是linux在安装过程中，默认的swap分区一般都很小，所以需要手动分区或者在系统安装好之后，再调整其大小。</p>
+<h2 id="一、当前系统配置"><a href="#一、当前系统配置" class="headerlink" title="一、当前系统配置"></a>一、当前系统配置</h2><ul>
+<li>linux（ubuntu）</li>
 </ul>
-<h2 id="二、交换分区（swap）"><a href="#二、交换分区（swap）" class="headerlink" title="二、交换分区（swap）"></a>二、交换分区（swap）</h2><h3 id="（一）交换分区作用"><a href="#（一）交换分区作用" class="headerlink" title="（一）交换分区作用"></a>（一）交换分区作用</h3><p>swap分区，即交换区，swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux:~$ <span class="hljs-built_in">cat</span> /proc/version<br>Linux version 4.15.0-175-generic (buildd@lcy02-amd64-034) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) <span class="hljs-comment">#184-Ubuntu SMP Thu Mar 24 17:48:36 UTC 2022</span><br>  <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>当前系统配置</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux:~$ free -mh<br>                总计         已用        空闲      共享    缓冲/缓存    可用<br>  内存：        1.8G        806M        132M        130M        900M        691M<br>  交换：        974M        6.8M        968M<br>  <br></code></pre></td></tr></table></figure>
+
+<h2 id="二、交换分区（swap）"><a href="#二、交换分区（swap）" class="headerlink" title="二、交换分区（swap）"></a>二、交换分区（swap）</h2><h3 id="（一）交换分区作用"><a href="#（一）交换分区作用" class="headerlink" title="（一）交换分区作用"></a>（一）交换分区作用</h3><p>swap分区，即交换区，swap空间的作用可简单描述为：当系统的物理内存不够用的时候，就需要将物理内存中的一部分空间释放出来，以供当前运行的程序使用。</p>
+<p>那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到Swap空间中，等到那些程序要运行时，再从Swap中恢复保存的数据到内存中。</p>
 <h3 id="（二）交换分区大小"><a href="#（二）交换分区大小" class="headerlink" title="（二）交换分区大小"></a>（二）交换分区大小</h3><p>在linux中，我们对swap分区的划分有一定的规则，当物理内存小于2G时，swap分区大小为物理内存的2倍；超过2G的部分，swap分区大小跟物理内存相等。</p>
 <h2 id="三、增加交换分区"><a href="#三、增加交换分区" class="headerlink" title="三、增加交换分区"></a>三、增加交换分区</h2><h3 id="（一）新建一个swap文件"><a href="#（一）新建一个swap文件" class="headerlink" title="（一）新建一个swap文件"></a>（一）新建一个swap文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">linux@linux:~$ <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/tmp/swap2 bs=1M count=4000 <span class="hljs-comment"># 新建一个4G的文件，命名为swap2</span><br>记录了4000+0 的读入<br>记录了4000+0 的写出<br>4194304000 bytes (4.2 GB, 3.9 GiB) copied, 48.3163 s, 86.8 MB/s<br><br></code></pre></td></tr></table></figure>
 
@@ -341,9 +344,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">swapoff /tmp/swap2<br><span class="hljs-built_in">rm</span> -rf /tmp/swap2<br></code></pre></td></tr></table></figure>
 
 <ul>
-<li>修改配置文件</li>
+<li>修改配置文件<br>将 &#x2F;etc&#x2F;fstab中添加的末行删除</li>
 </ul>
-<p>将 &#x2F;etc&#x2F;fstab中添加的末行删除</p>
 
               
             </div>

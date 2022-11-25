@@ -26,7 +26,7 @@
 <meta property="og:description" content="v2rayA 是一个易用而强大的，专注于 Linux 的 V2Ray 客户端。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-25T02:00:02.000Z">
+<meta property="article:modified_time" content="2022-11-25T03:40:50.000Z">
 <meta property="article:author" content="望月砂">
 <meta property="article:tag" content="v2raya">
 <meta property="article:tag" content="代理">
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          1.7k 字
         
       </span>
     
@@ -306,7 +306,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年11月25日 上午
+                    本文最后更新于：2022年11月25日 中午
                   
                 
               </p>
@@ -316,63 +316,37 @@
               <p>v2rayA 是一个易用而强大的，专注于 Linux 的 V2Ray 客户端。</p>
 <span id="more"></span>
 
-<h1 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h1><p>v2rayA 的功能依赖于 V2Ray 内核，因此需要安装内核。</p>
-<h2 id="一、安装-V2Ray-内核-x2F-Xray-内核"><a href="#一、安装-V2Ray-内核-x2F-Xray-内核" class="headerlink" title="一、安装 V2Ray 内核 &#x2F; Xray 内核"></a>一、安装 V2Ray 内核 &#x2F; Xray 内核</h2><ol>
-<li>V2Ray &#x2F; Xray 的官方脚本</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">V2Ray 安装参考：https://github.com/v2fly/fhs-install-v2ray<br>Xray 安装参考：https://github.com/XTLS/Xray-install<br></code></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>v2rayA 提供的镜像脚本（推荐）</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -Ls https://mirrors.v2raya.org/go.sh | sudo bash<br></code></pre></td></tr></table></figure>
+<h2 id="一、下载与安装"><a href="#一、下载与安装" class="headerlink" title="一、下载与安装"></a>一、下载与安装</h2><p>v2rayA 的功能依赖于 V2Ray 内核，因此需要安装内核。</p>
+<h3 id="（一）安装-V2Ray-内核-x2F-Xray-内核"><a href="#（一）安装-V2Ray-内核-x2F-Xray-内核" class="headerlink" title="（一）安装 V2Ray 内核 &#x2F; Xray 内核"></a>（一）安装 V2Ray 内核 &#x2F; Xray 内核</h3><h4 id="1-V2Ray-x2F-Xray-的官方脚本"><a href="#1-V2Ray-x2F-Xray-的官方脚本" class="headerlink" title="1. V2Ray &#x2F; Xray 的官方脚本"></a>1. V2Ray &#x2F; Xray 的官方脚本</h4><p>V2Ray 安装参考：<a target="_blank" rel="noopener" href="https://github.com/v2fly/fhs-install-v2ray">https://github.com/v2fly/fhs-install-v2ray</a></p>
+<p>Xray 安装参考：<a target="_blank" rel="noopener" href="https://github.com/XTLS/Xray-install">https://github.com/XTLS/Xray-install</a></p>
+<h4 id="2-v2rayA-提供的镜像脚本（推荐）"><a href="#2-v2rayA-提供的镜像脚本（推荐）" class="headerlink" title="2. v2rayA 提供的镜像脚本（推荐）"></a>2. v2rayA 提供的镜像脚本（推荐）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sduo curl -Ls https://mirrors.v2raya.org/go.sh | sudo bash<br></code></pre></td></tr></table></figure>
 
 <p>安装后可以关掉服务，因为 v2rayA 不依赖于该 systemd 服务。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl <span class="hljs-built_in">disable</span> v2ray --now <span class="hljs-comment">### Xray 需要替换服务为 xray</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="二、安装-v2rayA"><a href="#二、安装-v2rayA" class="headerlink" title="二、安装 v2rayA"></a>二、安装 v2rayA</h2><h3 id="通过软件源安装"><a href="#通过软件源安装" class="headerlink" title="通过软件源安装"></a>通过软件源安装</h3><ol>
-<li>添加公钥</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -qO - https://apt.v2raya.org/key/public-key.asc | sudo <span class="hljs-built_in">tee</span> /etc/apt/trusted.gpg.d/v2raya.asc<br></code></pre></td></tr></table></figure>
+<h3 id="（二）安装-v2rayA"><a href="#（二）安装-v2rayA" class="headerlink" title="（二）安装 v2rayA"></a>（二）安装 v2rayA</h3><h4 id="1-通过软件源安装"><a href="#1-通过软件源安装" class="headerlink" title="1. 通过软件源安装"></a>1. 通过软件源安装</h4><h5 id="a-添加公钥"><a href="#a-添加公钥" class="headerlink" title="a. 添加公钥"></a>a. 添加公钥</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -qO - https://apt.v2raya.org/key/public-key.asc | sudo <span class="hljs-built_in">tee</span> /etc/apt/trusted.gpg.d/v2raya.asc<br></code></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>添加 V2RayA 软件源</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb https://apt.v2raya.org/ v2raya main&quot;</span> | sudo <span class="hljs-built_in">tee</span> /etc/apt/sources.list.d/v2raya.list<br>sudo apt update<br></code></pre></td></tr></table></figure>
+<h5 id="b-添加-V2RayA-软件源"><a href="#b-添加-V2RayA-软件源" class="headerlink" title="b.添加 V2RayA 软件源"></a>b.添加 V2RayA 软件源</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb https://apt.v2raya.org/ v2raya main&quot;</span> | sudo <span class="hljs-built_in">tee</span> /etc/apt/sources.list.d/v2raya.list<br>sudo apt update<br></code></pre></td></tr></table></figure>
 
-<ol start="3">
-<li>安装 V2RayA</li>
-</ol>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo apt <span class="hljs-keyword">install</span> v2raya<br></code></pre></td></tr></table></figure>
+<h5 id="c-安装-V2RayA"><a href="#c-安装-V2RayA" class="headerlink" title="c.安装 V2RayA"></a>c.安装 V2RayA</h5><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo apt <span class="hljs-keyword">install</span> v2raya<br></code></pre></td></tr></table></figure>
 
-<h3 id="手动安装-deb-包"><a href="#手动安装-deb-包" class="headerlink" title="手动安装 deb 包"></a>手动安装 deb 包</h3><ol>
-<li>下载 deb 包<br>下载后可以使用 Gdebi、QApt 等图形化工具来安装，也可以使用命令行：</li>
-</ol>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo apt install <span class="hljs-regexp">/path/</span>download/installer_debian_xxx_vxxx.deb <span class="hljs-comment">### 自行替换 deb 包所在的实际路径</span><br></code></pre></td></tr></table></figure>
-<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><h2 id="一、启动-v2rayA-x2F-设置-v2rayA-自动启动"><a href="#一、启动-v2rayA-x2F-设置-v2rayA-自动启动" class="headerlink" title="一、启动 v2rayA &#x2F; 设置 v2rayA 自动启动"></a>一、启动 v2rayA &#x2F; 设置 v2rayA 自动启动</h2><p>从 1.5 版开始将不再默认为用户启动 v2rayA 及设置开机自动。</p>
-<ol>
-<li>启动 v2rayA</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl start v2raya.service<br></code></pre></td></tr></table></figure>
+<h4 id="2-手动安装-deb-包"><a href="#2-手动安装-deb-包" class="headerlink" title="2. 手动安装 deb 包"></a>2. 手动安装 deb 包</h4><h5 id="a-下载-deb-包"><a href="#a-下载-deb-包" class="headerlink" title="a. 下载 deb 包"></a>a. 下载 deb 包</h5><p>下载后可以使用 Gdebi、QApt 等图形化工具来安装，也可以使用命令行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install /path/download/installer_debian_xxx_vxxx.deb <span class="hljs-comment">### 自行替换 deb 包所在的实际路径</span><br></code></pre></td></tr></table></figure>
+<h2 id="二、使用方法"><a href="#二、使用方法" class="headerlink" title="二、使用方法"></a>二、使用方法</h2><h3 id="（一）启动-v2rayA-x2F-设置-v2rayA-自动启动"><a href="#（一）启动-v2rayA-x2F-设置-v2rayA-自动启动" class="headerlink" title="（一）启动 v2rayA &#x2F; 设置 v2rayA 自动启动"></a>（一）启动 v2rayA &#x2F; 设置 v2rayA 自动启动</h3><p>从 1.5 版开始将不再默认为用户启动 v2rayA 及设置开机自动。</p>
+<h4 id="1-启动-v2rayA"><a href="#1-启动-v2rayA" class="headerlink" title="1. 启动 v2rayA"></a>1. 启动 v2rayA</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl start v2raya.service<br></code></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>设置开机自动启动</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl <span class="hljs-built_in">enable</span> v2raya.service<br></code></pre></td></tr></table></figure>
+<h4 id="2-设置开机自动启动"><a href="#2-设置开机自动启动" class="headerlink" title="2. 设置开机自动启动"></a>2. 设置开机自动启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl <span class="hljs-built_in">enable</span> v2raya.service<br></code></pre></td></tr></table></figure>
 
-<ol start="3">
-<li>切换 iptables 为 iptables-nft</li>
-</ol>
-<p>对于 Debian11 用户来说，iptables 已被弃用。使用 nftables 作为 iptables 的后端以进行适配：</p>
+<h4 id="3-切换-iptables-为-iptables-nft"><a href="#3-切换-iptables-为-iptables-nft" class="headerlink" title="3. 切换 iptables 为 iptables-nft"></a>3. 切换 iptables 为 iptables-nft</h4><p>对于 Debian11 用户来说，iptables 已被弃用。使用 nftables 作为 iptables 的后端以进行适配：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">update-alternatives --<span class="hljs-built_in">set</span> iptables /usr/sbin/iptables-nft<br>update-alternatives --<span class="hljs-built_in">set</span> ip6tables /usr/sbin/ip6tables-nft<br>update-alternatives --<span class="hljs-built_in">set</span> arptables /usr/sbin/arptables-nft<br>update-alternatives --<span class="hljs-built_in">set</span> ebtables /usr/sbin/ebtables-nft<br></code></pre></td></tr></table></figure>
 
 <p>如果你想切换回 legacy 版本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">update-alternatives --<span class="hljs-built_in">set</span> iptables /usr/sbin/iptables-legacy<br>update-alternatives --<span class="hljs-built_in">set</span> ip6tables /usr/sbin/ip6tables-legacy<br>update-alternatives --<span class="hljs-built_in">set</span> arptables /usr/sbin/arptables-legacy<br>update-alternatives --<span class="hljs-built_in">set</span> ebtables /usr/sbin/ebtables-legacy<br></code></pre></td></tr></table></figure>
 
 <p>切换后重启即可。</p>
-<h3 id="二、创建帐号"><a href="#二、创建帐号" class="headerlink" title="二、创建帐号"></a>二、创建帐号</h3><p>如果你通过 2017 端口 如 <a target="_blank" rel="noopener" href="http://localhost:2017/">http://localhost:2017</a> 无法访问 UI 界面，请检查你的服务是否已经启动。相关问题接下来进入 UI，本节将介绍 v2rayA 的基本操作流程。</p>
+<h3 id="（二）创建帐号"><a href="#（二）创建帐号" class="headerlink" title="（二）创建帐号"></a>（二）创建帐号</h3><p>如果你通过 2017 端口 如 <a target="_blank" rel="noopener" href="http://localhost:2017/">http://localhost:2017</a> 无法访问 UI 界面，请检查你的服务是否已经启动。相关问题接下来进入 UI，本节将介绍 v2rayA 的基本操作流程。</p>
 <p>在第一次进入页面时，你需要创建一个管理员账号，请妥善保管你的用户名密码，如果遗忘，使用sudo v2raya –reset-password命令重置</p>
-<h3 id="三、导入节点"><a href="#三、导入节点" class="headerlink" title="三、导入节点"></a>三、导入节点</h3><p>可以导入节点，也可以导入订阅节点。</p>
+<h3 id="（三）导入节点"><a href="#（三）导入节点" class="headerlink" title="（三）导入节点"></a>（三）导入节点</h3><p>可以导入节点，也可以导入订阅节点。</p>
 
               
             </div>
