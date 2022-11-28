@@ -229,6 +229,39 @@
   
   
   <entry>
+    <title>Python入门--列表简介</title>
+    <link href="/code.github.io/2022/10/17/Python%E5%85%A5%E9%97%A8--%E5%88%97%E8%A1%A8%E7%AE%80%E4%BB%8B/"/>
+    <url>/code.github.io/2022/10/17/Python%E5%85%A5%E9%97%A8--%E5%88%97%E8%A1%A8%E7%AE%80%E4%BB%8B/</url>
+    
+    <content type="html"><![CDATA[<p>列表 由一系列按特定顺序排列的元素组成。</p><span id="more"></span><p>你可以创建包含字母表中所有字母、数字0-9或所有家庭成员姓名的列表；也可以将任何东西加入列表中，其中的元素之间可以没有任何关系。列表通常包含多个元素。</p><h2 id="一、列表的表示方法"><a href="#一、列表的表示方法" class="headerlink" title="一、列表的表示方法"></a>一、列表的表示方法</h2><p>在Python中，用方括号<code>[]</code>表示列表，并用逗号分隔其中的元素。 例如：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">bicycles = [<span class="hljs-string">&#x27;trek&#x27;</span>, <span class="hljs-string">&#x27;cannondale&#x27;</span>, <span class="hljs-string">&#x27;redline&#x27;</span>, <span class="hljs-string">&#x27;specialized&#x27;</span>]<br><span class="hljs-built_in">print</span>(bicycles)<br></code></pre></td></tr></table></figure><p>运行结果</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;fenghuang&#x27;</span>, <span class="hljs-string">&#x27;meili&#x27;</span>, <span class="hljs-string">&#x27;taiyang&#x27;</span>, <span class="hljs-string">&#x27;FBI&#x27;</span>]<br></code></pre></td></tr></table></figure><h2 id="二、列表的访问"><a href="#二、列表的访问" class="headerlink" title="二、列表的访问"></a>二、列表的访问</h2><h3 id="（一）列表是有序集合"><a href="#（一）列表是有序集合" class="headerlink" title="（一）列表是有序集合"></a>（一）列表是有序集合</h3><p>因此要访问列表的任意元素，只需将该元素的位置（索引 ）指出列表的名称，再指出元素的索引，并将后者放在方括号内。<br>下面的代码从列表bicycles 中提取第一款自行车：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(bicycles[<span class="hljs-number">0</span>])<br></code></pre></td></tr></table></figure><p>运行结果</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">fenghuang<br></code></pre></td></tr></table></figure><h3 id="（二）访问最后一个元素"><a href="#（二）访问最后一个元素" class="headerlink" title="（二）访问最后一个元素"></a>（二）访问最后一个元素</h3><p>Python为访问最后一个列表元素提供了一种特殊语法。通过将索引指定为-1 ，可让Python返回最后一个列表元素</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(bicycles[-<span class="hljs-number">1</span>])<br><br></code></pre></td></tr></table></figure><p>运行结果</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">FBI<br></code></pre></td></tr></table></figure><h3 id="（三）使用各个元素"><a href="#（三）使用各个元素" class="headerlink" title="（三）使用各个元素"></a>（三）使用各个元素</h3><p>你可以像使用其他变量一样使用列表中的各个值。</p><h4 id="格式化输入"><a href="#格式化输入" class="headerlink" title="格式化输入"></a>格式化输入</h4><blockquote><p>从 Python 3.0 开始，format()函数被引入以提供高级格式化选项。</p></blockquote><p>从 Python 3.6 开始，Python f 字符串可用。 该字符串具有f前缀，并使用{}评估变量。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">bags = <span class="hljs-number">3</span><br>apples_in_bag = <span class="hljs-number">12</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;There are total of <span class="hljs-subst">&#123;bags * apples_in_bag&#125;</span> apples&#x27;</span>)<br><br></code></pre></td></tr></table></figure><p>运行结果</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">There are total of <span class="hljs-number">36</span> apples<br></code></pre></td></tr></table></figure><h2 id="三、列表的修改"><a href="#三、列表的修改" class="headerlink" title="三、列表的修改"></a>三、列表的修改</h2><p>创建的大多数列表将是动态的，将随着程序的运行增删元素。</p><h3 id="（一）修改列表元素"><a href="#（一）修改列表元素" class="headerlink" title="（一）修改列表元素"></a>（一）修改列表元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br>motorcycles[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;ducati&#x27;</span><br><span class="hljs-built_in">print</span>(motorcycles)<br></code></pre></td></tr></table></figure><p>运行结果</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>[<span class="hljs-string">&#x27;ducati&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br></code></pre></td></tr></table></figure><h3 id="（二）在列表中添加元素"><a href="#（二）在列表中添加元素" class="headerlink" title="（二）在列表中添加元素"></a>（二）在列表中添加元素</h3><h4 id="1-在列表末尾添加元素"><a href="#1-在列表末尾添加元素" class="headerlink" title="1. 在列表末尾添加元素"></a>1. 在列表末尾添加元素</h4><p>使用<code>append()</code> 办法，将元素附加 （append）到列表。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br>❶ motorcycles.append(<span class="hljs-string">&#x27;ducati&#x27;</span>)<br><span class="hljs-built_in">print</span>(motorcycles)<br></code></pre></td></tr></table></figure><p>运行结果</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>, <span class="hljs-string">&#x27;ducati&#x27;</span>]<br></code></pre></td></tr></table></figure><h4 id="2-在列表中插入元素"><a href="#2-在列表中插入元素" class="headerlink" title="2. 在列表中插入元素"></a>2. 在列表中插入元素</h4><p>使用方法<code>insert() </code>可在列表的任何位置添加新元素。</p><p>方法insert() 在索引0 处添加空间，并将值’ducati’ 存储到这个地方。这种操作将列表中既有的每个元素都右移一个位置</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br>motorcycles.insert(<span class="hljs-number">0</span>,<span class="hljs-string">&#x27;ducati&#x27;</span>)<br><span class="hljs-built_in">print</span>(motorcycles)<br></code></pre></td></tr></table></figure><p>运行结果</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>[<span class="hljs-string">&#x27;ducati&#x27;</span>, <span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br></code></pre></td></tr></table></figure><h3 id="（三）从列表中删除元素"><a href="#（三）从列表中删除元素" class="headerlink" title="（三）从列表中删除元素"></a>（三）从列表中删除元素</h3><h4 id="1-使用-del-语句删除元素"><a href="#1-使用-del-语句删除元素" class="headerlink" title="1. 使用 del 语句删除元素"></a>1. 使用 <code>del</code> 语句删除元素</h4><p>如果知道要删除的元素在列表中的位置，可使用 <code>del</code> 语句。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br><span class="hljs-keyword">del</span> motorcycles[<span class="hljs-number">0</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br></code></pre></td></tr></table></figure><p>运行结果</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>[<span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br></code></pre></td></tr></table></figure><h4 id="2-使用方法-pop-删除元素"><a href="#2-使用方法-pop-删除元素" class="headerlink" title="2. 使用方法 pop() 删除元素"></a>2. 使用方法 <code>pop()</code> 删除元素</h4><blockquote><p>每当你使用pop() 时，被弹出的元素就不再在列表中了</p></blockquote><p>方法pop() 删除列表末尾的元素，并让你能够接着使用它。列表就像一个栈，而删除列表末尾的元素相当于弹出栈顶元素。</p><p>案例需求：有时候，你要将元素从列表中删除，并接着使用它的值。例如，你可能需要获取刚被射杀的外星人的 坐标和 坐标，以便在相应的位置显示爆炸效果；在Web应用程序中，你可能要将用户从活跃成员列表中删除，并将其加入到非活跃成员列表中。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br><br>poped_motorcycles = motorcycles.pop()<br><span class="hljs-built_in">print</span>(motorcycles)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;The last bicycle I owned was &quot;<span class="hljs-subst">&#123;poped_motorcycles.title()&#125;</span>&quot;.&#x27;</span>)<br></code></pre></td></tr></table></figure><p>运行结果</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>]<br>The last bicycle I owned was <span class="hljs-string">&quot;Suzuki&quot;</span>.<br></code></pre></td></tr></table></figure><h4 id="3-根据值删除元素-remove"><a href="#3-根据值删除元素-remove" class="headerlink" title="3. 根据值删除元素 remove()"></a>3. 根据值删除元素 <code>remove()</code></h4><p>有时候，你不知道要从列表中删除的值所处的位置,只知道要删除的元素的值，可使用方法<code>remove()</code>。</p><blockquote><p>使用remove() 从列表中删除元素时，也可接着使用它的值。</p></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br><br>removed_motorcycles = <span class="hljs-string">&#x27;honda&#x27;</span><br>motorcycles.remove(removed_motorcycles)<br><br><span class="hljs-built_in">print</span>(motorcycles)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;\nThe <span class="hljs-subst">&#123;removed_motorcycles.title()&#125;</span> is too expensive.&#x27;</span>)<br></code></pre></td></tr></table></figure><p><font face='楷体' color= blue> 运行结果：</font></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs PYTHON">[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>[<span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br><br>The Honda <span class="hljs-keyword">is</span> too expensive.<br></code></pre></td></tr></table></figure><h2 id="四、组织列表"><a href="#四、组织列表" class="headerlink" title="四、组织列表"></a>四、组织列表</h2><p>元素的排列顺序常常是无法预测的，有时候又需要调整排列顺序。</p><h3 id="（一）使用方法-sort-对列表永久排序"><a href="#（一）使用方法-sort-对列表永久排序" class="headerlink" title="（一）使用方法 sort() 对列表永久排序"></a>（一）使用方法 <code>sort()</code> 对列表永久排序</h3><p>列表会按照字母表顺序排序。与字母顺序相反的顺序排列列表元素，只需向sort() 方法传递参数reverse&#x3D;True 即可</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">cars = [<span class="hljs-string">&#x27;bmw&#x27;</span>, <span class="hljs-string">&#x27;audi&#x27;</span>, <span class="hljs-string">&#x27;toyota&#x27;</span>, <span class="hljs-string">&#x27;subaru&#x27;</span>]<br><span class="hljs-built_in">print</span>(cars)<br>cars.sort()<br><span class="hljs-built_in">print</span>(cars)<br>cars.sort(reverse=<span class="hljs-literal">True</span>)<br><span class="hljs-built_in">print</span>(cars)<br></code></pre></td></tr></table></figure><p>运行结果</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;bmw&#x27;</span>, <span class="hljs-string">&#x27;audi&#x27;</span>, <span class="hljs-string">&#x27;toyota&#x27;</span>, <span class="hljs-string">&#x27;subaru&#x27;</span>]<br>[<span class="hljs-string">&#x27;audi&#x27;</span>, <span class="hljs-string">&#x27;bmw&#x27;</span>, <span class="hljs-string">&#x27;subaru&#x27;</span>, <span class="hljs-string">&#x27;toyota&#x27;</span>]<br>[<span class="hljs-string">&#x27;toyota&#x27;</span>, <span class="hljs-string">&#x27;subaru&#x27;</span>, <span class="hljs-string">&#x27;bmw&#x27;</span>, <span class="hljs-string">&#x27;audi&#x27;</span>]<br></code></pre></td></tr></table></figure><h3 id="（二）使用函数-sorted-对列表临时排序"><a href="#（二）使用函数-sorted-对列表临时排序" class="headerlink" title="（二）使用函数 sorted() 对列表临时排序"></a>（二）使用函数 <code>sorted()</code> 对列表临时排序</h3><p>函数sorted() 能够按特定顺序显示列表元素，同时不影响它们在列表中的原始排列顺序。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">cars = [<span class="hljs-string">&#x27;bmw&#x27;</span>, <span class="hljs-string">&#x27;audi&#x27;</span>, <span class="hljs-string">&#x27;toyota&#x27;</span>, <span class="hljs-string">&#x27;subaru&#x27;</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;This is the original list:\n<span class="hljs-subst">&#123;cars&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;----------------------------&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;This is the sorted list temporary list:\n<span class="hljs-subst">&#123;<span class="hljs-built_in">sorted</span>(cars)&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;----------------------------&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;This is the original list:\n<span class="hljs-subst">&#123;cars&#125;</span>&#x27;</span>)<br></code></pre></td></tr></table></figure><p>输出结果</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">This <span class="hljs-keyword">is</span> the original <span class="hljs-built_in">list</span>:<br>[<span class="hljs-string">&#x27;bmw&#x27;</span>, <span class="hljs-string">&#x27;audi&#x27;</span>, <span class="hljs-string">&#x27;toyota&#x27;</span>, <span class="hljs-string">&#x27;subaru&#x27;</span>]<br>----------------------------<br>This <span class="hljs-keyword">is</span> the <span class="hljs-built_in">sorted</span> <span class="hljs-built_in">list</span> temporary <span class="hljs-built_in">list</span>:<br>[<span class="hljs-string">&#x27;audi&#x27;</span>, <span class="hljs-string">&#x27;bmw&#x27;</span>, <span class="hljs-string">&#x27;subaru&#x27;</span>, <span class="hljs-string">&#x27;toyota&#x27;</span>]<br>----------------------------<br>This <span class="hljs-keyword">is</span> the original <span class="hljs-built_in">list</span>:<br>[<span class="hljs-string">&#x27;bmw&#x27;</span>, <span class="hljs-string">&#x27;audi&#x27;</span>, <span class="hljs-string">&#x27;toyota&#x27;</span>, <span class="hljs-string">&#x27;subaru&#x27;</span>]<br></code></pre></td></tr></table></figure><h3 id="（三）确定列表的长度-len"><a href="#（三）确定列表的长度-len" class="headerlink" title="（三）确定列表的长度 len()"></a>（三）确定列表的长度 <code>len()</code></h3><p>使用函数 <code>len()</code> 可快速获悉列表的长度。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">cars = [<span class="hljs-string">&#x27;bmw&#x27;</span>, <span class="hljs-string">&#x27;audi&#x27;</span>, <span class="hljs-string">&#x27;toyota&#x27;</span>, <span class="hljs-string">&#x27;subaru&#x27;</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(cars))<br></code></pre></td></tr></table></figure><p>输出结果</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">4<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程电脑</category>
+      
+      <category>PYTHON</category>
+      
+      <category>入门课程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>PYTHON</tag>
+      
+      <tag>列表</tag>
+      
+      <tag>数据类型</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>PPT排版技巧——拆字与墨迹</title>
     <link href="/code.github.io/2022/10/09/PPT%E6%8E%92%E7%89%88%E6%8A%80%E5%B7%A7%E2%80%94%E2%80%94%E6%8B%86%E5%AD%97%E5%A2%A8%E8%BF%B9/"/>
     <url>/code.github.io/2022/10/09/PPT%E6%8E%92%E7%89%88%E6%8A%80%E5%B7%A7%E2%80%94%E2%80%94%E6%8B%86%E5%AD%97%E5%A2%A8%E8%BF%B9/</url>
@@ -318,6 +351,37 @@
       <tag>框架</tag>
       
       <tag>分数</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>公文种类、行文规范及范文——通报</title>
+    <link href="/code.github.io/2022/09/14/%E5%85%AC%E6%96%87%E7%A7%8D%E7%B1%BB%E3%80%81%E8%A1%8C%E6%96%87%E8%A7%84%E8%8C%83%E5%8F%8A%E8%8C%83%E6%96%87%E2%80%94%E2%80%94%E9%80%9A%E6%8A%A5/"/>
+    <url>/code.github.io/2022/09/14/%E5%85%AC%E6%96%87%E7%A7%8D%E7%B1%BB%E3%80%81%E8%A1%8C%E6%96%87%E8%A7%84%E8%8C%83%E5%8F%8A%E8%8C%83%E6%96%87%E2%80%94%E2%80%94%E9%80%9A%E6%8A%A5/</url>
+    
+    <content type="html"><![CDATA[<p>通报与通知的形式相近，但又不同于通知。 </p><span id="more"></span><p>适用于表彰先进、批评错误、传达重要精神和告知重要情况。</p><h2 id="一、公文行文方向及种类"><a href="#一、公文行文方向及种类" class="headerlink" title="一、公文行文方向及种类"></a>一、公文行文方向及种类</h2><p>公文按照行文方向分为：上行文、平行文、下行文。常见的公文类型按照行文分类。</p><p>上行文：报告、请示、函</p><p>平行文：函</p><p>下行文：决议、决定、通告、意见、通知、通报、批复、函、纪要</p><h2 id="二、公文种类"><a href="#二、公文种类" class="headerlink" title="二、公文种类"></a>二、公文种类</h2><p>《党政机关公文处理工作条例》经党中央、国务院同意，由中央办公厅、国务院办公厅于2012年4月16日印发，自2012年7月1日正式施行。根据《党政机关公文处理工作条例》规定，公文种类主要有15种：</p><p>决议、决定、命令（令）、公报、公告、通告、意见、通知、通报、报告、请示、批复、议案、函、纪要</p><h2 id="三、行文规则"><a href="#三、行文规则" class="headerlink" title="三、行文规则"></a>三、行文规则</h2><p>行文关系根据隶属关系和职权范围确定。一般不得越级行文，特殊情况需要越级行文的，应当同时抄送被越过的机关。</p><h3 id="1-向上级机关行文，应当遵循以下规则："><a href="#1-向上级机关行文，应当遵循以下规则：" class="headerlink" title="1. 向上级机关行文，应当遵循以下规则："></a>1. 向上级机关行文，应当遵循以下规则：</h3><ul><li>原则上主送一个上级机关，根据需要同时抄送相关上级机关和同级机关，不抄送下级机关。</li><li>党委、政府的部门向上级主管部门请示、报告重大事项，应当经本级党委、政府同意或者授权；属于部门职权范围内的事项应当直接报送上级主管部门。</li><li>下级机关的请示事项，如需以本机关名义向上级机关请示，应当提出倾向性意见后上报，不得原文转报上级机关。</li><li>请示应当一文一事。不得在报告等非请示性公文中夹带请示事项。</li><li>除上级机关负责人直接交办事项外，不得以本机关名义向上级机关负责人报送公文，不得以本机关负责人名义向上级机关报送公文。</li><li>受双重领导的机关向一个上级机关行文，必要时抄送另一个上级机关。</li></ul><h3 id="2-向下级机关行文，应当遵循以下规则："><a href="#2-向下级机关行文，应当遵循以下规则：" class="headerlink" title="2. 向下级机关行文，应当遵循以下规则："></a>2. 向下级机关行文，应当遵循以下规则：</h3><ul><li>主送受理机关，根据需要抄送相关机关。重要行文应当同时抄送发文机关的直接上级机关。</li><li>党委、政府的办公厅（室）根据本级党委、政府授权，可以向下级党委、政府行文，其他部门和单位不得向下级党委、政府发布指令性公文或者在公文中向下级党委、政府提出指令性要求。需经政府审批的具体事项，经政府同意后可以由政府职能部门行文，文中须注明已经政府同意。</li><li>党委、政府的部门在各自职权范围内可以向下级党委、政府的相关部门行文。</li><li>涉及多个部门职权范围内的事务，部门之间未协商一致的，不得向下行文；擅自行文的，上级机关应当责令其纠正或者撤销。</li><li>上级机关向受双重领导的下级机关行文，必要时抄送该下级机关的另一个上级机关。</li><li>同级党政机关、党政机关与其他同级机关必要时可以联合行文。属于党委、政府各自职权范围内的工作，不得联合行文。</li><li>党委、政府的部门依据职权可以相互行文。</li><li>部门内设机构除办公厅（室）外不得对外正式行文。</li></ul><h2 id="四、通报"><a href="#四、通报" class="headerlink" title="四、通报"></a>四、通报</h2><h3 id="（一）通报与通知对比"><a href="#（一）通报与通知对比" class="headerlink" title="（一）通报与通知对比"></a>（一）通报与通知对比</h3><ul><li>作为文种，通知庞杂，含量大，形式多样，相比之下，通报内容、形式都比较单一。</li><li>在实践中，一部分传达上级指示精神的公文既可用通知也可用通报。在内容上通报不同于通知的特点是一般不提出工作上的具体要求以及需要组织实施的事项。</li></ul><h3 id="（二）通报写作要求"><a href="#（二）通报写作要求" class="headerlink" title="（二）通报写作要求"></a>（二）通报写作要求</h3><p>通报文风要朴实。文字表述要简洁明快，言之有据，切忌夸张渲染。无论是表扬还是批评，都要以严肃认真、实事求是的态度认真核准事实，防止拔高或扭曲事实。</p><p>通报观点要鲜明，提倡什么，反对什么，要是非分明，忌含糊其辞。在行文篇幅上要详略得当，切忌把表彰通报写成报告文学，把批评通报写成情况纪实。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工作政治</category>
+      
+      <category>格式标准</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>公文</tag>
+      
+      <tag>写作</tag>
+      
+      <tag>通报</tag>
       
     </tags>
     
@@ -443,9 +507,9 @@
       
       <tag>PYTHON</tag>
       
-      <tag>变量</tag>
-      
       <tag>数据类型</tag>
+      
+      <tag>变量</tag>
       
     </tags>
     
@@ -702,6 +766,39 @@
   
   
   <entry>
+    <title>徐文兵《黄帝内经》通天论——01十年之约</title>
+    <link href="/code.github.io/2022/06/11/%E5%BE%90%E6%96%87%E5%85%B5%E3%80%8A%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F%E3%80%8B%E9%80%9A%E5%A4%A9%E8%AE%BA%E2%80%94%E2%80%9401%E5%8D%81%E5%B9%B4%E4%B9%8B%E7%BA%A6/"/>
+    <url>/code.github.io/2022/06/11/%E5%BE%90%E6%96%87%E5%85%B5%E3%80%8A%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F%E3%80%8B%E9%80%9A%E5%A4%A9%E8%AE%BA%E2%80%94%E2%80%9401%E5%8D%81%E5%B9%B4%E4%B9%8B%E7%BA%A6/</url>
+    
+    <content type="html"><![CDATA[<p>重新发现中医太美。这是一档由中央人民广播电台播出的节目。</p><span id="more"></span><p>节目以徐文兵老师讲述《黄帝内经》为主线，以梁东、徐文兵两位的对话为辅助。解读中医、解读经典。</p><p><strong>十年之约，经典再续</strong><br>由于人过多地关注变化的东西，比如股票、比如房价等等，但是作战略、做决策还是需要关注不变的东西。也是人们对于确定性的渴求。</p><h2 id="一、对于中医的看法"><a href="#一、对于中医的看法" class="headerlink" title="一、对于中医的看法"></a>一、对于中医的看法</h2><h3 id="（一）反中医是学术自由，黑中医是道德败坏"><a href="#（一）反中医是学术自由，黑中医是道德败坏" class="headerlink" title="（一）反中医是学术自由，黑中医是道德败坏"></a>（一）反中医是学术自由，黑中医是道德败坏</h3><p>不论是当下还是不久的将来，对于中医的偏见都会一直存在的，路转粉、粉转黑的事情每天都在发生，即便是作为中医本身也会对中医保持一种怀疑态度，关键在于无法解释“中医”</p><p>对中医抱有怀疑态度、持一种质疑态度反而能够学好中医、用好中医，道理和认识一个事物，结识一个人是一样的。</p><h3 id="（二）学习最好的方法是用"><a href="#（二）学习最好的方法是用" class="headerlink" title="（二）学习最好的方法是用"></a>（二）学习最好的方法是用</h3><p>学习中医最好的办法就是用，在自己身上实践。</p><h2 id="二、十年前黄帝内经课程"><a href="#二、十年前黄帝内经课程" class="headerlink" title="二、十年前黄帝内经课程"></a>二、十年前黄帝内经课程</h2><h3 id="（一）《黄帝内经》内容"><a href="#（一）《黄帝内经》内容" class="headerlink" title="（一）《黄帝内经》内容"></a>（一）《黄帝内经》内容</h3><p>上古天真论，是古代贵族的世界观、人生观、价值观的论述。讲的是一个时空。</p><p><strong>世界</strong> &#x2F; <strong>宇宙</strong></p><ul><li>世&#x2F;宇，是时间概念。</li><li>界&#x2F;宙，是空间概念。</li></ul><h3 id="（二）-时空中的事物都是联系的"><a href="#（二）-时空中的事物都是联系的" class="headerlink" title="（二） 时空中的事物都是联系的"></a>（二） 时空中的事物都是联系的</h3><blockquote><p>近水楼台先得月，向阳花木易为春</p></blockquote><p>任何事物都是“时空”下的事物，不是孤立的。学习中医，要上知天文、下知地理，中知人事。</p><p>前十年的节目讲了天文、地理，本期重在讲“人事”、“人情”</p><h2 id="三、灵枢·通天"><a href="#三、灵枢·通天" class="headerlink" title="三、灵枢·通天"></a>三、灵枢·通天</h2><blockquote><p>阴阳二十五人的前传</p></blockquote><p>中国古代古代道家认为，人渺小地像一粒灰尘。人的一切活动后面都有一个主宰，那就是 <strong>“天”</strong> 或者是 <strong>“道”</strong> 等。</p><p>古代人敬畏天命，尝试着与天沟通。地球上生长的万物，都和天息息相通。回答中医的一切都是不一定，因为 <strong>“参数太多”</strong>。</p><h3 id="（一）透过外在如何判断一个人"><a href="#（一）透过外在如何判断一个人" class="headerlink" title="（一）透过外在如何判断一个人"></a>（一）透过外在如何判断一个人</h3><p>生气通天 vs 死尸入地</p><p>观察人，不能静止的、有形有质的，要看到他背后的能量，看到能量释放的节奏和方向。</p><h3 id="（二）形和用的关系"><a href="#（二）形和用的关系" class="headerlink" title="（二）形和用的关系"></a>（二）形和用的关系</h3><p>形和用是不同的东西，有形不一定使用，不一定有那个作用。</p><p>认识世界万物有两个方法，第一是自己不变，发明工具；另外一个是保持自己是对的，然后感知世界。所谓的科学在很大程度上是对人的眼耳鼻舌的放大和精细化，而自己的修行和修炼很少。</p><h3 id="（三）-专注力"><a href="#（三）-专注力" class="headerlink" title="（三） 专注力"></a>（三） 专注力</h3><p>融媒体时代高度发达的科技，占用了人大部分的精神和注意力，在这种演化中，人的专注力是下降的。</p><p>一心多用成为常态，比如吃饭的时候看手机，人体消化系统很快就会出问题。“精诚所至金石为开” ，缺乏专注，也是很多人得病的原因之一。</p><p>多做减法，多做专注，往往有情的人他是最无情的，他把自己的情感都专注于自己关注的领域。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>医学生活</category>
+      
+      <category>中医</category>
+      
+      <category>徐文兵</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>中医</tag>
+      
+      <tag>黄帝内经</tag>
+      
+      <tag>十年之约</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>如何在公文写作中使用 &quot;范文&quot;</title>
     <link href="/code.github.io/2022/06/01/%E5%85%AC%E6%96%87%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8%E8%8C%83%E6%96%87/"/>
     <url>/code.github.io/2022/06/01/%E5%85%AC%E6%96%87%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8%E8%8C%83%E6%96%87/</url>
@@ -813,9 +910,9 @@
     
     <tags>
       
-      <tag>方法</tag>
-      
       <tag>读书</tag>
+      
+      <tag>方法</tag>
       
       <tag>速读</tag>
       
@@ -906,9 +1003,9 @@
     
     <tags>
       
-      <tag>读书</tag>
-      
       <tag>加速时代</tag>
+      
+      <tag>读书</tag>
       
       <tag>选择</tag>
       
@@ -937,9 +1034,9 @@
     
     <tags>
       
-      <tag>方法</tag>
-      
       <tag>读书</tag>
+      
+      <tag>方法</tag>
       
       <tag>感悟</tag>
       
@@ -970,9 +1067,9 @@
       
       <tag>公文</tag>
       
-      <tag>汇报材料</tag>
-      
       <tag>写作</tag>
+      
+      <tag>汇报材料</tag>
       
     </tags>
     
@@ -1001,9 +1098,9 @@
       
       <tag>公文</tag>
       
-      <tag>写作</tag>
-      
       <tag>表态发言</tag>
+      
+      <tag>写作</tag>
       
     </tags>
     
