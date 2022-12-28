@@ -18,26 +18,26 @@
   <meta name="author" content="望月砂">
   <meta name="keywords" content="">
   
-    <meta name="description" content="多系统引导，修改grub启动顺序。">
+    <meta name="description" content="“关键时刻”是一系列简单又超级实用的抓住客户、赢得利润的方法.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux入门001_修改系统启动顺序">
-<meta property="og:url" content="https://linuxdeepin007.github.io/code.github.io/2022/06/23/Linux%E5%85%A5%E9%97%A8001_%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F/index.html">
+<meta property="og:title" content="年度读书计划003_《关键时刻MOT》">
+<meta property="og:url" content="https://linuxdeepin007.github.io/code.github.io/2022/12/25/%E5%B9%B4%E5%BA%A6%E8%AF%BB%E4%B9%A6%E8%AE%A1%E5%88%92003_%E3%80%8A%E5%85%B3%E9%94%AE%E6%97%B6%E5%88%BBMOT%E3%80%8B/index.html">
 <meta property="og:site_name" content="🌦  望月砂">
-<meta property="og:description" content="多系统引导，修改grub启动顺序。">
+<meta property="og:description" content="“关键时刻”是一系列简单又超级实用的抓住客户、赢得利润的方法.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-12-02T02:44:36.000Z">
+<meta property="article:published_time" content="2022-12-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-12-20T09:00:24.000Z">
 <meta property="article:author" content="望月砂">
-<meta property="article:tag" content="启动顺序">
-<meta property="article:tag" content="系统">
-<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="年度读书计划">
+<meta property="article:tag" content="关键时刻">
+<meta property="article:tag" content="企业管理">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Linux入门001_修改系统启动顺序 - 🌦  望月砂</title>
+  <title>年度读书计划003_《关键时刻MOT》 - 🌦  望月砂</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Linux入门001_修改系统启动顺序"></span>
+            <span id="subtitle" data-typed-text="年度读书计划003_《关键时刻MOT》"></span>
           
         </div>
 
@@ -232,8 +232,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-23 00:00" pubdate>
-          2022年6月23日 凌晨
+        <time datetime="2022-12-25 00:00" pubdate>
+          2022年12月25日 凌晨
         </time>
       </span>
     
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          926 字
+          1.2k 字
         
       </span>
     
@@ -255,7 +255,7 @@
         
         
         
-          10 分钟
+          13 分钟
         
       </span>
     
@@ -301,24 +301,87 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Linux入门001_修改系统启动顺序</h1>
+            <h1 style="display: none">年度读书计划003_《关键时刻MOT》</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年12月2日 上午
+                    本文最后更新于：2022年12月20日 下午
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <p>多系统引导，修改grub启动顺序。</p>
+              <p>“关键时刻”是一系列简单又超级实用的抓住客户、赢得利润的方法.</p>
 <span id="more"></span>
-
-<h2 id="修改grub文件"><a href="#修改grub文件" class="headerlink" title="修改grub文件"></a>修改grub文件</h2><p>直接修改grub文件，位置&#x2F;etc&#x2F;defauts&#x2F;grub</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash">Linux@Linux-Vostro-260:~$ sudo gedit /etc/default/grub<br>[sudo] password <span class="hljs-keyword">for</span> Linux:<br><br>______________________________________________________________<br><span class="hljs-comment"># If you change this file, run &#x27;update-grub&#x27; afterwards to update</span><br><span class="hljs-comment"># /boot/grub/grub.cfg.</span><br><span class="hljs-comment"># For full documentation of the options in this file, see:</span><br><span class="hljs-comment">#   info -f grub -n &#x27;Simple configuration&#x27;</span><br><br>GRUB_DEFAULT=4<br>GRUB_TIMEOUT_STYLE=hidden<br>GRUB_TIMEOUT=8<br>GRUB_DISTRIBUTOR=`lsb_release -i -s 2&gt; /dev/null || <span class="hljs-built_in">echo</span> Debian`<br>GRUB_CMDLINE_Linux_DEFAULT=<span class="hljs-string">&quot;quiet splash&quot;</span><br>GRUB_CMDLINE_Linux=<span class="hljs-string">&quot;&quot;</span><br><br><span class="hljs-comment"># Uncomment to enable BadRAM filtering, modify to suit your needs</span><br><span class="hljs-comment"># This works with Linux (no patch required) and with any kernel that obtains</span><br><span class="hljs-comment"># the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)</span><br><span class="hljs-comment">#GRUB_BADRAM=&quot;0x01234567,0xfefefefe,0x89abcdef,0xefefefef&quot;</span><br></code></pre></td></tr></table></figure>
-<p>GRUB_DEFAULT&#x3D;4，其中第一项是0，第二项是1,以此类推。以本机的启动选项来说，如果将最后一个作为启动默认选项，则数字为4</p>
+<p>詹•卡尔森，瑞典斯德哥尔摩经济学院企业管理硕士，32岁担任瑞典最大的旅行社平安旅行社总裁，36岁担任瑞典著名航空公司灵恩航空公司总裁，先后帮助这两家企业由濒临破产转为高额盈利。</p>
+<h2 id="一-、基本信息"><a href="#一-、基本信息" class="headerlink" title="一 、基本信息"></a>一 、基本信息</h2><table>
+<thead>
+<tr>
+<th align="center">项目</th>
+<th>信息</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">作者</td>
+<td>詹·卡尔森</td>
+</tr>
+<tr>
+<td align="center">出版社</td>
+<td>中国人民大学出版社</td>
+</tr>
+<tr>
+<td align="center">出品方</td>
+<td>湛庐文化</td>
+</tr>
+<tr>
+<td align="center">译者</td>
+<td>韩卉</td>
+</tr>
+<tr>
+<td align="center">出版年</td>
+<td>2013-6</td>
+</tr>
+<tr>
+<td align="center">页数</td>
+<td>208</td>
+</tr>
+<tr>
+<td align="center">ISBN</td>
+<td>9787300175225</td>
+</tr>
+</tbody></table>
+<h2 id="二、主要内容"><a href="#二、主要内容" class="headerlink" title="二、主要内容"></a>二、主要内容</h2><p>“关键时刻”是一系列简单又超级实用的抓住客户、赢得利润的方法，已经成为IBM、通用汽车、麦当劳、联想集团等世界名企的培训课程，本书也被多家世界500强企业尊为培训圣经。</p>
+<h2 id="三、行文脉络"><a href="#三、行文脉络" class="headerlink" title="三、行文脉络"></a>三、行文脉络</h2><h3 id="（一）-目录"><a href="#（一）-目录" class="headerlink" title="（一） 目录"></a>（一） 目录</h3><p><strong>关键时刻MOT十大原则</strong></p>
+<ul>
+<li>第1章 抓住客户给予的5 000万个机会&#x2F;关键时刻的意义</li>
+<li>第2章 创造顾客比创造利润更重要&#x2F;关键时刻的原则之一</li>
+<li>第3章 用提高营业额代替降低成本&#x2F;关键时刻的原则之二</li>
+<li>第4章 领导少些决策力，多些综合力&#x2F;关键时刻的原则之三</li>
+<li>第5章 了解顾客真正需要，把握多变市场&#x2F;关键时刻的原则之四</li>
+<li>第6章 一线员工比管理团队更了解企业&#x2F;关键时刻的原则之五</li>
+<li>第7章 该冒险的时候必须勇敢一跳&#x2F;关键时刻的原则之六</li>
+<li>第8章 “沟通”能提升执行力与利润率&#x2F;关键时刻的原则之七</li>
+<li>第9章 让董事会了解公司的整体战略&#x2F;关键时刻的原则之八</li>
+<li>第10章 保持绩效评估与顾客需要的一致性&#x2F;关键时刻的原则之九</li>
+<li>第11章 奖励让顾客满意的“自作主张”&#x2F;关键时刻的原则之十</li>
+<li>第12章 不做成功的俘虏&#x2F;关键时刻的忠告</li>
+</ul>
+<h3 id="（二）-核心经验"><a href="#（二）-核心经验" class="headerlink" title="（二） 核心经验"></a>（二） 核心经验</h3><h4 id="1-如何把组织结构翻转变为倒金字塔结构"><a href="#1-如何把组织结构翻转变为倒金字塔结构" class="headerlink" title="1. 如何把组织结构翻转变为倒金字塔结构"></a>1. 如何把组织结构翻转变为倒金字塔结构</h4><p>传统企业管理体系，基本上都是自上而下的金字塔形，而这些时刻请示上级，往往错过了有利时机。让掌握关键信息的员工可以不用请示上级，可以直接调配资源自己做决策并对此负责。管理者的作用是帮助掌握关键信息的员工把需要解决的关键信息解决掉。</p>
+<p>关键时刻：就是用户和企业发生关系的时刻。例如球场上带球准备射门的球员，在射门时是否需要请示场外的教练？这就是所谓的关键时刻。再比如海底捞的员工，餐饮行业中服务员直接和消费者打交道，而海底捞的服务员都有免一个菜或者免一单的权利，因此让顾客觉得很值得。</p>
+<h4 id="2-如何在企业中做一个沟通者和教育者"><a href="#2-如何在企业中做一个沟通者和教育者" class="headerlink" title="2. 如何在企业中做一个沟通者和教育者"></a>2. 如何在企业中做一个沟通者和教育者</h4><p>如果人人都在进行觉得，就必须保证每一个员工都能准确理解公司的目标和企业战略，对于管理者而言就是一巨大的沟通成本。</p>
+<p>作者的做法是：</p>
+<ol>
+<li>强制自己拿出一半的时间与一线员工面对面交谈，来保证用对方听得懂的方式表达自己想表达的内容。</li>
+<li>训练自己的沟通能力（即兴演讲等）要具体而准确。</li>
+<li>要知行合一。</li>
+</ol>
+<h4 id="3-如何帮企业找到实现盈利的最有价值的用户"><a href="#3-如何帮企业找到实现盈利的最有价值的用户" class="headerlink" title="3. 如何帮企业找到实现盈利的最有价值的用户"></a>3. 如何帮企业找到实现盈利的最有价值的用户</h4><p>只服务特定的用户。提供商务仓（拒绝接待儿童等等），在细分市场上获得绝对竞争优势。</p>
+<h2 id="四、摘录和思考"><a href="#四、摘录和思考" class="headerlink" title="四、摘录和思考"></a>四、摘录和思考</h2><h3 id="（一）思考"><a href="#（一）思考" class="headerlink" title="（一）思考"></a>（一）思考</h3><ul>
+<li>不同行业的MOT 是不一样的，其杠杆效应也是不同的。 <h3 id="（二）摘录"><a href="#（二）摘录" class="headerlink" title="（二）摘录"></a>（二）摘录</h3></li>
+<li>永远都不要忘记，要做好生意，就要懂得拒绝不好的生意。</li>
+</ul>
 
               
             </div>
@@ -336,12 +399,12 @@
     
       <span class="category-chain">
         
-  <a href="/code.github.io/categories/%E7%BC%96%E7%A8%8B%E7%94%B5%E8%84%91/" class="category-chain-item">编程电脑</a>
+  <a href="/code.github.io/categories/%E7%BB%8F%E6%B5%8E%E9%87%91%E8%9E%8D/" class="category-chain-item">经济金融</a>
   
   
     <span>></span>
     
-  <a href="/code.github.io/categories/%E7%BC%96%E7%A8%8B%E7%94%B5%E8%84%91/Linux/" class="category-chain-item">Linux</a>
+  <a href="/code.github.io/categories/%E7%BB%8F%E6%B5%8E%E9%87%91%E8%9E%8D/%E4%BC%81%E4%B8%9A%E7%BB%8F%E8%90%A5%E7%AE%A1%E7%90%86/" class="category-chain-item">企业经营管理</a>
   
   
 
@@ -358,11 +421,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/code.github.io/tags/%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F/">#启动顺序</a>
+        <a href="/code.github.io/tags/%E5%B9%B4%E5%BA%A6%E8%AF%BB%E4%B9%A6%E8%AE%A1%E5%88%92/">#年度读书计划</a>
       
-        <a href="/code.github.io/tags/%E7%B3%BB%E7%BB%9F/">#系统</a>
+        <a href="/code.github.io/tags/%E5%85%B3%E9%94%AE%E6%97%B6%E5%88%BB/">#关键时刻</a>
       
-        <a href="/code.github.io/tags/Linux/">#Linux</a>
+        <a href="/code.github.io/tags/%E4%BC%81%E4%B8%9A%E7%AE%A1%E7%90%86/">#企业管理</a>
       
     </div>
   
@@ -374,8 +437,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Linux入门001_修改系统启动顺序</div>
-      <div>https://linuxdeepin007.github.io/code.github.io/2022/06/23/Linux入门001_修改系统启动顺序/</div>
+      <div>年度读书计划003_《关键时刻MOT》</div>
+      <div>https://linuxdeepin007.github.io/code.github.io/2022/12/25/年度读书计划003_《关键时刻MOT》/</div>
     </div>
     <div class="license-meta">
       
@@ -387,13 +450,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年6月23日</div>
+          <div>2022年12月25日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年12月2日</div>
+          <div>2022年12月20日</div>
         </div>
       
       <div class="license-meta-item">
@@ -434,9 +497,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/code.github.io/2022/06/25/%E6%A2%81%E4%B8%9C%E5%AF%B9%E8%AF%9D%E5%BE%90%E6%96%87%E5%85%B5_%E3%80%8A%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F%C2%B7%E7%81%B5%E6%9E%A2%E3%80%8B%E9%80%9A%E5%A4%A9%E8%AE%BA002_%E5%87%BA%E7%94%9F%E5%B9%B4%E6%9C%88/" title="梁东对话徐文兵_《黄帝内经·灵枢》通天论002_出生年月">
+                      <a href="/code.github.io/2022/12/26/%E6%A2%81%E4%B8%9C%E5%AF%B9%E8%AF%9D%E5%80%AA%E6%B5%B7%E5%8E%A6004_%E5%90%84%E7%B1%BB%E7%99%8C%E7%97%87/" title="梁东对话倪海厦004_各类癌症">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">梁东对话徐文兵_《黄帝内经·灵枢》通天论002_出生年月</span>
+                        <span class="hidden-mobile">梁东对话倪海厦004_各类癌症</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -444,8 +507,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/code.github.io/2022/06/11/%E6%A2%81%E4%B8%9C%E5%AF%B9%E8%AF%9D%E5%BE%90%E6%96%87%E5%85%B5_%E3%80%8A%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F%C2%B7%E7%81%B5%E6%9E%A2%E3%80%8B%E9%80%9A%E5%A4%A9%E8%AE%BA001_%E5%BC%80%E7%AF%87/" title="梁东对话徐文兵_《黄帝内经·灵枢》通天论001_开篇">
-                        <span class="hidden-mobile">梁东对话徐文兵_《黄帝内经·灵枢》通天论001_开篇</span>
+                      <a href="/code.github.io/2022/12/10/%E6%A2%81%E4%B8%9C%E5%AF%B9%E8%AF%9D%E5%80%AA%E6%B5%B7%E5%8E%A6002_%E5%BF%83%E8%84%8F%E7%97%85%E3%80%81%E9%AB%98%E8%A1%80%E5%8E%8B/" title="梁东对话倪海厦002_心脏病、高血压">
+                        <span class="hidden-mobile">梁东对话倪海厦002_心脏病、高血压</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
