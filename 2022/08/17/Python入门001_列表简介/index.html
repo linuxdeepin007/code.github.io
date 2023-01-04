@@ -26,7 +26,7 @@
 <meta property="og:description" content="列表 由一系列按特定顺序排列的元素组成。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-12-02T02:41:44.000Z">
+<meta property="article:modified_time" content="2023-01-04T08:45:16.760Z">
 <meta property="article:author" content="望月砂">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="列表">
@@ -306,7 +306,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年12月2日 上午
+                    本文最后更新于：2023年1月4日 下午
                   
                 
               </p>
@@ -344,22 +344,22 @@
 <p>运行结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>[<span class="hljs-string">&#x27;ducati&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br></code></pre></td></tr></table></figure>
 
-<h3 id="（二）在列表中添加元素"><a href="#（二）在列表中添加元素" class="headerlink" title="（二）在列表中添加元素"></a>（二）在列表中添加元素</h3><h4 id="1-在列表末尾添加元素"><a href="#1-在列表末尾添加元素" class="headerlink" title="1. 在列表末尾添加元素"></a>1. 在列表末尾添加元素</h4><p>使用<code>append()</code> 办法，将元素附加 （append）到列表。</p>
+<h3 id="（二）在列表中添加元素"><a href="#（二）在列表中添加元素" class="headerlink" title="（二）在列表中添加元素"></a>（二）在列表中添加元素</h3><h4 id="1-在列表末尾添加元素"><a href="#1-在列表末尾添加元素" class="headerlink" title="1.在列表末尾添加元素"></a>1.在列表末尾添加元素</h4><p>使用<code>append()</code> 办法，将元素附加 （append）到列表。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br>motorcycles.append(<span class="hljs-string">&#x27;ducati&#x27;</span>)<br><span class="hljs-built_in">print</span>(motorcycles)<br></code></pre></td></tr></table></figure>
 <p>运行结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>, <span class="hljs-string">&#x27;ducati&#x27;</span>]<br></code></pre></td></tr></table></figure>
 
-<h4 id="2-在列表中插入元素"><a href="#2-在列表中插入元素" class="headerlink" title="2. 在列表中插入元素"></a>2. 在列表中插入元素</h4><p>使用方法<code>insert() </code>可在列表的任何位置添加新元素。</p>
+<h4 id="2-在列表中插入元素"><a href="#2-在列表中插入元素" class="headerlink" title="2.在列表中插入元素"></a>2.在列表中插入元素</h4><p>使用方法<code>insert() </code>可在列表的任何位置添加新元素。</p>
 <p>方法insert() 在索引0 处添加空间，并将值’ducati’ 存储到这个地方。这种操作将列表中既有的每个元素都右移一个位置</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br>motorcycles.insert(<span class="hljs-number">0</span>,<span class="hljs-string">&#x27;ducati&#x27;</span>)<br><span class="hljs-built_in">print</span>(motorcycles)<br></code></pre></td></tr></table></figure>
 <p>运行结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>[<span class="hljs-string">&#x27;ducati&#x27;</span>, <span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br></code></pre></td></tr></table></figure>
 
-<h3 id="（三）从列表中删除元素"><a href="#（三）从列表中删除元素" class="headerlink" title="（三）从列表中删除元素"></a>（三）从列表中删除元素</h3><h4 id="1-使用-del-语句删除元素"><a href="#1-使用-del-语句删除元素" class="headerlink" title="1. 使用 del 语句删除元素"></a>1. 使用 <code>del</code> 语句删除元素</h4><p>如果知道要删除的元素在列表中的位置，可使用 <code>del</code> 语句。</p>
+<h3 id="（三）从列表中删除元素"><a href="#（三）从列表中删除元素" class="headerlink" title="（三）从列表中删除元素"></a>（三）从列表中删除元素</h3><h4 id="1-使用-del-语句删除元素"><a href="#1-使用-del-语句删除元素" class="headerlink" title="1.使用 del 语句删除元素"></a>1.使用 <code>del</code> 语句删除元素</h4><p>如果知道要删除的元素在列表中的位置，可使用 <code>del</code> 语句。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br><span class="hljs-keyword">del</span> motorcycles[<span class="hljs-number">0</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br></code></pre></td></tr></table></figure>
 <p>运行结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>[<span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br></code></pre></td></tr></table></figure>
-<h4 id="2-使用方法-pop-删除元素"><a href="#2-使用方法-pop-删除元素" class="headerlink" title="2. 使用方法 pop() 删除元素"></a>2. 使用方法 <code>pop()</code> 删除元素</h4><blockquote>
+<h4 id="2-使用方法-pop-删除元素"><a href="#2-使用方法-pop-删除元素" class="headerlink" title="2.使用方法 pop() 删除元素"></a>2.使用方法 <code>pop()</code> 删除元素</h4><blockquote>
 <p>每当你使用pop() 时，被弹出的元素就不再在列表中了</p>
 </blockquote>
 <p>方法pop() 删除列表末尾的元素，并让你能够接着使用它。列表就像一个栈，而删除列表末尾的元素相当于弹出栈顶元素。</p>
@@ -367,7 +367,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br><span class="hljs-built_in">print</span>(motorcycles)<br><br>poped_motorcycles = motorcycles.pop()<br><span class="hljs-built_in">print</span>(motorcycles)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;The last bicycle I owned was &quot;<span class="hljs-subst">&#123;poped_motorcycles.title()&#125;</span>&quot;.&#x27;</span>)<br></code></pre></td></tr></table></figure>
 <p>运行结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>[<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>]<br>The last bicycle I owned was <span class="hljs-string">&quot;Suzuki&quot;</span>.<br></code></pre></td></tr></table></figure>
-<h4 id="3-根据值删除元素-remove"><a href="#3-根据值删除元素-remove" class="headerlink" title="3. 根据值删除元素 remove()"></a>3. 根据值删除元素 <code>remove()</code></h4><p>有时候，你不知道要从列表中删除的值所处的位置,只知道要删除的元素的值，可使用方法<code>remove()</code>。</p>
+<h4 id="3-根据值删除元素-remove"><a href="#3-根据值删除元素-remove" class="headerlink" title="3.根据值删除元素 remove()"></a>3.根据值删除元素 <code>remove()</code></h4><p>有时候，你不知道要从列表中删除的值所处的位置,只知道要删除的元素的值，可使用方法<code>remove()</code>。</p>
 <blockquote>
 <p>使用remove() 从列表中删除元素时，也可接着使用它的值。</p>
 </blockquote>
@@ -470,7 +470,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年12月2日</div>
+          <div>2023年1月4日</div>
         </div>
       
       <div class="license-meta-item">

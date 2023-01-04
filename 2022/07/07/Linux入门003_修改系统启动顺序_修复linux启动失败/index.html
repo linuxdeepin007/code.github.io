@@ -26,7 +26,7 @@
 <meta property="og:description" content="本文介绍了两种方法修复启动失败的问题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-12-02T02:45:22.000Z">
+<meta property="article:modified_time" content="2023-01-04T08:44:24.670Z">
 <meta property="article:author" content="望月砂">
 <meta property="article:tag" content="GRUB">
 <meta property="article:tag" content="boot failure">
@@ -306,7 +306,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年12月2日 上午
+                    本文最后更新于：2023年1月4日 下午
                   
                 
               </p>
@@ -390,26 +390,26 @@
 </tr>
 </tbody></table>
 <h2 id="三、修复方法"><a href="#三、修复方法" class="headerlink" title="三、修复方法"></a>三、修复方法</h2><p>教程中提供两种修复grub的方法命令行操作和启动盘操作</p>
-<h3 id="（一）通过命令行修复"><a href="#（一）通过命令行修复" class="headerlink" title="（一）通过命令行修复"></a>（一）通过命令行修复</h3><h4 id="1-使用set命令，查看环境变量"><a href="#1-使用set命令，查看环境变量" class="headerlink" title="1. 使用set命令，查看环境变量"></a>1. 使用<code>set</code>命令，查看环境变量</h4><p>如下，该系统启动自 <code>（hd0,msdos3）</code></p>
+<h3 id="（一）通过命令行修复"><a href="#（一）通过命令行修复" class="headerlink" title="（一）通过命令行修复"></a>（一）通过命令行修复</h3><h4 id="1-使用set命令，查看环境变量"><a href="#1-使用set命令，查看环境变量" class="headerlink" title="1.使用set命令，查看环境变量"></a>1.使用<code>set</code>命令，查看环境变量</h4><p>如下，该系统启动自 <code>（hd0,msdos3）</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub&gt; <span class="hljs-built_in">set</span><br>?=0<br>color_highlight=black/white<br>color_normal=white/black<br>default=0<br>gfxmode=800x600<br>lang=en_US<br>locale_dir=(hd0,msdos3)/boot/grub/local<br>pager=<br>prefix=(hd0,msdos3)/boot/grub<br>root=hd0,msdos3<br>grub&gt; _<br></code></pre></td></tr></table></figure>
 
-<h4 id="2-使用ls命令，查看分区表"><a href="#2-使用ls命令，查看分区表" class="headerlink" title="2. 使用ls命令，查看分区表"></a>2. 使用<code>ls</code>命令，查看分区表</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub&gt; <span class="hljs-built_in">ls</span><br>(hd0) (hd0,msdos3) (hd0,msdos2) (hd0,msdos1)<br>grub&gt; _<br></code></pre></td></tr></table></figure>
+<h4 id="2-使用ls命令，查看分区表"><a href="#2-使用ls命令，查看分区表" class="headerlink" title="2.使用ls命令，查看分区表"></a>2.使用<code>ls</code>命令，查看分区表</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub&gt; <span class="hljs-built_in">ls</span><br>(hd0) (hd0,msdos3) (hd0,msdos2) (hd0,msdos1)<br>grub&gt; _<br></code></pre></td></tr></table></figure>
 
-<h4 id="3-查找包含boot目录的分区"><a href="#3-查找包含boot目录的分区" class="headerlink" title="3. 查找包含boot目录的分区"></a>3. 查找包含<code>boot</code>目录的分区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub&gt; <span class="hljs-built_in">ls</span> （hd0,msdos3）<br>lost+found var/ dev/ run/ etc/ tmp/ sys/ proc/ usr/ bin boot/ lib lib64 mnt/ opt/ root/ sbin srv/<br>grub&gt; _<br></code></pre></td></tr></table></figure>
+<h4 id="3-查找包含boot目录的分区"><a href="#3-查找包含boot目录的分区" class="headerlink" title="3.查找包含boot目录的分区"></a>3.查找包含<code>boot</code>目录的分区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub&gt; <span class="hljs-built_in">ls</span> （hd0,msdos3）<br>lost+found var/ dev/ run/ etc/ tmp/ sys/ proc/ usr/ bin boot/ lib lib64 mnt/ opt/ root/ sbin srv/<br>grub&gt; _<br></code></pre></td></tr></table></figure>
 
-<h4 id="4-设置启动分区作为root变量所在卷"><a href="#4-设置启动分区作为root变量所在卷" class="headerlink" title="4. 设置启动分区作为root变量所在卷"></a>4. 设置启动分区作为<code>root</code>变量所在卷</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> root=(hd0,msdos1)<br></code></pre></td></tr></table></figure>
+<h4 id="4-设置启动分区作为root变量所在卷"><a href="#4-设置启动分区作为root变量所在卷" class="headerlink" title="4.设置启动分区作为root变量所在卷"></a>4.设置启动分区作为<code>root</code>变量所在卷</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> root=(hd0,msdos1)<br></code></pre></td></tr></table></figure>
 
-<h4 id="5-载入normal启动模式"><a href="#5-载入normal启动模式" class="headerlink" title="5. 载入normal启动模式"></a>5. 载入<code>normal</code>启动模式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">insmod normal<br></code></pre></td></tr></table></figure>
+<h4 id="5-载入normal启动模式"><a href="#5-载入normal启动模式" class="headerlink" title="5.载入normal启动模式"></a>5.载入<code>normal</code>启动模式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">insmod normal<br></code></pre></td></tr></table></figure>
 
-<h4 id="6-启动normal-启动模式"><a href="#6-启动normal-启动模式" class="headerlink" title="6. 启动normal 启动模式"></a>6. 启动normal 启动模式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">normal<br></code></pre></td></tr></table></figure>
+<h4 id="6-启动normal-启动模式"><a href="#6-启动normal-启动模式" class="headerlink" title="6.启动normal 启动模式"></a>6.启动normal 启动模式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">normal<br></code></pre></td></tr></table></figure>
 
-<h4 id="7-使用Linux载入Linux内核"><a href="#7-使用Linux载入Linux内核" class="headerlink" title="7. 使用Linux载入Linux内核"></a>7. 使用<code>Linux</code>载入Linux内核</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Linux /boot/vmlinuz-4.2.0-16-generic root=/dev/sda1 ro<br></code></pre></td></tr></table></figure>
+<h4 id="7-使用Linux载入Linux内核"><a href="#7-使用Linux载入Linux内核" class="headerlink" title="7.使用Linux载入Linux内核"></a>7.使用<code>Linux</code>载入Linux内核</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Linux /boot/vmlinuz-4.2.0-16-generic root=/dev/sda1 ro<br></code></pre></td></tr></table></figure>
 
-<h4 id="8-启动"><a href="#8-启动" class="headerlink" title="8. 启动"></a>8. 启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">boot<br></code></pre></td></tr></table></figure>
+<h4 id="8-启动"><a href="#8-启动" class="headerlink" title="8.启动"></a>8.启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">boot<br></code></pre></td></tr></table></figure>
 
-<h3 id="（二）通过启动盘修复"><a href="#（二）通过启动盘修复" class="headerlink" title="（二）通过启动盘修复"></a>（二）通过启动盘修复</h3><h4 id="1-制作Linux启动安装盘并启动试用模式"><a href="#1-制作Linux启动安装盘并启动试用模式" class="headerlink" title="1. 制作Linux启动安装盘并启动试用模式"></a>1. 制作Linux启动安装盘并启动试用模式</h4><h4 id="2-打开终端输入命令"><a href="#2-打开终端输入命令" class="headerlink" title="2. 打开终端输入命令"></a>2. 打开终端输入命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo add-apt-repository ppa:yannubuntu/boot-repair<br></code></pre></td></tr></table></figure>
-<h4 id="3-在终端中安装并启动软件"><a href="#3-在终端中安装并启动软件" class="headerlink" title="3. 在终端中安装并启动软件"></a>3. 在终端中安装并启动软件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt update<br>sudo apt install boot-repair<br>boot-repair<br></code></pre></td></tr></table></figure>
-<h4 id="4-等待修复完成重启电脑"><a href="#4-等待修复完成重启电脑" class="headerlink" title="4. 等待修复完成重启电脑"></a>4. 等待修复完成重启电脑</h4><h2 id="三、更新GRUB-启动文件"><a href="#三、更新GRUB-启动文件" class="headerlink" title="三、更新GRUB 启动文件"></a>三、更新GRUB 启动文件</h2><p>在系统重新启动之后，要重新配置grub，以确保安装成功</p>
+<h3 id="（二）通过启动盘修复"><a href="#（二）通过启动盘修复" class="headerlink" title="（二）通过启动盘修复"></a>（二）通过启动盘修复</h3><h4 id="1-制作Linux启动安装盘并启动试用模式"><a href="#1-制作Linux启动安装盘并启动试用模式" class="headerlink" title="1.制作Linux启动安装盘并启动试用模式"></a>1.制作Linux启动安装盘并启动试用模式</h4><h4 id="2-打开终端输入命令"><a href="#2-打开终端输入命令" class="headerlink" title="2.打开终端输入命令"></a>2.打开终端输入命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo add-apt-repository ppa:yannubuntu/boot-repair<br></code></pre></td></tr></table></figure>
+<h4 id="3-在终端中安装并启动软件"><a href="#3-在终端中安装并启动软件" class="headerlink" title="3.在终端中安装并启动软件"></a>3.在终端中安装并启动软件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt update<br>sudo apt install boot-repair<br>boot-repair<br></code></pre></td></tr></table></figure>
+<h4 id="4-等待修复完成重启电脑"><a href="#4-等待修复完成重启电脑" class="headerlink" title="4.等待修复完成重启电脑"></a>4.等待修复完成重启电脑</h4><h2 id="三、更新GRUB-启动文件"><a href="#三、更新GRUB-启动文件" class="headerlink" title="三、更新GRUB 启动文件"></a>三、更新GRUB 启动文件</h2><p>在系统重新启动之后，要重新配置grub，以确保安装成功</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo update-grub<br></code></pre></td></tr></table></figure>
               
             </div>
@@ -484,7 +484,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年12月2日</div>
+          <div>2023年1月4日</div>
         </div>
       
       <div class="license-meta-item">
