@@ -1,0 +1,864 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/code.github.io/img/fluid.png">
+  <link rel="icon" href="/code.github.io/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="望月砂">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="因为想替换flomo软件，并且把数据控制权握在自己手里，就像之前写笔记一样。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电视盒子刷机_H96MAX-RK3318_Linux服务器">
+<meta property="og:url" content="https://linuxdeepin007.github.io/code.github.io/2023/05/01/%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90%E5%88%B7%E6%9C%BA_H96MAX-RK3318_Linux%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="🌦️ 望月砂&#39;s BLOG">
+<meta property="og:description" content="因为想替换flomo软件，并且把数据控制权握在自己手里，就像之前写笔记一样。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://preview.cloud.189.cn/image/imageAction?param=90F9254974444197BD952F814F75AA8F33802396228AFDD892E22FACF868086EF9DC3933C14996DE24BC5F404EB69EFD4D525E32B86A0660589A2C38A8B2AD51CB6C3F21AFDDB81BE9A6024F38BF598494107489B17A0A4C8022F4E4848B92E807958A0DD6FDBAB612D2852C2FD1BF94">
+<meta property="og:image" content="https://preview.cloud.189.cn/image/imageAction?param=1D0F13C53E2A17780FEA7A056BEB6D4ADDAC0E67C6ABFCF0FAB399308488E77F8C8012F9C41A347C3DD657729A8CBFDD1AED074086A815A1F933DEBF4C30DFEB1C96C937D1B0FCEB36621656C70B8B67601A366682DE7637F867CB5046A0E2536349061817DDC0800E1226BD97FE9742">
+<meta property="og:image" content="https://preview.cloud.189.cn/image/imageAction?param=2E6C52DC147D77F8BE0089456292E924D6A61C1413B9003D9D3993CEF28ED6FEB7FD071FF3EBAC164C312889292D308603338BC3A4535B6B213D95E252CEA99EE44F703B5169389DDDB0147FF3138210A2ECC3AC7EA06258F848B0E5AE87E5A167C3CC28D7790021C955E83E042AA9A9">
+<meta property="og:image" content="https://linuxdeepin007.github.io/code.github.io/">
+<meta property="og:image" content="https://linuxdeepin007.github.io/code.github.io/">
+<meta property="article:published_time" content="2023-05-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-04T20:21:38.000Z">
+<meta property="article:author" content="望月砂">
+<meta property="article:tag" content="电视盒子">
+<meta property="article:tag" content="lINUX服务器">
+<meta property="article:tag" content="RK3318">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://preview.cloud.189.cn/image/imageAction?param=90F9254974444197BD952F814F75AA8F33802396228AFDD892E22FACF868086EF9DC3933C14996DE24BC5F404EB69EFD4D525E32B86A0660589A2C38A8B2AD51CB6C3F21AFDDB81BE9A6024F38BF598494107489B17A0A4C8022F4E4848B92E807958A0DD6FDBAB612D2852C2FD1BF94">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>电视盒子刷机_H96MAX-RK3318_Linux服务器 - 🌦️ 望月砂&#39;s BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/code.github.io/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/code.github.io/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/code.github.io/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/code.github.io/css/mac.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"linuxdeepin007.github.io","root":"/code.github.io/","version":"1.9.0","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/code.github.io/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/code.github.io/js/utils.js" ></script>
+  <script  src="/code.github.io/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/code.github.io/">
+      <strong>☄ 望月砂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                时间线
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/code.github.io/img/ha.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="电视盒子刷机_H96MAX-RK3318_Linux服务器"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        望月砂
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-02 00:00" pubdate>
+          2023年5月2日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">电视盒子刷机_H96MAX-RK3318_Linux服务器</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年5月5日 凌晨
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <p>因为想替换flomo软件，并且把数据控制权握在自己手里，就像之前写笔记一样。</p>
+<span id="more"></span>
+<p>所以自己搭建一个服务器就成了唯一选择，但是并不像github上的网页搭建一样简单，这里必须借助服务器来完成。</p>
+<p>最为简单的方式就是购买服务器，然后部署memos软件，但是服务器的数据并不在我的掌握之中。</p>
+<p>所以退而求其次，自己搭建一个服务器，后期内网穿透的事情就比较简单了。</p>
+<h2 id="一、为什么用电视盒子搭建服务器"><a href="#一、为什么用电视盒子搭建服务器" class="headerlink" title="一、为什么用电视盒子搭建服务器"></a>一、为什么用电视盒子搭建服务器</h2><p>作为小白，为了能够用上 <code>memos</code> ,再看了各种教程、用优盘刷linux系统之后，决定选择自己搭建服务器，经过对比服务器的载体，最终选择了电视盒子H96MAX RK3318，理由如下：</p>
+<ul>
+<li>性能：盒子的配置（RK3318芯片+4G内存+64G储存）比云服务器高，应该能满足我的需求成本；</li>
+<li>价格：小于200元，即使打水漂也在我接受范围内；</li>
+<li>功耗：RK3318的TDP是5W，到手实测整机运行功率2.5W-3W；</li>
+<li>体积：盒子体积（100x100x18mm）比工控机体积（200x200x33mm）减少了86.4%。</li>
+</ul>
+<h2 id="二、硬件准备"><a href="#二、硬件准备" class="headerlink" title="二、硬件准备"></a>二、硬件准备</h2><ul>
+<li>电视盒子“H96 MAX RK3318”一个（后续简称盒子）</li>
+<li>TF储存卡（≥2G，非SD卡）一张</li>
+<li>读卡器一个</li>
+<li>可联网的电脑一台</li>
+<li>USB接口键盘</li>
+<li>一个HDMI接口显示器（含线材，可与电脑共用）</li>
+</ul>
+<p><img src="https://preview.cloud.189.cn/image/imageAction?param=90F9254974444197BD952F814F75AA8F33802396228AFDD892E22FACF868086EF9DC3933C14996DE24BC5F404EB69EFD4D525E32B86A0660589A2C38A8B2AD51CB6C3F21AFDDB81BE9A6024F38BF598494107489B17A0A4C8022F4E4848B92E807958A0DD6FDBAB612D2852C2FD1BF94" srcset="/code.github.io/img/loading.gif" lazyload alt="硬件准备"></p>
+<h2 id="三、软件准备"><a href="#三、软件准备" class="headerlink" title="三、软件准备"></a>三、软件准备</h2><h3 id="（一）工具及刷机固件"><a href="#（一）工具及刷机固件" class="headerlink" title="（一）工具及刷机固件"></a>（一）工具及刷机固件</h3><ul>
+<li>刷机工具Balena Etcher</li>
+<li>Multi-Tool镜像</li>
+<li>Armbian镜像</li>
+<li>SSH连接工具PuTTY</li>
+</ul>
+<h3 id="（二）制作驱动盘"><a href="#（二）制作驱动盘" class="headerlink" title="（二）制作驱动盘"></a>（二）制作驱动盘</h3><ol>
+<li>将TF卡插入读卡器 —-&gt; 将读卡器插入电脑 —-&gt; 打开Balena Etcher —-&gt; 选择已下载的“Multi-Tool镜像” —-&gt; 拟刷入的目标TF卡 —-&gt; 开始制作驱动盘；</li>
+<li>制作完成后，拔掉并重新插入读卡器，将已下载的Armbian镜像放入储存卡根目录下的images文件夹中。</li>
+</ol>
+<h2 id="四、开始刷机"><a href="#四、开始刷机" class="headerlink" title="四、开始刷机"></a>四、开始刷机</h2><h3 id="（一）启动"><a href="#（一）启动" class="headerlink" title="（一）启动"></a>（一）启动</h3><p>在盒子上插入储存卡、键盘、HDMI线，最后插入电源线（通电会自动开机），通过TF卡启动。</p>
+<h3 id="（二）安装系统"><a href="#（二）安装系统" class="headerlink" title="（二）安装系统"></a>（二）安装系统</h3><p>按“enter”直接确认须知 —-&gt; 选择“3 Erase flash” —-&gt; 一路选择“OK” —-&gt; 选择“5 Burn image to flash” —-&gt; 选择“mmcblk2” —-&gt; 选择“Armbian镜像” —-&gt; 等待刷机完成（我用时7′27″） —-&gt; 选择“OK” —-&gt; 选择“9 shutdown” 关机。</p>
+<p><img src="https://preview.cloud.189.cn/image/imageAction?param=1D0F13C53E2A17780FEA7A056BEB6D4ADDAC0E67C6ABFCF0FAB399308488E77F8C8012F9C41A347C3DD657729A8CBFDD1AED074086A815A1F933DEBF4C30DFEB1C96C937D1B0FCEB36621656C70B8B67601A366682DE7637F867CB5046A0E2536349061817DDC0800E1226BD97FE9742" srcset="/code.github.io/img/loading.gif" lazyload alt="安装系统"></p>
+<h3 id="（三）首次启动"><a href="#（三）首次启动" class="headerlink" title="（三）首次启动"></a>（三）首次启动</h3><p>拔下盒子的电源线 —-&gt; 取出TF卡 —-&gt; 重新插入电源线 —-&gt; 等待几分钟直至出现登录提示 —-&gt; 创建管理员密码（输入两次） —-&gt; 选择(2)zsh —-&gt; 创建用户账户 —-&gt; 创建用户密码（输入两次） —-&gt; 创建用户名称 —-&gt; 联网设置（跳过） —-&gt; 语言设置（中文是149选项） —-&gt; 时区选择（亚洲选4，然后中国选10） —-&gt; 不同版本设置有些不同，根据英语提示设置即可。</p>
+<p><img src="https://preview.cloud.189.cn/image/imageAction?param=2E6C52DC147D77F8BE0089456292E924D6A61C1413B9003D9D3993CEF28ED6FEB7FD071FF3EBAC164C312889292D308603338BC3A4535B6B213D95E252CEA99EE44F703B5169389DDDB0147FF3138210A2ECC3AC7EA06258F848B0E5AE87E5A167C3CC28D7790021C955E83E042AA9A9" srcset="/code.github.io/img/loading.gif" lazyload alt="设置"></p>
+<h3 id="（四）主板设置"><a href="#（四）主板设置" class="headerlink" title="（四）主板设置"></a>（四）主板设置</h3><p>输入“sudo rk3318-config” —-&gt; 输入管理员密码 —-&gt; 不更改内存设置直接选择OK —-&gt; 选择芯片频率（建议选1.1Ghz） —-&gt; 选择LED灯设置Generic+wifi —-&gt; 设置完成拔掉电源。</p>
+<p><img src="/code.github.io/" srcset="/code.github.io/img/loading.gif" lazyload></p>
+<h3 id="（五）SSH连接"><a href="#（五）SSH连接" class="headerlink" title="（五）SSH连接"></a>（五）SSH连接</h3><p>盒子插上网线（无线连接经常失败，且不清楚原因） —-&gt; 拔掉电源重新插入 —-&gt; 查看路由器地址（通常在路由器背面，常见地址192.168.0.1、192.168.1.1、192.168.31.1（小米）、192.168.3.1（华为）） —-&gt; 网页地址栏输入IP地址 —-&gt; 登陆后查看盒子的局网IP —-&gt; 电脑上运行PuTTY（按照图片设置） —-&gt; 确认 —-&gt; 按账密进行登陆</p>
+<p><img src="/code.github.io/" srcset="/code.github.io/img/loading.gif" lazyload></p>
+<h3 id="（六）替换源码镜像（加速安装）"><a href="#（六）替换源码镜像（加速安装）" class="headerlink" title="（六）替换源码镜像（加速安装）"></a>（六）替换源码镜像（加速安装）</h3><ol>
+<li>在SSH窗口中，输入<code>cat /etc/issue</code>查看当前系统的版本在SSH窗口中</li>
+<li>输入<code>sudo vim /etc/apt/sources.list</code>打开源文件，在现有地址前加“#”注释掉在电脑中</li>
+<li>打开清华源<a href="https://link.zhihu.com/?target=https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/">官方地址</a>，根据自己的版本选择合适的源码镜像将清华源码镜像复制进去</li>
+<li><code>sudo apt-get upgrade</code> 进行源文件升级，升级需要确认，确认后需要等待较长的时间。</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/code.github.io/categories/%E7%BC%96%E7%A8%8B%E7%94%B5%E8%84%91/" class="category-chain-item">编程电脑</a>
+  
+  
+    <span>></span>
+    
+  <a href="/code.github.io/categories/%E7%BC%96%E7%A8%8B%E7%94%B5%E8%84%91/LINUX/" class="category-chain-item">LINUX</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/code.github.io/tags/%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/">#电视盒子</a>
+      
+        <a href="/code.github.io/tags/lINUX%E6%9C%8D%E5%8A%A1%E5%99%A8/">#lINUX服务器</a>
+      
+        <a href="/code.github.io/tags/RK3318/">#RK3318</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>电视盒子刷机_H96MAX-RK3318_Linux服务器</div>
+      <div>https://linuxdeepin007.github.io/code.github.io/2023/05/01/电视盒子刷机_H96MAX-RK3318_Linux服务器/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>望月砂</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月2日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年5月5日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                <i class="iconfont icon-nc"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/code.github.io/2023/05/02/LINUX%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9C%E7%A8%8B%E7%99%BB%E9%99%86%E5%90%8E%E9%80%80%E5%87%BAssh%EF%BC%8C%E7%A8%8B%E5%BA%8F%E4%BB%8D%E7%BB%A7%E7%BB%AD%E8%BF%90%E8%A1%8C/" title="LINUX服务器远程登陆后退出ssh，程序仍继续运行">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">LINUX服务器远程登陆后退出ssh，程序仍继续运行</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/code.github.io/2023/04/10/%E5%80%AA%E6%B5%B7%E5%8E%A6_%E5%A4%A9%E7%BA%AA019_%E5%A0%AA%E8%88%864%E3%80%81%E5%85%AD%E7%A5%9E%E5%8D%A0%E6%96%AD%E3%80%81%E6%96%97%E6%95%B0%E3%80%81%E7%81%AB%E9%A3%8E%E9%BC%8E%E3%80%81%E9%9C%87%E4%B8%BA%E9%9B%B7%E3%80%81%E8%89%AE%E4%B8%BA%E5%B1%B1%E3%80%81%E9%A3%8E%E5%B1%B1%E6%B8%90%E3%80%81%E9%9B%B7%E6%B3%BD%E5%BD%92%E5%A6%B9/" title="倪海厦_天纪019_堪舆4、六神占断、斗数、火风鼎、震为雷、艮为山、风山渐、雷泽归妹">
+                        <span class="hidden-mobile">倪海厦_天纪019_堪舆4、六神占断、斗数、火风鼎、震为雷、艮为山、风山渐、雷泽归妹</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证89757号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/code.github.io/img/police_beian.png" srcset="/code.github.io/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备ICP NO.89757号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+<footer class="text-center mt-1 py-2">
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("04/03/2022 00:00:00");//在此处修改你的建站时间
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+           hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+<div>©2022<a href="/"> ♥ 望月砂 </a></div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/code.github.io/js/events.js" ></script>
+<script  src="/code.github.io/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/code.github.io/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/code.github.io/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/code.github.io/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
