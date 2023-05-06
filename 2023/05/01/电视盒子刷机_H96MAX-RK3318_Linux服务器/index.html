@@ -28,10 +28,8 @@
 <meta property="og:image" content="https://preview.cloud.189.cn/image/imageAction?param=90F9254974444197BD952F814F75AA8F33802396228AFDD892E22FACF868086EF9DC3933C14996DE24BC5F404EB69EFD4D525E32B86A0660589A2C38A8B2AD51CB6C3F21AFDDB81BE9A6024F38BF598494107489B17A0A4C8022F4E4848B92E807958A0DD6FDBAB612D2852C2FD1BF94">
 <meta property="og:image" content="https://preview.cloud.189.cn/image/imageAction?param=1D0F13C53E2A17780FEA7A056BEB6D4ADDAC0E67C6ABFCF0FAB399308488E77F8C8012F9C41A347C3DD657729A8CBFDD1AED074086A815A1F933DEBF4C30DFEB1C96C937D1B0FCEB36621656C70B8B67601A366682DE7637F867CB5046A0E2536349061817DDC0800E1226BD97FE9742">
 <meta property="og:image" content="https://preview.cloud.189.cn/image/imageAction?param=2E6C52DC147D77F8BE0089456292E924D6A61C1413B9003D9D3993CEF28ED6FEB7FD071FF3EBAC164C312889292D308603338BC3A4535B6B213D95E252CEA99EE44F703B5169389DDDB0147FF3138210A2ECC3AC7EA06258F848B0E5AE87E5A167C3CC28D7790021C955E83E042AA9A9">
-<meta property="og:image" content="https://linuxdeepin007.github.io/code.github.io/">
-<meta property="og:image" content="https://linuxdeepin007.github.io/code.github.io/">
 <meta property="article:published_time" content="2023-05-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-04T20:21:38.000Z">
+<meta property="article:modified_time" content="2023-05-05T10:32:58.000Z">
 <meta property="article:author" content="望月砂">
 <meta property="article:tag" content="电视盒子">
 <meta property="article:tag" content="lINUX服务器">
@@ -312,7 +310,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年5月5日 凌晨
+                    本文最后更新于：2023年5月5日 晚上
                   
                 
               </p>
@@ -356,9 +354,7 @@
 <h3 id="（三）首次启动"><a href="#（三）首次启动" class="headerlink" title="（三）首次启动"></a>（三）首次启动</h3><p>拔下盒子的电源线 —-&gt; 取出TF卡 —-&gt; 重新插入电源线 —-&gt; 等待几分钟直至出现登录提示 —-&gt; 创建管理员密码（输入两次） —-&gt; 选择(2)zsh —-&gt; 创建用户账户 —-&gt; 创建用户密码（输入两次） —-&gt; 创建用户名称 —-&gt; 联网设置（跳过） —-&gt; 语言设置（中文是149选项） —-&gt; 时区选择（亚洲选4，然后中国选10） —-&gt; 不同版本设置有些不同，根据英语提示设置即可。</p>
 <p><img src="https://preview.cloud.189.cn/image/imageAction?param=2E6C52DC147D77F8BE0089456292E924D6A61C1413B9003D9D3993CEF28ED6FEB7FD071FF3EBAC164C312889292D308603338BC3A4535B6B213D95E252CEA99EE44F703B5169389DDDB0147FF3138210A2ECC3AC7EA06258F848B0E5AE87E5A167C3CC28D7790021C955E83E042AA9A9" srcset="/code.github.io/img/loading.gif" lazyload alt="设置"></p>
 <h3 id="（四）主板设置"><a href="#（四）主板设置" class="headerlink" title="（四）主板设置"></a>（四）主板设置</h3><p>输入“sudo rk3318-config” —-&gt; 输入管理员密码 —-&gt; 不更改内存设置直接选择OK —-&gt; 选择芯片频率（建议选1.1Ghz） —-&gt; 选择LED灯设置Generic+wifi —-&gt; 设置完成拔掉电源。</p>
-<p><img src="/code.github.io/" srcset="/code.github.io/img/loading.gif" lazyload></p>
 <h3 id="（五）SSH连接"><a href="#（五）SSH连接" class="headerlink" title="（五）SSH连接"></a>（五）SSH连接</h3><p>盒子插上网线（无线连接经常失败，且不清楚原因） —-&gt; 拔掉电源重新插入 —-&gt; 查看路由器地址（通常在路由器背面，常见地址192.168.0.1、192.168.1.1、192.168.31.1（小米）、192.168.3.1（华为）） —-&gt; 网页地址栏输入IP地址 —-&gt; 登陆后查看盒子的局网IP —-&gt; 电脑上运行PuTTY（按照图片设置） —-&gt; 确认 —-&gt; 按账密进行登陆</p>
-<p><img src="/code.github.io/" srcset="/code.github.io/img/loading.gif" lazyload></p>
 <h3 id="（六）替换源码镜像（加速安装）"><a href="#（六）替换源码镜像（加速安装）" class="headerlink" title="（六）替换源码镜像（加速安装）"></a>（六）替换源码镜像（加速安装）</h3><ol>
 <li>在SSH窗口中，输入<code>cat /etc/issue</code>查看当前系统的版本在SSH窗口中</li>
 <li>输入<code>sudo vim /etc/apt/sources.list</code>打开源文件，在现有地址前加“#”注释掉在电脑中</li>
@@ -490,8 +486,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/code.github.io/2023/04/10/%E5%80%AA%E6%B5%B7%E5%8E%A6_%E5%A4%A9%E7%BA%AA019_%E5%A0%AA%E8%88%864%E3%80%81%E5%85%AD%E7%A5%9E%E5%8D%A0%E6%96%AD%E3%80%81%E6%96%97%E6%95%B0%E3%80%81%E7%81%AB%E9%A3%8E%E9%BC%8E%E3%80%81%E9%9C%87%E4%B8%BA%E9%9B%B7%E3%80%81%E8%89%AE%E4%B8%BA%E5%B1%B1%E3%80%81%E9%A3%8E%E5%B1%B1%E6%B8%90%E3%80%81%E9%9B%B7%E6%B3%BD%E5%BD%92%E5%A6%B9/" title="倪海厦_天纪019_堪舆4、六神占断、斗数、火风鼎、震为雷、艮为山、风山渐、雷泽归妹">
-                        <span class="hidden-mobile">倪海厦_天纪019_堪舆4、六神占断、斗数、火风鼎、震为雷、艮为山、风山渐、雷泽归妹</span>
+                      <a href="/code.github.io/2023/04/30/%E5%80%AA%E6%B5%B7%E5%8E%A6_%E5%A4%A9%E7%BA%AA023_%E5%9B%9B%E6%9F%B1%E5%A4%A9%E5%91%BD%EF%BC%8828-47%EF%BC%89/" title="倪海厦_天纪023_四柱天命（28-47）">
+                        <span class="hidden-mobile">倪海厦_天纪023_四柱天命（28-47）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
