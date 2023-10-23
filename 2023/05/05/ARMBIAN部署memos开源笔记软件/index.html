@@ -1,0 +1,914 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/code.github.io/img/fluid.png">
+  <link rel="icon" href="/code.github.io/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="望月砂">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="memos 是「一个具有知识管理和社交网络的开源、自我托管的备忘录中心」。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARMBIAN部署memos开源笔记软件">
+<meta property="og:url" content="https://linuxdeepin007.github.io/code.github.io/2023/05/05/ARMBIAN%E9%83%A8%E7%BD%B2memos%E5%BC%80%E6%BA%90%E7%AC%94%E8%AE%B0%E8%BD%AF%E4%BB%B6/index.html">
+<meta property="og:site_name" content="🌦️ 望月砂&#39;s BLOG">
+<meta property="og:description" content="memos 是「一个具有知识管理和社交网络的开源、自我托管的备忘录中心」。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://preview.cloud.189.cn/image/imageAction?param=E2AAD4D8A23CC9D6536A1C08F848EA43799ECD4C1795AE472729BC8AC92D8D72651906D903D4F225E24A36F585A7424F86C0DCFCDE672DB1D0D128861C8BE28B3E0EA77E3250B80F6115A60A040D58300D0E529A89BAFC2A4DCA0FE6BD33CD3D42426385A33A0593FB92DE0B2874D6C0">
+<meta property="article:published_time" content="2023-05-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-23T16:04:32.042Z">
+<meta property="article:author" content="望月砂">
+<meta property="article:tag" content="MEMOS">
+<meta property="article:tag" content="开源笔迹">
+<meta property="article:tag" content="ARMBIAN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://preview.cloud.189.cn/image/imageAction?param=E2AAD4D8A23CC9D6536A1C08F848EA43799ECD4C1795AE472729BC8AC92D8D72651906D903D4F225E24A36F585A7424F86C0DCFCDE672DB1D0D128861C8BE28B3E0EA77E3250B80F6115A60A040D58300D0E529A89BAFC2A4DCA0FE6BD33CD3D42426385A33A0593FB92DE0B2874D6C0">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>ARMBIAN部署memos开源笔记软件 - 🌦️ 望月砂&#39;s BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/code.github.io/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/code.github.io/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/code.github.io/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/code.github.io/css/mac.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"linuxdeepin007.github.io","root":"/code.github.io/","version":"1.9.0","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/code.github.io/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/code.github.io/js/utils.js" ></script>
+  <script  src="/code.github.io/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/code.github.io/">
+      <strong>☄ 望月砂</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                时间线
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/code.github.io/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/code.github.io/img/ha.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ARMBIAN部署memos开源笔记软件"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        望月砂
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-05 00:00" pubdate>
+          2023年5月5日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ARMBIAN部署memos开源笔记软件</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年10月24日 凌晨
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <p>memos 是「一个具有知识管理和社交网络的开源、自我托管的备忘录中心」。</p>
+<span id="more"></span>
+<p>这是一个类似私人微博的产品，支持标签、过滤、搜索、多账户，可以自用也可以和朋友一起使用，用来碎片化的记录信息，就像 flomo 一样。</p>
+<h2 id="一、主要特征"><a href="#一、主要特征" class="headerlink" title="一、主要特征"></a>一、主要特征</h2><p><img src="https://preview.cloud.189.cn/image/imageAction?param=E2AAD4D8A23CC9D6536A1C08F848EA43799ECD4C1795AE472729BC8AC92D8D72651906D903D4F225E24A36F585A7424F86C0DCFCDE672DB1D0D128861C8BE28B3E0EA77E3250B80F6115A60A040D58300D0E529A89BAFC2A4DCA0FE6BD33CD3D42426385A33A0593FB92DE0B2874D6C0" srcset="/code.github.io/img/loading.gif" lazyload alt="memos"></p>
+<ul>
+<li>🦄 开源且永久免费</li>
+<li>🚀 使用 Docker 几秒内安装托管</li>
+<li>📜 纯文本，支持 Markdown 语法</li>
+<li>👥 将备忘录设为私人或公开给</li>
+<li>🧑‍💻 支持 RESTful API</li>
+<li>📋 使用 iframe 在其他网站上嵌入备忘录</li>
+<li>🏷️ 支持标签</li>
+<li>📆 GitHub 式的交互式日历视图</li>
+<li>☁️ 数据库可保存至 S3 API（AWS S3、Cloudflare R2、MinIO）</li>
+<li>👮 支持 SSO 登录（OAuth 2.0）</li>
+<li>💾 轻松迁移和备份数据</li>
+</ul>
+<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><p>附上 <a href="https://sspai.com/link?target=https://docs.docker.com/engine/install/ubuntu/">Docker</a> 官方部署文档（如果需要更详细的安装流程，请参考官方文档）</p>
+<h3 id="（一）Docker-的安装"><a href="#（一）Docker-的安装" class="headerlink" title="（一）Docker 的安装"></a>（一）Docker 的安装</h3><h4 id="1-卸载"><a href="#1-卸载" class="headerlink" title="1.卸载"></a>1.卸载</h4><p>如果已经存在旧版本的 Docker并且想要卸载请执行卸载命令（非必要）</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">sudo apt-<span class="hljs-built_in">get</span> <span class="hljs-built_in">remove</span> docker docker-engine docker.io containerd runc<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-设置存储库"><a href="#2-设置存储库" class="headerlink" title="2.设置存储库"></a>2.设置存储库</h4><p>更新 apt 包索引并安装包以允许apt通过 HTTPS 使用存储库</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">sudo apt-<span class="hljs-keyword">get</span> <span class="hljs-keyword">update</span><br><br>sudo apt-<span class="hljs-keyword">get</span> install ca-certificates curl gnupg lsb-<span class="hljs-keyword">release</span><br></code></pre></td></tr></table></figure>
+
+<p>添加 Docker 的官方 GPG 密钥</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo mkdir -p <span class="hljs-regexp">/etc/</span>apt/keyrings<br><br>curl -fsSL https:<span class="hljs-regexp">//</span>download.docker.com<span class="hljs-regexp">/linux/u</span>buntu<span class="hljs-regexp">/gpg | sudo gpg --dearmor -o /</span>etc<span class="hljs-regexp">/apt/</span>keyrings/docker.gpg<br></code></pre></td></tr></table></figure>
+
+<p>使用以下命令设置存储库</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gradle">echo \<br>  <span class="hljs-string">&quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \</span><br><span class="hljs-string">  $(lsb_release -cs) stable&quot;</span> | sudo tee <span class="hljs-regexp">/etc/</span>apt<span class="hljs-regexp">/sources.list.d/</span>docker.list &gt; <span class="hljs-regexp">/dev/</span><span class="hljs-keyword">null</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-安装-Docker-引擎"><a href="#3-安装-Docker-引擎" class="headerlink" title="3.安装 Docker 引擎"></a>3.安装 Docker 引擎</h4><p>更新 apt 包索引，安装最新版本的 Docker Engine、containerd 和 Docker Compose</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vim">sudo apt-<span class="hljs-built_in">get</span> <span class="hljs-keyword">update</span><br><br>sudo apt-<span class="hljs-built_in">get</span> install docker-<span class="hljs-keyword">ce</span> docker-<span class="hljs-keyword">ce</span>-cli containerd.io docker-compose-plugin<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-验证-Docker-运行情况"><a href="#4-验证-Docker-运行情况" class="headerlink" title="4.验证 Docker 运行情况"></a>4.验证 Docker 运行情况</h4><p>当 <code>Active: active (running)</code> 为 <code>running</code>时说明 Docker 运行正常</p>
+<p>当进行到这一步骤的时候说明你的 Docker 服务已经成功安装了，离 Memos 的成功安装已经很近了。</p>
+<h3 id="（二）Memos-服务的部署"><a href="#（二）Memos-服务的部署" class="headerlink" title="（二）Memos 服务的部署"></a>（二）Memos 服务的部署</h3><p>仓库地址： <a target="_blank" rel="noopener" href="https://github.com/usememos/memos">https://github.com/usememos/memos</a></p>
+<h4 id="1-创建存储卷"><a href="#1-创建存储卷" class="headerlink" title="1.创建存储卷"></a>1.创建存储卷</h4><p>我们要先在服务器创建一个目录用来存储 Memos 数据。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">mkdir memos<br></code></pre></td></tr></table></figure>
+
+<p>然后需要将创建的目录挂载到docker的容器里，我们先查看一下memos 的路径，下面启动 Memos 的时候需要指定此路径。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">pwd</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-运行容器"><a href="#2-运行容器" class="headerlink" title="2.运行容器"></a>2.运行容器</h4><p>这条命令的参数的意思是： 将容器内的 5230 端口映射到宿主机的 5230 端口上，同时将容器内 <code>/var/opt/memos</code>路径下的内容挂载到宿主机的 <code>/root/memos</code>路径下，路径映射的好处是防止容器被误删导致数据丢失。此处地址要和安装的地址一致，即<code>pwd</code>输出结果。</p>
+<p>只需要一条命令就能够启动 Memos 容器：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker run -d --name memos -p <span class="hljs-number">5230</span>:<span class="hljs-number">5230</span> -v <span class="hljs-regexp">/root/m</span>emos<span class="hljs-regexp">/:/</span>var<span class="hljs-regexp">/opt/m</span>emos neosmemo/memos:latest<br></code></pre></td></tr></table></figure>
+
+<p>这条命令的参数的意思是： 将容器内的 5230 端口映射到宿主机的 5230 端口上，同时将容器内 &#x2F;var&#x2F;opt&#x2F;memos路径下的内容挂载到宿主机的 &#x2F;root&#x2F;memos 路径下，路径映射的好处是防止容器被误删导致数据丢失。</p>
+<p>查看容器运行状态</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">docker ps -<span class="hljs-selector-tag">a</span><br></code></pre></td></tr></table></figure>
+
+<p>当我们看到容器状态是 Up 的时候说明我们已经成功部署好了 Memos 服务，只需要在浏览器访问 127.0.0.1:5230 就可以开的 Memos 的初始页面了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">运行容器：docker run -it 镜像名 /bin/bash<br><br>退出容器：<span class="hljs-built_in">exit</span> 或者 Ctrl+P+Q<br><br>查看所有容器：docker ps -a<br><br>查看运行的容器：docker ps<br><br>重启容器：docker restart 容器ID<br><br>重启容器后进入交互式：docker start -i 5c6ce895b979<br><br>进入容器：docker attach 容器ID<br><br>docker <span class="hljs-built_in">exec</span> -it 容器ID /bin/bash<br></code></pre></td></tr></table></figure>
+
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h3 id="（三）Memos-服务升级"><a href="#（三）Memos-服务升级" class="headerlink" title="（三）Memos 服务升级"></a>（三）Memos 服务升级</h3><h4 id="1-删除现有容器"><a href="#1-删除现有容器" class="headerlink" title="1.删除现有容器"></a>1.删除现有容器</h4><p>首先进入memo文件夹，然后进行操作，一般情况下操作会出错，没有yml类型文件，可忽略。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">cd</span> memos<br>docker-compose down  <br>docker-compose pull<br>docker-compose <span class="hljs-keyword">up</span> -d<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-备份文件"><a href="#2-备份文件" class="headerlink" title="2.备份文件"></a>2.备份文件</h4><p>首先将数据文件、配置文件备份。也就是memo文件夹下的三个文件。 <code>memos_prod.db </code> 和 <code>memos_prod.db-shm</code>   还有 <code>memos_prod.db-wal</code> 三个文件备份，以待恢复。</p>
+<h4 id="3-删除容器"><a href="#3-删除容器" class="headerlink" title="3.删除容器"></a>3.删除容器</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">docker stop memos<br><br>docker <span class="hljs-built_in">rm</span> <span class="hljs-operator">-f</span> memos<br></code></pre></td></tr></table></figure>
+<h4 id="4-拉取最新镜像并创建容器"><a href="#4-拉取最新镜像并创建容器" class="headerlink" title="4.拉取最新镜像并创建容器"></a>4.拉取最新镜像并创建容器</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker pull neosmemo/memos:latest  <span class="hljs-comment"># 拉取最新镜像</span><br><br>sudo docker run -d --name memos -p <span class="hljs-number">5230</span>:<span class="hljs-number">5230</span> -v <span class="hljs-regexp">/home/</span>linux<span class="hljs-regexp">/memo/</span>:<span class="hljs-regexp">/var/</span>opt<span class="hljs-regexp">/memos neosmemo/m</span>emos:latest  <span class="hljs-comment"># 创建容器</span><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="5-恢复文件、更改文件权属并重新设置内网穿透"><a href="#5-恢复文件、更改文件权属并重新设置内网穿透" class="headerlink" title="5.恢复文件、更改文件权属并重新设置内网穿透"></a>5.恢复文件、更改文件权属并重新设置内网穿透</h4><p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>1c1eca960bc274aa0889e5d7f74fc3f120868fd7</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="三、第三方客户端"><a href="#三、第三方客户端" class="headerlink" title="三、第三方客户端"></a>三、第三方客户端</h2><ul>
+<li>第三方客户端：<a target="_blank" rel="noopener" href="https://memos.moe/">Moe Memos</a></li>
+<li>Chrome 扩展：<a target="_blank" rel="noopener" href="https://github.com/lmm214/memos-bber">lmm214&#x2F;memos-bber</a></li>
+<li>微信小程序：<a target="_blank" rel="noopener" href="https://github.com/Rabithua/memos_wmp">Rabithua&#x2F;memos_wmp</a></li>
+<li>Telegram Bot：[qazxcdswe123&#x2F;telegramMemoBot]<br>(<a target="_blank" rel="noopener" href="https://github.com/qazxcdswe123/telegramMemoBot">https://github.com/qazxcdswe123/telegramMemoBot</a>)</li>
+<li>Obsidian插件： <a target="_blank" rel="noopener" href="https://github.com/quorafind/obsidian-memos">Obsidian Memos</a><br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</li>
+</ul>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>1c1eca960bc274aa0889e5d7f74fc3f120868fd7</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/code.github.io/categories/%E7%BC%96%E7%A8%8B%E7%94%B5%E8%84%91/" class="category-chain-item">编程电脑</a>
+  
+  
+    <span>></span>
+    
+  <a href="/code.github.io/categories/%E7%BC%96%E7%A8%8B%E7%94%B5%E8%84%91/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="category-chain-item">软件安装</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/code.github.io/tags/MEMOS/">#MEMOS</a>
+      
+        <a href="/code.github.io/tags/%E5%BC%80%E6%BA%90%E7%AC%94%E8%BF%B9/">#开源笔迹</a>
+      
+        <a href="/code.github.io/tags/ARMBIAN/">#ARMBIAN</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ARMBIAN部署memos开源笔记软件</div>
+      <div>https://linuxdeepin007.github.io/code.github.io/2023/05/05/ARMBIAN部署memos开源笔记软件/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>望月砂</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月5日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年10月24日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                <i class="iconfont icon-nc"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/code.github.io/2023/05/09/%E7%86%8A%E9%80%B8%E8%AE%B2%E9%80%8F%E3%80%8A%E8%B5%84%E6%B2%BB%E9%80%9A%E9%89%B4%E3%80%8B%E7%AC%AC%E4%B8%80%E8%BE%91_001-010/" title="熊逸讲透《资治通鉴》第一辑_001-010">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">熊逸讲透《资治通鉴》第一辑_001-010</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/code.github.io/2023/05/05/%E5%80%AA%E6%B5%B7%E5%8E%A6_%E5%A4%A9%E7%BA%AA024_%E5%9B%9B%E6%9F%B1%E5%A4%A9%E5%91%BD%EF%BC%8848-64%EF%BC%89/" title="倪海厦_天纪024_四柱天命（48-64）">
+                        <span class="hidden-mobile">倪海厦_天纪024_四柱天命（48-64）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      京ICP证89757号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/code.github.io/img/police_beian.png" srcset="/code.github.io/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>京公网安备ICP NO.89757号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+<footer class="text-center mt-1 py-2">
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("04/03/2022 00:00:00");//在此处修改你的建站时间
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+           hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+<div>©2022<a href="/"> ♥ 望月砂 </a></div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/code.github.io/js/events.js" ></script>
+<script  src="/code.github.io/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/code.github.io/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/code.github.io/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/code.github.io/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
